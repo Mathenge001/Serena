@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +9,23 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
             margin: 20px;
-            background-image: url('Pinterest_Download (5).jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #2c3e50;
+
         }
+
+        #video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* Place the video behind other content */
+}
+
+#content {
+  position: relative;
+  z-index: 1; /* Place content above the video */
+  color: #2c3e50;
+}
 
         h1 {
             color: #e74c3c;
@@ -30,39 +41,43 @@
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer; /* Enable cursor pointer for touch interaction */
+          width: 35%;
         }
 
         .image-section {
             position: relative;
-            overflow: hidden;
+
             border-radius: 20px 20px 0 0;
+
         }
 
         .image-section img {
             width: 100%;
-            height: auto;
+            height: 100px;
             object-fit: cover;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
         }
 
         .text-section {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
+           background-color: rgba(236, 240, 241, 0.8); /* Adjust the alpha value as needed for transparency */
+    padding: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+          width: 100%;
+          height: 250px;
+}
 
         button {
-            background-color: #e74c3c;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: 2px solid #c0392b;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+             background-color: rgba(231, 76, 60, 0.8); /* Adjust the alpha value as needed for transparency */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #c0392b;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
         .complete-order-button,
         .menu-dropdown,
@@ -196,11 +211,17 @@
 
     </style>
 </head>
-<body>
+
 
 <a href="menus.html" class="back-button">&#8592; Back</a>
     <h1>Kids' Menu</h1>
+<body>
+  <video id="video-background" autoplay muted loop>
+    <source src="children.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
+  <div id="content">
     <!-- Your existing menu items -->
 
 <div class="menu-item">
@@ -211,41 +232,46 @@
         <p><strong>1. Silly Sandwiches:</strong> Cheesy Grin Grilled Cheese</p>
         <p>🕒 10 mins prep time</p>
         <p>Melted cheddar cheese on whole-grain bread, served with a side of smiley face veggies.</p>
-        <button onclick="addToCart('Cheesy Grin Grilled Cheese')">Yum!</button>
+        <button class="order-button" onclick="orderItem('Silly Sandwiches', 15.99)">YUM!</button>
     </div>
 </div>
 
+<!-- Menu Item 2 -->
 <div class="menu-item">
     <div class="image-section">
         <img src="playfull pasta.jpg" alt="Funny Faces Spaghetti">
     </div>
     <div class="text-section">
         <p><strong>2. Playful Pasta:</strong></p>
-        <p>Funny Faces Spaghetti: Spaghetti with tomato sauce, meatballs, and veggie faces made with olives and cherry tomatoes.</p>
-        <button onclick="addToCart('Funny Faces Spaghetti')">Yum!</button>
+        <p>Funny Faces Spaghetti</p>
+        <p>🕒 Prep Time: 20 mins</p>
+        <button class="order-button" onclick="orderItem('Playful Pasta', 15.99)">Yum!</button>
     </div>
 </div>
 
-     <div class="menu-item">
-        <div class="image-section">
-            <img src="dino bites.jpg" alt="Dino Bites">
-        </div>
-        <div class="text-section">
-            <p><strong>3. Dino Nuggets Adventure:</strong></p>
-            <p>Dino Bites: Crispy chicken nuggets shaped like dinosaurs, served with sweet potato fries and ketchup.</p>
-            <button onclick="addToCart('Dino Bites')">Yum!</button>
-        </div>
+<!-- Menu Item 3 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="dino bites.jpg" alt="Dino Bites">
     </div>
+    <div class="text-section">
+        <p><strong>3. Dino Nuggets Adventure:</strong></p>
+        <p>Dino Bites</p>
+        <p>🕒 Prep Time: 25 mins</p>
+        <button class="order-button" onclick="orderItem('Dino Nuggets Adventure', 19.99)">Yum!</button>
+    </div>
+</div>
 
-    <!-- Menu Item 4 -->
+<!-- Menu Item 4 -->
 <div class="menu-item">
     <div class="image-section">
         <img src="pizza bites.jpg" alt="Mini Pizza Pals">
     </div>
     <div class="text-section">
         <p><strong>4. Pizza Party:</strong></p>
-        <p>Mini Pizza Pals: Personal-sized pizzas with tomato sauce, cheese, and a choice of favorite toppings.</p>
-        <button onclick="addToCart('Mini Pizza Pals')">Yum!</button>
+        <p>Mini Pizza Pals</p>
+        <p>🕒 Prep Time: 15 mins</p>
+        <button class="order-button" onclick="orderItem('Pizza Party', 12.99)">Yum!</button>
     </div>
 </div>
 
@@ -256,8 +282,9 @@
     </div>
     <div class="text-section">
         <p><strong>5. Happy Fish & Chips:</strong></p>
-        <p>Smiley Fish Sticks: Baked fish sticks with smiley face potato wedges and a side of tartar sauce.</p>
-        <button onclick="addToCart('Smiley Fish Sticks')">Yum!</button>
+        <p>Smiley Fish Sticks</p>
+        <p>🕒 Prep Time: 30 mins</p>
+        <button class="order-button" onclick="orderItem('Happy Fish & Chips', 24.99)">Yum!</button>
     </div>
 </div>
 
@@ -268,8 +295,9 @@
     </div>
     <div class="text-section">
         <p><strong>6. Veggie Delight:</strong></p>
-        <p>Rainbow Garden Wrap: Colorful veggie wrap with hummus, shredded carrots, cucumbers, and cherry tomatoes.</p>
-        <button onclick="addToCart('Rainbow Garden Wrap')">Yum!</button>
+        <p>Rainbow Garden Wrap</p>
+        <p>🕒 Prep Time: 15 mins</p>
+        <button class="order-button" onclick="orderItem('Veggie Delight', 17.99)">Yum!</button>
     </div>
 </div>
 
@@ -280,8 +308,9 @@
     </div>
     <div class="text-section">
         <p><strong>7. Fruit Fun:</strong></p>
-        <p>Fruit Kabobs: Skewers of fresh fruit chunks, such as watermelon, grapes, and pineapple.</p>
-        <button onclick="addToCart('Fruit Kabobs')">Yum!</button>
+        <p>Fruit Kabobs</p>
+        <p>🕒 Prep Time: 10 mins</p>
+        <button class="order-button" onclick="orderItem('Fruit Fun', 12.99)">Yum!</button>
     </div>
 </div>
 
@@ -292,23 +321,24 @@
     </div>
     <div class="text-section">
         <p><strong>8. Sweet Treats:</strong></p>
-        <p>Dessert Dippers: Assorted bite-sized treats for dipping, including marshmallows, strawberries, and banana slices with chocolate sauce.</p>
-        <button onclick="addToCart('Dessert Dippers')">Yum!</button>
+        <p>Dessert Dippers</p>
+        <p>🕒 Prep Time: 20 mins</p>
+        <button class="order-button" onclick="orderItem('Sweet Treats', 14.99)">Yum!</button>
     </div>
 </div>
 
-    <!-- Menu Item 9 -->
+<!-- Menu Item 9 -->
 <div class="menu-item">
     <div class="image-section">
-        <img src="berrie blast smoothies.jpg" alt="Description for Menu Item 9">
+        <img src="berrie blast smoothies.jpg" alt="Berry Blast Smoothie">
     </div>
     <div class="text-section">
-        <p><strong>9. Happpy Drink</strong></p>
-        <p>Berry Blast Smoothie: A refreshing blend of mixed berries and yogurt.</p>
-        <button onclick="addToCart('Berry Blast Smoothie')">Yum!</button>
+        <p><strong>9. Happy Drink:</strong></p>
+        <p>Berry Blast Smoothie</p>
+        <p>🕒 Prep Time: 5 mins</p>
+        <button class="order-button" onclick="orderItem('Happy Drink', 9.99)">Yum!</button>
     </div>
 </div>
-<!-- Repeat the structure for other menu items -->
 
  <button class="complete-order-button" onclick="completeOrder()">View my Order</button>
     <select class="menu-dropdown" onchange="navigateToMenu(this)">
@@ -321,28 +351,82 @@
     </select>
 
     <button class="call-waiter-button" onclick="callWaiter()">Call Waiter</button>
-
+  </div>
     <script>
-        function addToCart(item) {
-            alert('Added ' + item + ' to the cart!');
-            // Add your actual shopping cart logic here
-        }
+     function orderItem(name, price) {
+  // Create an object representing the ordered item
+  const orderedItem = {
+    name: name,
+    price: price,
+  };
 
-        function completeOrder() {
-            // Redirect to the next page for customization
-            window.location.href = 'view-my-orders.html-order'; // Replace with the actual URL of the next page
-        }
+  // Add the ordered item to the local storage
+  let orders = JSON.parse(localStorage.getItem('orders')) || [];
+  orders.push(orderedItem);
+  localStorage.setItem('orders', JSON.stringify(orders));
 
-        function navigateToMenu(menu) {
-            if (menu.value) {
-                window.location.href = menu.value;
+    // Show a pop-up notification
+    alert(`${name} has been added to the tray!`);
+
+  }
+    function completeOrder() {
+        // Redirect to the "View My Orders" page
+        window.location.href = 'view-my-orders.html';
+    }
+
+
+    window.addEventListener('load', displayOrders);
+
+    function navigateToMenu(menu) {
+        if (menu.value) {
+            window.location.href = menu.value;
+        }
+    }
+
+    function initiateCall() {
+        var phoneNumber = '+254757577605';
+        var link = 'tel:' + phoneNumber;
+
+        // Check if the device supports the tel protocol
+        if ('href' in document.createElement('a')) {
+            // Create an anchor element with the tel link
+            var callLink = document.createElement('a');
+            callLink.href = link;
+
+            // Trigger a click on the link to initiate the call
+            callLink.click();
+
+            // Show an alert as a fallback
+            alert("Calling waiter...");
+        } else {
+            // Fallback for devices that don't support the tel protocol
+            alert("Please dial " + phoneNumber + " to call the waiter.");
+        }
+    }
+
+    function callWaiter() {
+        initiateCall();
+    }
+
+    function toggleDropdown() {
+        const dropdownMenu = document.getElementById('myDropdown');
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropdown-toggle')) {
+            const dropdowns = document.getElementsByClassName('dropdown-menu');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
             }
         }
+    };
+</script>
 
-        function callWaiter() {
-            // Replace the phone number with the actual phone number for calling the waiter
-            window.location.href = 'tel:+254757577605';
-        }
-    </script>
+
 </body>
 </html>

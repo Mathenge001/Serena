@@ -1,244 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Your head content here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Check Bookings</title>
   <style>
-    /* Your existing styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
 
-    #back-to-offers-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1; /* Ensure the button appears above other elements */
-      background-color: #eeeeee;
-      color: #000000;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      text-decoration: none;
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #eee;
+    }
+
+    #logo {
+      width: 50px; /* Adjust the logo width as needed */
+      height: 50px; /* Adjust the logo height as needed */
+      margin-right: 10px;
     }
 
     #bookings-container {
-      text-align: center; /* Center-align the content */
-      margin-top: 100px; /* Adjust margin to position the content below the button */
-    }
-
-    #bookings-container h1 {
-      margin-bottom: 20px; /* Add margin below the heading */
+      margin: 20px;
     }
 
     .booking-item {
       border: 1px solid #ccc;
-      border-radius: 5px;
       padding: 10px;
       margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
     }
 
-    .delete-button {
-      cursor: pointer;
-      color: red;
-    }
-
-    #total-amount {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    #pay-button {
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #4caf50;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    #booking-controls {
-      margin-top: 20px;
+    .booking-controls {
       display: flex;
-      justify-content: center;
       align-items: center;
     }
 
-    #booking-count {
-      margin-left: 10px;
-      margin-right: 10px;
-      font-size: 18px;
+    .delete-button {
+      cursor: pointer;
+    }
+
+    #total-cost {
+      margin-top: 20px;
       font-weight: bold;
     }
 
-    .control-button {
-      padding: 5px 10px;
-      margin: 0 5px;
-      background-color: #4caf50;
-      color: #ffffff;
+    #action-buttons {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    #back-button,
+    #delete-all-button,
+    #pay-up-button {
+      margin-right: 10px;
+      padding: 10px;
+      cursor: pointer;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
       font-size: 16px;
     }
 
-     #total-amount {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-       #clear-bookings-button {
-      margin-top: 10px;
-      padding: 10px 15px;
+    #delete-all-button {
       background-color: #ff0000;
       color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
     }
+
+    #pay-up-button {
+      background-color: #008000;
+      color: #ffffff;
+    }
+
+     #payment-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  #payment-modal button {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+    #payment-modal,
+  #billing-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  #payment-modal button,
+  #billing-modal button {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
 
   </style>
 </head>
 <body>
-<!-- Add this button at the top of your check-bookings.html file -->
-<button id="back-to-offers-button" onclick="window.location.href='offers.html'">Back to Offers</button>
 
-<div id="bookings-container">
-  <h1>Your Bookings</h1>
-   <button id="clear-bookings-button" onclick="clearBookings()">Clear All Bookings</button>
+<div id="header">
+  <img id="logo" src="logo.png" alt="Logo">
+  <h1>Check Bookings</h1>
+  <button id="back-button" onclick="goBack();">Back</button>
+</div>
 
-  <div id="booking-list"></div>
-  <div id="total-amount"></div>
- <button id="pay-button" onclick="window.location.href='payment.html'">Pay Up</button>
+<div id="bookings-container"></div>
 
+<div id="total-cost"></div>
 
+<div id="action-buttons">
+  <button id="delete-all-button" onclick="deleteAllBookings();">Delete All Bookings</button>
+  <button id="pay-up-button" onclick="payUp();">Pay Up</button>
+</div>
+
+<div id="payment-modal">
+  <button onclick="showBillingModal()">Card</button>
+  <button onclick="choosePaymentMode('mpesa')">Mpesa</button>
+</div>
+
+<div id="billing-modal">
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <form action="">
+
+        <button class="close-btn" onclick="closeCard()">X</button>
+
+        <div class="row">
+
+            <div class="col">
+
+                <h3 class="title">billing address</h3>
+
+                <div class="inputBox">
+                    <span>full name :</span>
+                    <input type="text" placeholder="john deo">
+                </div>
+                <div class="inputBox">
+                    <span>email :</span>
+                    <input type="email" placeholder="example@example.com">
+                </div>
+                <div class="inputBox">
+                    <span>address :</span>
+                    <input type="text" placeholder="room - street - locality">
+                </div>
+                <div class="inputBox">
+                    <span>city :</span>
+                    <input type="text" placeholder="mumbai">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>state :</span>
+                        <input type="text" placeholder="india">
+                    </div>
+                    <div class="inputBox">
+                        <span>zip code :</span>
+                        <input type="text" placeholder="123 456">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <h3 class="title">payment</h3>
+
+                <div class="inputBox">
+                    <span>cards accepted :</span>
+                    <img src="card_img.png" alt="">
+                </div>
+                <div class="inputBox">
+                    <span>name on card :</span>
+                    <input type="text" placeholder="mr. john deo">
+                </div>
+                <div class="inputBox">
+                    <span>credit card number :</span>
+                    <input type="number" placeholder="1111-2222-3333-4444">
+                </div>
+                <div class="inputBox">
+                    <span>exp month :</span>
+                    <input type="text" placeholder="january">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>exp year :</span>
+                        <input type="number" placeholder="2022">
+                    </div>
+                    <div class="inputBox">
+                        <span>CVV :</span>
+                        <input type="text" placeholder="1234">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <input type="submit" value="proceed to checkout" class="submit-btn">
+
+    </form>
 
 </div>
 
- <script>
- const bookingsContainer = document.getElementById('booking-list');
-const totalAmountContainer = document.getElementById('total-amount');
-const bookingCountContainer = document.getElementById('booking-count');
-let totalAmount = 0;
+</body>
+</html>
+</div>
 
-// Define the events
-const events = [
-  { name: 'Valentine\'s Day Special', date: 'February 14, 2024', charge: '$250' },
-  { name: 'Chef\'s Table Experience', date: 'March 20, 2024', charge: '$200' }
-];
 
-// Initialize the booked events
-let bookedEvents = [];
+<script>
+   let totalCost = 0; // Declare totalCost as a global variable
 
-// Function to update total amount
-function updateTotalAmount() {
-  totalAmountContainer.textContent = `Total Amount: $${totalAmount.toFixed(2)}`;
-}
 
-// Function to update bookings display
-function updateBookingsDisplay() {
-  bookingsContainer.innerHTML = ''; // Clear previous bookings
+  function goBack() {
+    window.location.href = 'offers.html';
+  }
 
-  bookedEvents.forEach(event => {
-    const eventElement = document.createElement('div');
-    eventElement.className = 'booking-item';
-    eventElement.innerHTML = `
-      <span>${event.name}</span>
-      <span>${event.date}</span>
-      <span>${event.charge}</span>
-      <div class="booking-controls">
-        <button class="control-button" onclick="addBooking('${event.name}')">+</button>
-        <span id="booking-count-${event.name}">${event.count}</span>
-        <button class="control-button" onclick="reduceBooking('${event.name}')">-</button>
-        <button class="delete-button" onclick="deleteBooking('${event.name}')">Delete</button>
-      </div>
-    `;
-    bookingsContainer.appendChild(eventElement);
-  });
-}
+  function getBookedEvents() {
+    const storedBookedEvents = localStorage.getItem('bookedEvents');
+    return storedBookedEvents ? JSON.parse(storedBookedEvents) : [];
+  }
 
-// Function to store booked events
-function storeBookedEvents() {
-  localStorage.setItem('bookedEvents', JSON.stringify(bookedEvents));
-}
+  function updateBookedEvents(bookedEvents) {
+    localStorage.setItem('bookedEvents', JSON.stringify(bookedEvents));
+  }
 
-// Fetch booked events from storage
-function fetchBookedEvents() {
-  const storedEvents = localStorage.getItem('bookedEvents');
-  bookedEvents = storedEvents ? JSON.parse(storedEvents) : [];
-}
+ function displayBookedEvents() {
+    const bookingsContainer = document.getElementById('bookings-container');
+    const totalCostContainer = document.getElementById('total-cost');
+    const bookedEvents = getBookedEvents();
 
-// Initialize booked events
-fetchBookedEvents();
-updateBookingsDisplay();
-updateTotalAmount();
-
-// Function to add a booking
-function addBooking(eventName) {
-  const event = events.find(event => event.name === eventName);
-  if (event) {
-    const bookingIndex = bookedEvents.findIndex(bookedEvent => bookedEvent.name === eventName);
-    if (bookingIndex !== -1) {
-      bookedEvents[bookingIndex].count++;
+    if (bookedEvents.length === 0) {
+        bookingsContainer.innerHTML = '<p>No bookings available.</p>';
     } else {
-      bookedEvents.push({ ...event, count: 1 });
+        bookingsContainer.innerHTML = ''; // Clear previous bookings
+        let totalCost = 0;
+
+        bookedEvents.forEach((event, index) => {
+            const bookingItem = document.createElement('div');
+            bookingItem.className = 'booking-item';
+            bookingItem.innerHTML = `
+                <p><strong>${event.name}</strong></p>
+                <p>Date: ${event.date}</p>
+                <p>Charge: ${event.charge}</p>
+                <div class="booking-controls">
+                    <button class="control-button add-button" onclick="increaseBooking(${index});">+</button>
+                    <span class="booking-count" data-event-index="${index}">${event.count || 1}</span>
+                    <!-- Initialize count to 1 if undefined -->
+                    <button class="control-button reduce-button" onclick="decreaseBooking(${index});">-</button>
+                    <button class="delete-button" onclick="deleteBooking(${index});">🗑</button>
+                </div>
+            `;
+            bookingsContainer.appendChild(bookingItem);
+
+            totalCost += parseFloat(event.charge.replace('$', '')) * (event.count || 1);
+            // Use count 1 if undefined
+        });
+
+        totalCostContainer.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
     }
-    totalAmount += parseFloat(event.charge.replace('$', ''));
-    updateBookingsDisplay();
-    updateTotalAmount();
-    storeBookedEvents();
-  }
 }
 
-// Function to reduce a booking
-function reduceBooking(eventName) {
-  const event = events.find(event => event.name === eventName);
-  if (event) {
-    const bookingIndex = bookedEvents.findIndex(bookedEvent => bookedEvent.name === eventName);
-    if (bookingIndex !== -1 && bookedEvents[bookingIndex].count > 0) {
-      bookedEvents[bookingIndex].count--;
-      totalAmount -= parseFloat(event.charge.replace('$', ''));
-      updateBookingsDisplay();
-      updateTotalAmount();
-      storeBookedEvents();
+  function increaseBooking(index) {
+    const bookedEvents = getBookedEvents();
+    bookedEvents[index].count++;
+    updateBookedEvents(bookedEvents);
+    displayBookedEvents();
+  }
+
+  function decreaseBooking(index) {
+    const bookedEvents = getBookedEvents();
+    if (bookedEvents[index].count > 0) {
+      bookedEvents[index].count--;
+      updateBookedEvents(bookedEvents);
+      displayBookedEvents();
     }
   }
+
+  function deleteBooking(index) {
+    const bookedEvents = getBookedEvents();
+    const event = bookedEvents[index];
+    const eventCost = parseFloat(event.charge.replace('$', '')) * (event.count || 1);
+
+    // Subtract the cost of the deleted event from the total cost
+    totalCost -= eventCost;
+    bookedEvents.splice(index, 1);
+
+    updateBookedEvents(bookedEvents);
+    displayBookedEvents();
 }
 
-// Function to delete a booking
-function deleteBooking(eventName) {
-  const event = events.find(event => event.name === eventName);
-  if (event) {
-    const bookingIndex = bookedEvents.findIndex(bookedEvent => bookedEvent.name === eventName);
-    if (bookingIndex !== -1) {
-      totalAmount -= parseFloat(event.charge.replace('$', '')) * bookedEvents[bookingIndex].count;
-      bookedEvents.splice(bookingIndex, 1);
-      updateBookingsDisplay();
-      updateTotalAmount();
-      storeBookedEvents();
-    }
+  function deleteAllBookings() {
+    localStorage.removeItem('bookedEvents');
+    displayBookedEvents();
   }
-}
 
-// Function to clear all bookings
-function clearBookings() {
-  bookedEvents = [];
-  totalAmount = 0;
-  updateBookingsDisplay();
-  updateTotalAmount();
-  storeBookedEvents();
-}
+ function payUp() {
+    // Display the payment modal
+    const paymentModal = document.getElementById('payment-modal');
+    paymentModal.style.display = 'block';
+  }
 
+  function choosePaymentMode(mode) {
+    // Your payment processing logic here
+    alert(`Payment successful! Payment mode: ${mode}`);
+
+    // Close the payment modal
+    const paymentModal = document.getElementById('payment-modal');
+    paymentModal.style.display = 'none';
+  }
+
+  function showBillingModal() {
+    // Display the billing modal
+    const billingModal = document.getElementById('billing-modal');
+    billingModal.style.display = 'block';
+  }
+
+  window.addEventListener('load', displayBookedEvents);
+
+ function closeCard() {
+        // Add logic to hide or remove the card element
+        document.querySelector('.container').style.display = 'none';
+    }
 
 </script>
 
-
 </body>
 </html>
-

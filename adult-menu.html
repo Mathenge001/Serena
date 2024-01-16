@@ -789,7 +789,7 @@
         <button id="dessert-button" class="menu-button" onclick="scrollToCategory('desserts-section')">Dessert</button>
         <button class="menu-button" onclick="scrollToCategory('digestifs-section')">Digestifs</button>
         <button class="menu-button" onclick="scrollToCategory('coffee-tea-section')">Coffee & Tea</button>
-        <button class="menu-button" onclick="scrollToCategory('non-alcoholic-drinks-section')">Non-Alcoholic Drinks</button>
+        <button class="menu-button" onclick="scrollToCategory('non-alcoholic-drinks-section')">Soft Drinks</button>
         <button class="menu-button" onclick="scrollToCategory('cocktails-section')">Cocktails</button>
         <button class="menu-button" onclick="scrollToCategory('wine-section')">Wine</button>
         <button class="menu-button" onclick="scrollToCategory('whiskey-section')">Whiskey</button>
@@ -853,118 +853,121 @@
     </div>
 </div>
 
-        <!-- Main Course Section -->
+      <!-- Main Course Section -->
 <!-- Main Courses Category -->
-   <div class="category-title" style="margin-top: 20px;">Main Courses</div>
-  <div id="main-courses-section" class="main-courses-container">
- <!-- Main Course Items -->
-        <div class="main-courses-container">
-            <div class="main-course-item">
-              <img src="pan_seared_chilean_sea_bass.jpg" alt="Pan-Seared Chilean Sea Bass">
-                <h3>Pan-Seared Chilean Sea Bass</h3>
-                <p>Miso-glazed sea bass, forbidden rice, ginger-soy emulsion.</p>
-                <p>🕒 Chef's Specialty</p>
-                <p>Price: $27.99</p>
-                <button class="order-button" onclick="orderItem('Pan-Seared Chilean Sea Bass')">Order</button>
-            </div>
+<div class="category-title" style="margin-top: 20px;">Main Courses</div>
+<div id="main-courses-section" class="main-courses-container">
+    <!-- Main Course Items -->
+    <div class="main-courses-container">
+        <!-- Main Course 1: Pan-Seared Chilean Sea Bass -->
+<div class="main-course-item">
+    <img src="pan_seared_chilean_sea_bass.jpg" alt="Pan-Seared Chilean Sea Bass">
+    <h3>Pan-Seared Chilean Sea Bass</h3>
+    <p>Miso-glazed sea bass, forbidden rice, ginger-soy emulsion.</p>
+    <p>🕒 Chef's Specialty</p>
+    <p>Price: $27.99</p>
+    <button class="order-button" onclick="orderItem('Pan-Seared Chilean Sea Bass', 27.99)">Order</button>
+</div>
 
-            <div class="main-course-item">
-              <img src="aged_ribeye_delight.jpg" alt="Dry-Aged Ribeye Delight">
-                <h3>Dry-Aged Ribeye Delight</h3>
-                <p>Prime ribeye, truffle mashed potatoes, red wine reduction.</p>
-                <p>🕒 Chef's Recommendation</p>
-                <p>Price: $29.99</p>
-                <button class="order-button" onclick="orderItem('Dry-Aged Ribeye Delight')">Order</button>
-            </div>
+<!-- Main Course 2: Dry-Aged Ribeye Delight -->
+<div class="main-course-item">
+    <img src="aged_ribeye_delight.jpg" alt="Dry-Aged Ribeye Delight">
+    <h3>Dry-Aged Ribeye Delight</h3>
+    <p>Prime ribeye, truffle mashed potatoes, red wine reduction.</p>
+    <p>🕒 Chef's Recommendation</p>
+    <p>Price: $29.99</p>
+    <button class="order-button" onclick="orderItem('Dry-Aged Ribeye Delight', 29.99)">Order</button>
+</div>
 
-            <div class="main-course-item">
-              <img src="veal_osso_buco_symphony.jpg" alt="Veal Osso Buco Symphony<r">
-                <h3>Veal Osso Buco Symphony</h3>
-                <p>Braised veal shank, saffron risotto, gremolata finish.</p>
-                <p>🕒 Chef's Choice</p>
-                <p>Price: $31.99</p>
-                <button class="order-button" onclick="orderItem('Veal Osso Buco Symphony')">Order</button>
-            </div>
+<!-- Main Course 3: Veal Osso Buco Symphony -->
+<div class="main-course-item">
+    <img src="veal_osso_buco_symphony.jpg" alt="Veal Osso Buco Symphony">
+    <h3>Veal Osso Buco Symphony</h3>
+    <p>Braised veal shank, saffron risotto, gremolata finish.</p>
+    <p>🕒 Chef's Choice</p>
+    <p>Price: $31.99</p>
+    <button class="order-button" onclick="orderItem('Veal Osso Buco Symphony', 31.99)">Order</button>
+</div>
 
-            <div class="main-course-item">
-              <img src="duck_confit_forestire.jpg" alt="Duck Confit Forestiere">
-                <h3>Duck Confit Forestiere</h3>
-                <p>Slow-cooked duck leg, wild mushroom risotto, cherry gastrique.</p>
-                <p>🕒 Chef's Delight</p>
-                <p>Price: $25.99</p>
-                <button class="order-button" onclick="orderItem('Duck Confit Forestiere')">Order</button>
-            </div>
-        </div>
-  </div>
+<!-- Main Course 4: Duck Confit Forestiere -->
+<div class="main-course-item">
+    <img src="duck_confit_forestire.jpg" alt="Duck Confit Forestiere">
+    <h3>Duck Confit Forestiere</h3>
+    <p>Slow-cooked duck leg, wild mushroom risotto, cherry gastrique.</p>
+    <p>🕒 Chef's Delight</p>
+    <p>Price: $25.99</p>
+    <button class="order-button" onclick="orderItem('Duck Confit Forestiere', 25.99)">Order</button>
+</div>
+    </div>
+</div>
 
 <!-- Desserts Category -->
 <div class="category-title" style="margin-top: 20px;">Desserts</div>
 <div id="desserts-section" class="desserts-container">
 
-        <!-- Dessert 1 -->
-  <div class="dessert-container">
+    <!-- Dessert 1 -->
+    <div class="dessert-container">
         <div class="dessert-item">
-          <img src="chocolate_decadence_symphony.jpg" alt="Chocolate Decadence Symphony">
+            <img src="chocolate_decadence_symphony.jpg" alt="Chocolate Decadence Symphony">
             <h3>Chocolate Decadence Symphony</h3>
             <p>Dark chocolate mousse, raspberry coulis, gold leaf garnish.</p>
             <p>🕒 30 mins prep time</p>
             <p>Price: $15.99</p>
-            <button class="order-button" onclick="orderItem('Chocolate Decadence Symphony')">Order</button>
+            <button class="order-button" onclick="orderItem('Chocolate Decadence Symphony', 15.99)">Order</button>
         </div>
 
         <!-- Dessert 2 -->
         <div class="dessert-item">
-          <img src="vanilla_bean_panna_cotta_bliss.jpg" alt="Vanilla Bean Panna Cotta Bliss">
+            <img src="vanilla_bean_panna_cotta_bliss.jpg" alt="Vanilla Bean Panna Cotta Bliss">
             <h3>Vanilla Bean Panna Cotta Bliss</h3>
             <p>Silky vanilla bean panna cotta, mixed berry compote.</p>
             <p>🕒 25 mins prep time</p>
             <p>Price: $13.99</p>
-            <button class="order-button" onclick="orderItem('Vanilla Bean Panna Cotta Bliss')">Order</button>
+            <button class="order-button" onclick="orderItem('Vanilla Bean Panna Cotta Bliss', 13.99)">Order</button>
         </div>
 
         <!-- Dessert 3 -->
         <div class="dessert-item">
-          <img src="hazelnut_praline_soufle.jpg" alt="Hazelnut Praline Soufflé">
+            <img src="hazelnut_praline_soufle.jpg" alt="Hazelnut Praline Soufflé">
             <h3>Hazelnut Praline Soufflé</h3>
             <p>Light hazelnut soufflé, praline sauce, toasted hazelnuts.</p>
             <p>🕒 35 mins prep time</p>
             <p>Price: $16.99</p>
-            <button class="order-button" onclick="orderItem('Hazelnut Praline Soufflé')">Order</button>
+            <button class="order-button" onclick="orderItem('Hazelnut Praline Soufflé', 16.99)">Order</button>
         </div>
 
         <!-- Dessert 4 -->
-        <div class="dessert-item" >
-          <img src="tiramisu_elegance.jpg" alt="Tiramisu Elegance">
+        <div class="dessert-item">
+            <img src="tiramisu_elegance.jpg" alt="Tiramisu Elegance">
             <h3>Tiramisu Elegance</h3>
             <p>Espresso-soaked ladyfingers, mascarpone cream, cocoa dusting.</p>
             <p>🕒 40 mins prep time</p>
             <p>Price: $14.99</p>
-            <button class="order-button" onclick="orderItem('Tiramisu Elegance')">Order</button>
+            <button class="order-button" onclick="orderItem('Tiramisu Elegance', 14.99)">Order</button>
         </div>
     </div>
 </div>
 
-  <!-- Digestifs Category -->
+ <!-- Digestifs Category -->
 <div class="category-title" style="margin-top: 20px;">Digestifs</div>
 
 <div id="digestifs-section" class="digestifs-container">
-<div class="digestifs-container">
     <!-- Digestif Item 1 -->
     <div class="digestifs-item">
         <img src="fernet_branca.jpg" alt="Fernet-Branca">
         <h3>Fernet-Branca</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $9.99</p>
-        <button class="order-button" onclick="orderItem('Fernet-Branca')">Order</button>
+        <button class="order-button" onclick="orderItem('Fernet-Branca', 9.99)">Order</button>
     </div>
 
     <!-- Digestif Item 2 -->
     <div class="digestifs-item">
         <img src="averna.jpg" alt="Averna">
-        <p>🕒 5 mins prep time</p>
         <h3>Averna</h3>
+        <p>🕒 5 mins prep time</p>
         <p>Price: $11.99</p>
-        <button class="order-button" onclick="orderItem('Averna')">Order</button>
+        <button class="order-button" onclick="orderItem('Averna', 11.99)">Order</button>
     </div>
 
     <!-- Digestif Item 3 -->
@@ -973,7 +976,7 @@
         <h3>Chartreuse</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $14.99</p>
-        <button class="order-button" onclick="orderItem('Chartreuse')">Order</button>
+        <button class="order-button" onclick="orderItem('Chartreuse', 14.99)">Order</button>
     </div>
 
     <!-- Digestif Item 4 -->
@@ -982,7 +985,7 @@
         <h3>Port Wine</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $16.99</p>
-        <button class="order-button" onclick="orderItem('Port Wine')">Order</button>
+        <button class="order-button" onclick="orderItem('Port Wine', 16.99)">Order</button>
     </div>
 
     <!-- Digestif Item 5 -->
@@ -991,9 +994,8 @@
         <h3>Cointreau</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $13.99</p>
-        <button class="order-button" onclick="orderItem('Cointreau')">Order</button>
+        <button class="order-button" onclick="orderItem('Cointreau', 13.99)">Order</button>
     </div>
-</div>
 </div>
 
 
@@ -1001,13 +1003,13 @@
 <div class="category-title" style="margin-top: 20px;">Coffee & Tea</div>
 
 <div id="coffee-tea-section" class="coffee-tea-container">
-<!-- Coffee & Tea Item 1 -->
+    <!-- Coffee & Tea Item 1 -->
     <div class="coffee-tea-item">
         <img src="espresso.jpg" alt="Espresso">
         <h3>Espresso</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $3.99</p>
-        <button class="order-button" onclick="orderItem('Espresso')">Order</button>
+        <button class="order-button" onclick="orderItem('Espresso', 3.99)">Order</button>
     </div>
 
     <!-- Coffee & Tea Item 2 -->
@@ -1016,7 +1018,7 @@
         <h3>Cappuccino</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $4.99</p>
-        <button class="order-button" onclick="orderItem('Cappuccino')">Order</button>
+        <button class="order-button" onclick="orderItem('Cappuccino', 4.99)">Order</button>
     </div>
 
     <!-- Coffee & Tea Item 3 -->
@@ -1025,7 +1027,7 @@
         <h3>Green Tea</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $3.49</p>
-        <button class="order-button" onclick="orderItem('Green Tea')">Order</button>
+        <button class="order-button" onclick="orderItem('Green Tea', 3.49)">Order</button>
     </div>
 
     <!-- Coffee & Tea Item 4 -->
@@ -1034,7 +1036,7 @@
         <h3>Chai Latte</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $4.49</p>
-        <button class="order-button" onclick="orderItem('Chai Latte')">Order</button>
+        <button class="order-button" onclick="orderItem('Chai Latte', 4.49)">Order</button>
     </div>
 </div>
 
@@ -1042,195 +1044,203 @@
 <div class="category-title" style="margin-top: 20px;">Non-Alcoholic Drinks</div>
 
 <div id="non-alcoholic-drinks-section" class="non-alcoholic-drinks-container">
-<!-- Non-Alcoholic Item 1 -->
+    <!-- Non-Alcoholic Item 1: Soda -->
     <div class="non-alcoholic-item">
         <img src="soda.jpg" alt="Soda Water">
         <h3>Soda</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $2.99</p>
-        <button class="order-button" onclick="orderItem('Soda Water')">Order</button>
+        <button class="order-button" onclick="orderItem('Soda Water', 2.99)">Order</button>
     </div>
 
-    <!-- Non-Alcoholic Item 2 -->
+    <!-- Non-Alcoholic Item 2: Fruit Juice -->
     <div class="non-alcoholic-item">
         <img src="fruit_juice.jpg" alt="Fruit Juice">
         <h3>Fruit Juice</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $3.49</p>
-        <button class="order-button" onclick="orderItem('Fruit Juice')">Order</button>
+        <button class="order-button" onclick="orderItem('Fruit Juice', 3.49)">Order</button>
     </div>
 
-    <!-- Non-Alcoholic Item 3 -->
+    <!-- Non-Alcoholic Item 3: Water -->
     <div class="non-alcoholic-item">
         <img src="Water.jpg" alt="Water">
         <h3>Water</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $2.99</p>
-        <button class="order-button" onclick="orderItem('Water')">Order</button>
+        <button class="order-button" onclick="orderItem('Water', 2.99)">Order</button>
     </div>
-  <!-- Mocktail Item 1 -->
+
+    <!-- Mocktail Item 1: Virgin Mojito -->
     <div class="mocktail-item">
         <img src="virgin_mojito.jpg" alt="Virgin Mojito">
         <h3>Virgin Mojito</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $4.99</p>
-        <button class="order-button" onclick="orderItem('Virgin Mojito')">Order</button>
+        <button class="order-button" onclick="orderItem('Virgin Mojito', 4.99)">Order</button>
     </div>
 
-    <!-- Mocktail Item 2 -->
+    <!-- Mocktail Item 2: Berry Bliss Smoothie -->
     <div class="mocktail-item">
         <img src="berry_bliss_smoothie.jpg" alt="Berry Bliss Smoothie">
         <h3>Berry Bliss Smoothie</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $5.49</p>
-        <button class="order-button" onclick="orderItem('Berry Bliss Smoothie')">Order</button>
+        <button class="order-button" onclick="orderItem('Berry Bliss Smoothie', 5.49)">Order</button>
     </div>
 
-    <!-- Mocktail Item 3 -->
+    <!-- Mocktail Item 3: Pineapple Paradise -->
     <div class="mocktail-item">
         <img src="pineapple_paradise.jpg" alt="Pineapple Paradise">
         <h3>Pineapple Paradise</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $5.99</p>
-        <button class="order-button" onclick="orderItem('Pineapple Paradise')">Order</button>
+        <button class="order-button" onclick="orderItem('Pineapple Paradise', 5.99)">Order</button>
     </div>
 
-    <!-- Mocktail Item 4 -->
+    <!-- Mocktail Item 4: Cranberry Sparkler -->
     <div class="mocktail-item">
         <img src="cranberry_sparkler.jpg" alt="Cranberry Sparkler">
         <h3>Cranberry Sparkler</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $4.79</p>
-        <button class="order-button" onclick="orderItem('Cranberry Sparkler')">Order</button>
+        <button class="order-button" onclick="orderItem('Cranberry Sparkler', 4.79)">Order</button>
     </div>
 </div>
+
 
 <!-- Cocktails Category -->
 <div class="category-title" style="margin-top: 20px;">Cocktails</div>
 
 <div id="cocktails-section" class="cocktails-container">
-    <!-- Cocktail Item 1 -->
+    <!-- Cocktail Item 1: Mojito -->
     <div class="cocktail-item">
         <img src="mojito.jpg" alt="Mojito">
         <h3>Mojito</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $8.99</p>
-        <button class="order-button" onclick="orderItem('Mojito')">Order</button>
+        <button class="order-button" onclick="orderItem('Mojito', 8.99)">Order</button>
     </div>
 
-    <!-- Cocktail Item 2 -->
+    <!-- Cocktail Item 2: Berry Bliss Cocktail -->
     <div class="cocktail-item">
         <img src="berry_bliss_cocktail.png" alt="Berry Bliss Cocktail">
         <h3>Berry Bliss Cocktail</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $9.49</p>
-        <button class="order-button" onclick="orderItem('Berry Bliss Cocktail')">Order</button>
+        <button class="order-button" onclick="orderItem('Berry Bliss Cocktail', 9.49)">Order</button>
     </div>
 
-    <!-- Cocktail Item 3 -->
+    <!-- Cocktail Item 3: Tropical Pineapple Cocktail -->
     <div class="cocktail-item">
         <img src="tropical_pineapple.jpg" alt="Tropical Pineapple Cocktail">
         <h3>Tropical Pineapple Cocktail</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $10.99</p>
-        <button class="order-button" onclick="orderItem('Tropical Pineapple Cocktail')">Order</button>
+        <button class="order-button" onclick="orderItem('Tropical Pineapple Cocktail', 10.99)">Order</button>
     </div>
 
-    <!-- Cocktail Item 4 -->
+    <!-- Cocktail Item 4: Cranberry Sparkle Cocktail -->
     <div class="cocktail-item">
         <img src="cranberry_sparkle_cocktail.jpg" alt="Cranberry Sparkle Cocktail">
         <h3>Cranberry Sparkle Cocktail</h3>
         <p>🕒 5 mins prep time</p>
         <p>Price: $8.79</p>
-        <button class="order-button" onclick="orderItem('Cranberry Sparkle Cocktail')">Order</button>
+        <button class="order-button" onclick="orderItem('Cranberry Sparkle Cocktail', 8.79)">Order</button>
     </div>
 </div>
 
 
 <!-- Wine Category -->
-  <div class="category-title" style="margin-top: 20px;">Wine</div>
+<div class="category-title" style="margin-top: 20px;">Wine</div>
 <div id="wine-section" class="wine-container">
 
-<!-- Wine Items -->
-<div class="wine-container">
-    <div class="wine-item">
-        <img src="cabernet_sauvignon.jpg" alt="Cabernet Sauvignon">
-        <h3>Cabernet Sauvignon (Red)</h3>
-        <p>🕒 5 mins prep time</p>
-        <p>Price: $19.99</p>
-        <button class="order-button" onclick="orderItem('Cabernet Sauvignon')">Order</button>
-    </div>
+    <!-- Wine Items -->
+    <div class="wine-container">
+        <!-- Wine Item 1: Cabernet Sauvignon (Red) -->
+        <div class="wine-item">
+            <img src="cabernet_sauvignon.jpg" alt="Cabernet Sauvignon">
+            <h3>Cabernet Sauvignon (Red)</h3>
+            <p>🕒 5 mins prep time</p>
+            <p>Price: $19.99</p>
+            <button class="order-button" onclick="orderItem('Cabernet Sauvignon', 19.99)">Order</button>
+        </div>
 
-    <div class="wine-item">
-        <img src="chardonnay.png" alt="Chardonnay">
-        <h3>Chardonnay (White)</h3>
-        <p>🕒 5 mins prep time</p>
-        <p>Price: $17.99</p>
-        <button class="order-button" onclick="orderItem('Chardonnay')">Order</button>
-    </div>
+        <!-- Wine Item 2: Chardonnay (White) -->
+        <div class="wine-item">
+            <img src="chardonnay.png" alt="Chardonnay">
+            <h3>Chardonnay (White)</h3>
+            <p>🕒 5 mins prep time</p>
+            <p>Price: $17.99</p>
+            <button class="order-button" onclick="orderItem('Chardonnay', 17.99)">Order</button>
+        </div>
 
-    <div class="wine-item">
-        <img src="merlot.jpg" alt="Merlot">
-        <h3>Merlot (Red)</h3>
-        <p>🕒 5 mins prep time</p>
-        <p>Price: $22.99</p>
-        <button class="order-button" onclick="orderItem('Merlot')">Order</button>
-    </div>
+        <!-- Wine Item 3: Merlot (Red) -->
+        <div class="wine-item">
+            <img src="merlot.jpg" alt="Merlot">
+            <h3>Merlot (Red)</h3>
+            <p>🕒 5 mins prep time</p>
+            <p>Price: $22.99</p>
+            <button class="order-button" onclick="orderItem('Merlot', 22.99)">Order</button>
+        </div>
 
-    <div class="wine-item">
-        <img src="sauvignon_blanc.jpg" alt="Sauvignon Blanc">
-        <h3>Sauvignon Blanc (White)</h3>
-        <p>🕒 5 mins prep time</p>
-        <p>Price: $18.99</p>
-        <button class="order-button" onclick="orderItem('Sauvignon Blanc')">Order</button>
+        <!-- Wine Item 4: Sauvignon Blanc (White) -->
+        <div class="wine-item">
+            <img src="sauvignon_blanc.jpg" alt="Sauvignon Blanc">
+            <h3>Sauvignon Blanc (White)</h3>
+            <p>🕒 5 mins prep time</p>
+            <p>Price: $18.99</p>
+            <button class="order-button" onclick="orderItem('Sauvignon Blanc', 18.99)">Order</button>
+        </div>
     </div>
 </div>
-</div>
 
 
-
-  <!-- Whiskey Category -->
-  <div class="category-title" style="margin-top: 20px;">Whiskey</div>
+ <!-- Whiskey Category -->
+<div class="category-title" style="margin-top: 20px;">Whiskey</div>
 <div id="whiskey-section" class="whiskey-container">
-<!-- Whiskey Items -->
-<div class="whiskey-container">
-    <div class="whiskey-item">
-        <img src="glenfiddich_21_year_old_reserva_rum_cask_finish.jpg" alt="Glenfidich 21-Year Old Reserva Rum Cask Finish">
-        <h3>Glenfidich 21-Year Old Reserva Rum Cask Finish</h3>
-        <p>🕒 Aged 21 years</p>
-        <p>Price: $199.99</p>
-        <button class="order-button" onclick="orderItem('Glenfidich 21-Year Old Reserva Rum Cask Finish')">Order</button>
-    </div>
 
-    <div class="whiskey-item">
-        <img src="Hibiki 21-Year-Old.jpg" alt="Hibiki 21-Year-Old">
-        <h3>Hibiki 21-Year-Old</h3>
-        <p>🕒 Aged 21 years</p>
-        <p>Price: $249.99</p>
-        <button class="order-button" onclick="orderItem('Hibiki 21-Year-Old')">Order</button>
-    </div>
+    <!-- Whiskey Items -->
+    <div class="whiskey-container">
+        <!-- Whiskey Item 1: Glenfidich 21-Year Old Reserva Rum Cask Finish -->
+        <div class="whiskey-item">
+            <img src="glenfiddich_21_year_old_reserva_rum_cask_finish.jpg" alt="Glenfidich 21-Year Old Reserva Rum Cask Finish">
+            <h3>Glenfidich 21-Year Old Reserva Rum Cask Finish</h3>
+            <p>🕒 Aged 21 years</p>
+            <p>Price: $199.99</p>
+            <button class="order-button" onclick="orderItem('Glenfidich 21-Year Old Reserva Rum Cask Finish', 199.99)">Order</button>
+        </div>
 
-    <div class="whiskey-item">
-        <img src="macallan_18_year_old_sherry _oak.jpg" alt="Macallan 18 Year Old Sherry Oak">
-        <h3>Macallan 18 Year Old Sherry Oak</h3>
-        <p>🕒 Aged 18 years</p>
-        <p>Price: $229.99</p>
-        <button class="order-button" onclick="orderItem('Macallan 18 Year Old Sherry Oak')">Order</button>
+        <!-- Whiskey Item 2: Hibiki 21-Year-Old -->
+        <div class="whiskey-item">
+            <img src="Hibiki 21-Year-Old.jpg" alt="Hibiki 21-Year-Old">
+            <h3>Hibiki 21-Year-Old</h3>
+            <p>🕒 Aged 21 years</p>
+            <p>Price: $249.99</p>
+            <button class="order-button" onclick="orderItem('Hibiki 21-Year-Old', 249.99)">Order</button>
+        </div>
+
+        <!-- Whiskey Item 3: Macallan 18 Year Old Sherry Oak -->
+        <div class="whiskey-item">
+            <img src="macallan_18_year_old_sherry _oak.jpg" alt="Macallan 18 Year Old Sherry Oak">
+            <h3>Macallan 18 Year Old Sherry Oak</h3>
+            <p>🕒 Aged 18 years</p>
+            <p>Price: $229.99</p>
+            <button class="order-button" onclick="orderItem('Macallan 18 Year Old Sherry Oak', 229.99)">Order</button>
+        </div>
     </div>
 </div>
-</div>
+
 
 <!-- Placeholder content to simulate scrolling -->
-<div style="height: 1000px; background-color: #f2f2f2;"></div>
-
-  <script>
- function toggleDropdown() {
+<script>
+    function toggleDropdown() {
         const dropdownMenu = document.getElementById('myDropdown');
         dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
     }
 
     // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.dropdown-toggle')) {
             const dropdowns = document.getElementsByClassName('dropdown-menu');
             for (let i = 0; i < dropdowns.length; i++) {
@@ -1242,52 +1252,45 @@
         }
     };
 
-    function scrollToCategory(categoryId) {
-    var categoryElement = document.getElementById(categoryId);
+  function scrollToCategory(category) {
+    var categoryElement = document.getElementById(category);
     if (categoryElement) {
-        categoryElement.scrollIntoView({ behavior: 'smooth' });
+      categoryElement.scrollIntoView({ behavior: "smooth" });
     }
-}
+  }
+
+    function initiateCall() {
+        window.location.href = 'tel:+254757577605';
+        alert("Calling waiter...");
+    }
 
 
-function initiateCall() {
-    window.location.href = 'tel:+254757577605';
-     alert("Calling waiter...");
-}
 
-function searchMenu(category) {
-    scrollToCategory(category);
-}
 
-function orderItem(itemName, description, prepTime, price) {
-    // Log the order (replace with your logic)
-    var order = {
-        itemName: itemName,
-        description: description,
-        prepTime: prepTime,
-        price: price
-    };
-
-    // Store orders in an array (temporary storage)
-    var orders = JSON.parse(localStorage.getItem('orders')) || [];
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
-
-    alert('Ordered ' + itemName + ' for $' + price);
-}
-
-function navigateToMenu() {
+    function navigateToMenu() {
         // Get the selected option value
         var selectedMenu = document.getElementById("menuDropdown").value;
-
-        // Redirect to the selected menu
-        if (selectedMenu) {
-            window.location.href = selectedMenu;
-        }
     }
+
+
+    //ttuko apa
+  function orderItem(name, price) {
+  // Create an object representing the ordered item
+  const orderedItem = {
+    name: name,
+    price: price,
+  };
+
+  // Add the ordered item to the local storage
+  let orders = JSON.parse(localStorage.getItem('orders')) || [];
+  orders.push(orderedItem);
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Show a pop-up notification
+    alert(`${name} has been added to the tray!`);
+
+  }
 </script>
-
-
 </body>
 
 </html>
