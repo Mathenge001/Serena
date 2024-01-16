@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Your head content here -->
+  <title>Check Bookings</title>
+  <style>
+    /* Your existing styles here */
+
+    #back-to-offers-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1; /* Ensure the button appears above other elements */
+      background-color: #eeeeee;
+      color: #000000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    #bookings-container {
+      text-align: center; /* Center-align the content */
+      margin-top: 100px; /* Adjust margin to position the content below the button */
+    }
+
+    #bookings-container h1 {
+      margin-bottom: 20px; /* Add margin below the heading */
+    }
+
+    .booking-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .delete-button {
+      cursor: pointer;
+      color: red;
+    }
+
+    #total-amount {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    #pay-button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #booking-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #booking-count {
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .control-button {
+      padding: 5px 10px;
+      margin: 0 5px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+     #total-amount {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+       #clear-bookings-button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #ff0000;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+<!-- Add this button at the top of your check-bookings.html file -->
+<button id="back-to-offers-button" onclick="window.location.href='offers.html'">Back to Offers</button>
+
+<div id="bookings-container">
+  <h1>Your Bookings</h1>
+   <button id="clear-bookings-button" onclick="clearBookings()">Clear All Bookings</button>
+
+  <div id="booking-list"></div>
+  <div id="total-amount"></div>
+ <button id="pay-button" onclick="window.location.href='payment.html'">Pay Up</button>
+
+
+
+</div>
+
+ <script>
+ const bookingsContainer = document.getElementById('booking-list');
+const totalAmountContainer = document.getElementById('total-amount');
+const bookingCountContainer = document.getElementById('booking-count');
+let totalAmount = 0;
+
+// Define the events
+const events = [
+  { name: 'Valentine\'s Day Special', date: 'February 14, 2024', charge: '$250' },
+  { name: 'Chef\'s Table Experience', date: 'March 20, 2024', charge: '$200' }
+];
+
+// Initialize the booked events
+let bookedEvents = [];
+
+// Function to update total amount
+function updateTotalAmount() {
+  totalAmountContainer.textContent = `Total Amount: $${totalAmount.toFixed(2)}`;
+}
+
+// Function to update bookings display
+function updateBookingsDisplay() {
+  bookingsContainer.innerHTML = ''; // Clear previous bookings
+
+  bookedEvents.forEach(event => {
+    const eventElement = document.createElement('div');
+    eventElement.className = 'booking-item';
+    eventElement.innerHTML = `
+      <span>${event.name}</span>
+      <span>${event.date}</span>
+      <span>${event.charge}</span>
+      <div class="booking-controls">
+        <button class="control-button" onclick="addBooking('${event.name}')">+</button>
+        <span id="booking-count-${event.name}">${event.count}</span>
+        <button class="control-button" onclick="reduceBooking('${event.name}')">-</button>
+        <button class="delete-button" onclick="deleteBooking('${event.name}')">Delete</button>
+      </div>
+    `;
+    bookingsContainer.appendChild(eventElement);
+  });
+}
+
+// Function to store booked events
+function storeBookedEvents() {
+  localStorage.setItem('bookedEvents', JSON.stringify(bookedEvents));
+}
+
+// Fetch booked events from storage
+function fetchBookedEvents() {
+  const storedEvents = localStorage.getItem('bookedEvents');
+  bookedEvents = storedEvents ? JSON.parse(storedEvents) : [];
+}
+
+// Initialize booked events
+fetchBookedEvents();
+updateBookingsDisplay();
+updateTotalAmount();
+
+// Function to add a booking
+function addBooking(eventName) {
+  const event = events.find(event => event.name === eventName);
+  if (event) {
+    const bookingIndex = bookedEvents.findIndex(bookedEvent => bookedEvent.name === eventName);
+    if (bookingIndex !== -1) {
+      bookedEvents[bookingIndex].count++;
+    } else {
+      bookedEvents.push({ ...event, count: 1 });
+    }
+    totalAmount += parseFloat(event.charge.replace('$', ''));
+    updateBookingsDisplay();
+    updateTotalAmount();
+    storeBookedEvents();
+  }
+}
+
+// Function to reduce a booking
+function reduceBooking(eventName) {
+  const event = events.find(event => event.name === eventName);
+  if (event) {
+    const bookingIndex = bookedEvents.findIndex(bookedEvent => bookedEvent.name === eventName);
+    if (bookingIndex !== -1 && bookedEvents[bookingIndex].count > 0) {
+      bookedEvents[bookingIndex].count--;
+      totalAmount -= parseFloat(event.charge.replace('$', ''));
+      updateBookingsDisplay();
+      updateTotalAmount();
+      storeBookedEvents();
+    }
+  }
+}
+
+// Function to delete a booking
+function deleteBooking(eventName) {
+  const event = events.find(event => event.name === eventName);
+  if (event) {
+    const bookingIndex = bookedEvents.findIndex(bookedEvent => bookedEvent.name === eventName);
+    if (bookingIndex !== -1) {
+      totalAmount -= parseFloat(event.charge.replace('$', '')) * bookedEvents[bookingIndex].count;
+      bookedEvents.splice(bookingIndex, 1);
+      updateBookingsDisplay();
+      updateTotalAmount();
+      storeBookedEvents();
+    }
+  }
+}
+
+// Function to clear all bookings
+function clearBookings() {
+  bookedEvents = [];
+  totalAmount = 0;
+  updateBookingsDisplay();
+  updateTotalAmount();
+  storeBookedEvents();
+}
+
+
+</script>
+
+
+</body>
+</html>
+

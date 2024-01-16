@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View My Orders</title>
+
+    <style>
+        body {
+            background-color: #f0f0f0; /* Set your desired background color */
+            color: black; /* Set your desired text color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #orders-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .order-item {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white; /* Set your desired background color */
+            text-align: left;
+            max-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="orders-container">
+        <h1>Your Orders</h1>
+        <div id="orders-list">
+            <!-- Orders will be dynamically added here -->
+        </div>
+        <button onclick="clearOrders()">Clear Orders</button>
+    </div>
+
+    <script>
+        // Retrieve orders from localStorage
+        var orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+        // Display orders
+        var ordersList = document.getElementById('orders-list');
+        orders.forEach(function (order) {
+            var orderItem = document.createElement('div');
+            orderItem.className = 'order-item';
+            orderItem.innerHTML = `
+                <h2>${order.itemName}</h2>
+                <p>${order.description}</p>
+                <p>${order.prepTime}</p>
+                <p>Price: ${order.price}</p>
+            `;
+            ordersList.appendChild(orderItem);
+        });
+
+        function clearOrders() {
+            // Clear orders from localStorage
+            localStorage.removeItem('orders');
+
+            // Clear displayed orders
+            ordersList.innerHTML = '';
+        }
+    </script>
+
+</body>
+
+</html>

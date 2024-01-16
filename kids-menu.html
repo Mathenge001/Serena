@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids' Menu</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-image: url('Pinterest_Download (5).jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #2c3e50;
+        }
+
+        h1 {
+            color: #e74c3c;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: left;
+            border: 2px solid #3498db;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer; /* Enable cursor pointer for touch interaction */
+        }
+
+        .image-section {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .text-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #c0392b;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .complete-order-button,
+        .menu-dropdown,
+        .call-waiter-button {
+            position: fixed;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .complete-order-button {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid #219653;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .menu-dropdown {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid #2980b9;
+            top: 20px;
+            right: 20px;
+        }
+
+        .call-waiter-button {
+            background-color: #f39c12;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid #d4ac0d;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown-arrow {
+            font-size: 24px;
+            margin-left: 5px;
+        }
+
+ /* Your existing styles */
+
+/* Your existing styles */
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 80px; /* Add space at the bottom to accommodate fixed buttons */
+        padding-top: 40px; /* Add space at the top to avoid title being covered */
+    }
+
+    h1 {
+        margin-top: 20px; /* Adjust the margin to create space between the title and the content */
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        padding: 10px;
+        background-color: #ffffff; /* Explicitly set the background color for the button container */
+        z-index: 2;
+    }
+
+    .complete-order-button,
+    .call-waiter-button,
+    .back-button {
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 18px; /* Adjusted font size for skinnier buttons */
+    }
+
+    .complete-order-button {
+        background-color: #27ae60;
+        color: white;
+        padding: 12px 20px; /* Adjusted padding for skinnier button */
+        border: 2px solid #219653;
+        margin-right: 15px; /* Adjust margin to create space between buttons */
+    }
+
+    .call-waiter-button {
+        background-color: #f39c12;
+        color: white;
+        padding: 12px 20px; /* Adjusted padding for skinnier button */
+        border: 2px solid #d4ac0d;
+    }
+
+    .back-button {
+        color: #ffffff;
+        font-size: 16px; /* Adjusted font size for skinnier button */
+        cursor: pointer;
+        text-decoration: none;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        right: initial;
+        z-index: 2;
+    }
+
+    .menu-dropdown {
+        position: fixed;
+        width: 150px; /* Adjust the width as needed */
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        background-color: #3498db;
+        color: white;
+        padding: 15px 20px; /* Adjust padding as needed */
+        border: 2px solid #2980b9;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+<a href="menus.html" class="back-button">&#8592; Back</a>
+    <h1>Kids' Menu</h1>
+
+    <!-- Your existing menu items -->
+
+<div class="menu-item">
+    <div class="image-section">
+        <img src="silly sandy.jpg" alt="Cheesy Grin Grilled Cheese">
+    </div>
+    <div class="text-section">
+        <p><strong>1. Silly Sandwiches:</strong> Cheesy Grin Grilled Cheese</p>
+        <p>🕒 10 mins prep time</p>
+        <p>Melted cheddar cheese on whole-grain bread, served with a side of smiley face veggies.</p>
+        <button onclick="addToCart('Cheesy Grin Grilled Cheese')">Yum!</button>
+    </div>
+</div>
+
+<div class="menu-item">
+    <div class="image-section">
+        <img src="playfull pasta.jpg" alt="Funny Faces Spaghetti">
+    </div>
+    <div class="text-section">
+        <p><strong>2. Playful Pasta:</strong></p>
+        <p>Funny Faces Spaghetti: Spaghetti with tomato sauce, meatballs, and veggie faces made with olives and cherry tomatoes.</p>
+        <button onclick="addToCart('Funny Faces Spaghetti')">Yum!</button>
+    </div>
+</div>
+
+     <div class="menu-item">
+        <div class="image-section">
+            <img src="dino bites.jpg" alt="Dino Bites">
+        </div>
+        <div class="text-section">
+            <p><strong>3. Dino Nuggets Adventure:</strong></p>
+            <p>Dino Bites: Crispy chicken nuggets shaped like dinosaurs, served with sweet potato fries and ketchup.</p>
+            <button onclick="addToCart('Dino Bites')">Yum!</button>
+        </div>
+    </div>
+
+    <!-- Menu Item 4 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="pizza bites.jpg" alt="Mini Pizza Pals">
+    </div>
+    <div class="text-section">
+        <p><strong>4. Pizza Party:</strong></p>
+        <p>Mini Pizza Pals: Personal-sized pizzas with tomato sauce, cheese, and a choice of favorite toppings.</p>
+        <button onclick="addToCart('Mini Pizza Pals')">Yum!</button>
+    </div>
+</div>
+
+<!-- Menu Item 5 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="happy fish and chips.jpg" alt="Smiley Fish Sticks">
+    </div>
+    <div class="text-section">
+        <p><strong>5. Happy Fish & Chips:</strong></p>
+        <p>Smiley Fish Sticks: Baked fish sticks with smiley face potato wedges and a side of tartar sauce.</p>
+        <button onclick="addToCart('Smiley Fish Sticks')">Yum!</button>
+    </div>
+</div>
+
+<!-- Menu Item 6 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="veggie delights.jpg" alt="Rainbow Garden Wrap">
+    </div>
+    <div class="text-section">
+        <p><strong>6. Veggie Delight:</strong></p>
+        <p>Rainbow Garden Wrap: Colorful veggie wrap with hummus, shredded carrots, cucumbers, and cherry tomatoes.</p>
+        <button onclick="addToCart('Rainbow Garden Wrap')">Yum!</button>
+    </div>
+</div>
+
+<!-- Menu Item 7 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="fruit fun.jpg" alt="Fruit Kabobs">
+    </div>
+    <div class="text-section">
+        <p><strong>7. Fruit Fun:</strong></p>
+        <p>Fruit Kabobs: Skewers of fresh fruit chunks, such as watermelon, grapes, and pineapple.</p>
+        <button onclick="addToCart('Fruit Kabobs')">Yum!</button>
+    </div>
+</div>
+
+<!-- Menu Item 8 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="sweat treats.jpg" alt="Dessert Dippers">
+    </div>
+    <div class="text-section">
+        <p><strong>8. Sweet Treats:</strong></p>
+        <p>Dessert Dippers: Assorted bite-sized treats for dipping, including marshmallows, strawberries, and banana slices with chocolate sauce.</p>
+        <button onclick="addToCart('Dessert Dippers')">Yum!</button>
+    </div>
+</div>
+
+    <!-- Menu Item 9 -->
+<div class="menu-item">
+    <div class="image-section">
+        <img src="berrie blast smoothies.jpg" alt="Description for Menu Item 9">
+    </div>
+    <div class="text-section">
+        <p><strong>9. Happpy Drink</strong></p>
+        <p>Berry Blast Smoothie: A refreshing blend of mixed berries and yogurt.</p>
+        <button onclick="addToCart('Berry Blast Smoothie')">Yum!</button>
+    </div>
+</div>
+<!-- Repeat the structure for other menu items -->
+
+ <button class="complete-order-button" onclick="completeOrder()">View my Order</button>
+    <select class="menu-dropdown" onchange="navigateToMenu(this)">
+        <option value="" disabled selected>&#9660; Menu</option>
+        <option value="kids-menu.html">Kids' Menu</option>
+        <option value="adult-menu.html">Adult Menu</option>
+        <option value="special-dietary-menu.html">Special Dietary Menu</option>
+        <option value="seasonal-menu.html">Seasonal Menu</option>
+        <!-- Add more menu options as needed -->
+    </select>
+
+    <button class="call-waiter-button" onclick="callWaiter()">Call Waiter</button>
+
+    <script>
+        function addToCart(item) {
+            alert('Added ' + item + ' to the cart!');
+            // Add your actual shopping cart logic here
+        }
+
+        function completeOrder() {
+            // Redirect to the next page for customization
+            window.location.href = 'view-my-orders.html-order'; // Replace with the actual URL of the next page
+        }
+
+        function navigateToMenu(menu) {
+            if (menu.value) {
+                window.location.href = menu.value;
+            }
+        }
+
+        function callWaiter() {
+            // Replace the phone number with the actual phone number for calling the waiter
+            window.location.href = 'tel:+254757577605';
+        }
+    </script>
+</body>
+</html>

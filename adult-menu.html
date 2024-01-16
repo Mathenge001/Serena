@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adult Menu</title>
+
+    <style>
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 10vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.back-icon {
+    background-color: #333;
+    color: #fff;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    height: 3vh;
+    text-align: center;
+    top: 0;
+}
+
+.menu-dropdown {
+    background-color: #333;
+    color: #fff;
+    padding: 3px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    width: 20%;
+}
+
+.welcome-container {
+    text-align: center;
+    padding: 50px 20px 20px;
+    background-image: url('https://waylavie.com/cdn/shop/articles/mesa-cafe_700x.jpg?v=1656429603');
+    background-size: cover;
+    width: 100%;
+    height: 5vh;
+    position: fixed;
+    z-index: 999;
+}
+
+.welcome-container h1 {
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 5px;
+    margin-top: -50px;
+}
+
+.welcome-container p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+#category-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    height: 7vh; /* Adjust the height as per your requirement */
+    width: 100%; /* Full width */
+}
+
+.categories-container button {
+    flex: 1;
+    background-color: #2c2c31;
+    color: #eeeeee;
+    border: none;
+    border-radius: 4px;
+    padding: 13px;
+    margin-right: -5000px ; /* Adjusted margin values */
+    cursor: pointer;
+    margin-top: 15px; /* Adjust margin-top for spacing */
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .categories-container button {
+        margin: -500px ; /* Adjusted margin values for smaller screens */
+    }
+}
+
+#call-button,
+#view-orders-button {
+    background-color: #1c1c93;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#call-button:hover,
+#view-orders-button:hover {
+    background-color: #12122f;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .button-container button {
+        margin: 0 5px; /* Adjust margin if needed */
+    }
+}
+
+
+/* Existing styles for larger screens go here */
+  /* Starters Category */
+       .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .starters-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+  /*Starter Item*/
+   .starter-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+   .starter-item:hover {
+      transform: scale(1.05);
+  }
+
+  .starter-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+
+  .starter-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .starter-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+
+  /* Main Courses Container */
+       .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .main-courses-container {
+         display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+  .main-course-item {
+       width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+  .main-course-item:hover {
+      transform: scale(1.05);
+  }
+
+  .main-course-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+  .main-course-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .main-course-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+
+  /* Dessert Container */
+       .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .dessert-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+  /*Dessert Item*/
+  .dessert-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+  .dessert-item:hover {
+      transform: scale(1.05);
+  }
+
+  .dessert-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+  .dessert-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .dessert-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+
+
+
+
+  /* Digestifs Section */
+       .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .digestifs-container {
+        display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+  /*Digestifs Item*/
+  .digestifs-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+  .digestifs-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+
+
+  .digestifs-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .digestifs-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+
+  /* Coffee & Tea Container */
+  .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .coffee-tea-container {
+     display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+  /*Coffe & Tea Item*/
+  .coffee-tea-item {
+       width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+  .coffee-tea-item:hover {
+      transform: scale(1.05);
+  }
+
+  .coffee-tea-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+  .coffee-tea-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .coffee-tea-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+
+  /* Non-Alcoholic Drinks Category */
+  .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .non-alcoholic-drinks-container {
+     display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+
+  .non-alcoholic-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+  .non-alcoholic-item:hover {
+      transform: scale(1.05);
+  }
+
+
+  .non-alcoholic-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+  .non-alcoholic-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .non-alcoholic-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+
+  /* Mocktail Category */
+       .category-title {
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .mocktail-container {
+       display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+  }
+
+  /* Mocktail Item */
+  .mocktail-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+  .mocktail-item:hover {
+      transform: scale(1.05);
+  }
+
+
+  .mocktail-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  }
+
+  .mocktail-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+
+  .mocktail-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+
+  .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+      background-color: #45a049;
+  }
+    /* Cocktails Container */
+    .category-title {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .cocktails-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Cocktail Item*/
+    .cocktail-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .cocktail-item:hover {
+      transform: scale(1.05);
+    }
+
+    /* Styling for cocktail box images */
+    .cocktail-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Styling for cocktail box headings */
+    .cocktail-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Styling for cocktail box paragraphs */
+    .cocktail-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .order-button:hover {
+      background-color:  #45a049;
+    }
+
+    /* Wine Container */
+    .category-title {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .wine-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Wine Item */
+    .wine-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .wine-item:hover {
+      transform: scale(1.05);
+    }
+
+    .wine-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .wine-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .wine-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .order-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Whiskey Container */
+    .category-title {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .whiskey-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Whiskey Item */
+    .whiskey-item {
+      width: 250px;
+      margin: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .whiskey-item:hover {
+      transform: scale(1.05);
+    }
+
+    .whiskey-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .whiskey-item h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .whiskey-item p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .order-button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .order-button:hover {
+      background-color: #45a049;
+    }
+
+    </style>
+</head>
+
+<body>
+ <div class="header">
+        <!-- Back icon to go back to the previous page -->
+        <a href="menus.html" class="back-icon">&#8592; </a>
+
+        <!-- Dropdown menu to navigate to other menus -->
+        <select id="menuDropdown" class="menu-dropdown" onchange="navigateToMenu()">
+    <option value="" disabled selected>Select Menu</option>
+    <option value="kids-menu.html">Kids' Menu</option>
+    <option value="special-dietary-menu.html">Special Dietary Menu</option>
+    <option value="special-occasions-menu.html">Special Occasions & Offers Menu</option>
+</select>
+    </div>
+
+    <div class="welcome-container">
+        <h1>Welcome To Serena Hotel</h1>
+        <p>What are you looking for?</p>
+
+      <!-- Category Buttons -->
+<div class="button-container">
+<div id="button-container">
+    <div id="category-buttons">
+        <button class="menu-button" onclick="scrollToCategory('starters-section')">Starters</button>
+        <button class="menu-button" onclick="scrollToCategory('main-courses-section')">Main Courses</button>
+        <button id="dessert-button" class="menu-button" onclick="scrollToCategory('desserts-section')">Dessert</button>
+        <button class="menu-button" onclick="scrollToCategory('digestifs-section')">Digestifs</button>
+        <button class="menu-button" onclick="scrollToCategory('coffee-tea-section')">Coffee & Tea</button>
+        <button class="menu-button" onclick="scrollToCategory('non-alcoholic-drinks-section')">Non-Alcoholic Drinks</button>
+        <button class="menu-button" onclick="scrollToCategory('cocktails-section')">Cocktails</button>
+        <button class="menu-button" onclick="scrollToCategory('wine-section')">Wine</button>
+        <button class="menu-button" onclick="scrollToCategory('whiskey-section')">Whiskey</button>
+    </div>
+</div>
+    <div id="call-view-buttons">
+        <button id="call-button" class="menu-button" onclick="initiateCall()">📳 Call Waiter</button>
+        <button id="view-orders-button" class="menu-button" onclick="window.location.href='view-my-orders.html'">View My Orders</button>
+    </div>
+</div>
+    </div>
+
+
+    <!-- Placeholder content to simulate scrolling -->
+    <div style="height: 200px; background-color: #000000;"></div>
+
+<!-- Starters Items -->
+<div class="category-title" style="margin-top: 20px;">Starters</div>
+<div id="starters-section" class="starters-container">
+
+    <!-- Starter 1: Seared Scallop Medley -->
+    <div class="starters-container">
+    <div class="starter-item">
+      <img src="seared_scallop_medley.jpg" alt="Seared Scallop Medley">
+        <h3>Seared Scallop Medley</h3>
+        <p>Succulent scallops, citrus-infused beurre blanc, microgreens.</p>
+        <p>🕒 20 mins prep time</p>
+        <p>Price: $15.99</p>
+        <button class="order-button" onclick="orderItem('seared-scallop-medley', 15.99)">Order</button>
+    </div>
+
+    <!-- Starter 2: Truffle Infused Foie Gras -->
+    <div class="starter-item">
+      <img src="truffle_infused_foie_gras.jpg" alt="Truffle Infused Foie Gras">
+        <h3>Truffle Infused Foie Gras</h3>
+        <p>Velvety foie gras, black truffle essence, brioche crostini.</p>
+        <p>🕒 20 mins prep time</p>
+        <p>Price: $18.99</p>
+        <button class="order-button" onclick="orderItem('Truffle Infused Foie Gras', 18.99)">Order</button>
+    </div>
+
+    <!-- Starter 4: Ahi Tuna Tartare Tower -->
+    <div class="starter-item">
+      <img src="ahi_tuna_tartare_tower.jpg" alt="Ahi Tuna Tartare Tower" height="300px">
+        <h3>Ahi Tuna Tartare Tower</h3>
+        <p>Fresh ahi tuna, avocado, sesame soy drizzle, wonton crisps.</p>
+        <p>🕒 20 mins prep time</p>
+        <p>Price: $15.99</p>
+        <button class="order-button" onclick="orderItem('Ahi Tuna Tartare Tower', 15.99)">Order</button>
+    </div>
+
+    <!-- Starter 3: Lobster Bisque Royale -->
+    <div class="starter-item">
+     <img src="lobster_bisque_royale.jpg" alt="Lobster Bisque Royale">
+        <h3>Lobster Bisque Royale</h3>
+        <p>Rich lobster broth, cognac, lobster medallions, chive garnish.</p>
+        <p>🕒 20 mins prep time</p>
+        <p>Price: $12.99</p>
+        <button class="order-button" onclick="orderItem('Lobster Bisque Royale', 12.99)">Order</button>
+    </div>
+    </div>
+</div>
+
+        <!-- Main Course Section -->
+<!-- Main Courses Category -->
+   <div class="category-title" style="margin-top: 20px;">Main Courses</div>
+  <div id="main-courses-section" class="main-courses-container">
+ <!-- Main Course Items -->
+        <div class="main-courses-container">
+            <div class="main-course-item">
+              <img src="pan_seared_chilean_sea_bass.jpg" alt="Pan-Seared Chilean Sea Bass">
+                <h3>Pan-Seared Chilean Sea Bass</h3>
+                <p>Miso-glazed sea bass, forbidden rice, ginger-soy emulsion.</p>
+                <p>🕒 Chef's Specialty</p>
+                <p>Price: $27.99</p>
+                <button class="order-button" onclick="orderItem('Pan-Seared Chilean Sea Bass')">Order</button>
+            </div>
+
+            <div class="main-course-item">
+              <img src="aged_ribeye_delight.jpg" alt="Dry-Aged Ribeye Delight">
+                <h3>Dry-Aged Ribeye Delight</h3>
+                <p>Prime ribeye, truffle mashed potatoes, red wine reduction.</p>
+                <p>🕒 Chef's Recommendation</p>
+                <p>Price: $29.99</p>
+                <button class="order-button" onclick="orderItem('Dry-Aged Ribeye Delight')">Order</button>
+            </div>
+
+            <div class="main-course-item">
+              <img src="veal_osso_buco_symphony.jpg" alt="Veal Osso Buco Symphony<r">
+                <h3>Veal Osso Buco Symphony</h3>
+                <p>Braised veal shank, saffron risotto, gremolata finish.</p>
+                <p>🕒 Chef's Choice</p>
+                <p>Price: $31.99</p>
+                <button class="order-button" onclick="orderItem('Veal Osso Buco Symphony')">Order</button>
+            </div>
+
+            <div class="main-course-item">
+              <img src="duck_confit_forestire.jpg" alt="Duck Confit Forestiere">
+                <h3>Duck Confit Forestiere</h3>
+                <p>Slow-cooked duck leg, wild mushroom risotto, cherry gastrique.</p>
+                <p>🕒 Chef's Delight</p>
+                <p>Price: $25.99</p>
+                <button class="order-button" onclick="orderItem('Duck Confit Forestiere')">Order</button>
+            </div>
+        </div>
+  </div>
+
+<!-- Desserts Category -->
+<div class="category-title" style="margin-top: 20px;">Desserts</div>
+<div id="desserts-section" class="desserts-container">
+
+        <!-- Dessert 1 -->
+  <div class="dessert-container">
+        <div class="dessert-item">
+          <img src="chocolate_decadence_symphony.jpg" alt="Chocolate Decadence Symphony">
+            <h3>Chocolate Decadence Symphony</h3>
+            <p>Dark chocolate mousse, raspberry coulis, gold leaf garnish.</p>
+            <p>🕒 30 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Chocolate Decadence Symphony')">Order</button>
+        </div>
+
+        <!-- Dessert 2 -->
+        <div class="dessert-item">
+          <img src="vanilla_bean_panna_cotta_bliss.jpg" alt="Vanilla Bean Panna Cotta Bliss">
+            <h3>Vanilla Bean Panna Cotta Bliss</h3>
+            <p>Silky vanilla bean panna cotta, mixed berry compote.</p>
+            <p>🕒 25 mins prep time</p>
+            <p>Price: $13.99</p>
+            <button class="order-button" onclick="orderItem('Vanilla Bean Panna Cotta Bliss')">Order</button>
+        </div>
+
+        <!-- Dessert 3 -->
+        <div class="dessert-item">
+          <img src="hazelnut_praline_soufle.jpg" alt="Hazelnut Praline Soufflé">
+            <h3>Hazelnut Praline Soufflé</h3>
+            <p>Light hazelnut soufflé, praline sauce, toasted hazelnuts.</p>
+            <p>🕒 35 mins prep time</p>
+            <p>Price: $16.99</p>
+            <button class="order-button" onclick="orderItem('Hazelnut Praline Soufflé')">Order</button>
+        </div>
+
+        <!-- Dessert 4 -->
+        <div class="dessert-item" >
+          <img src="tiramisu_elegance.jpg" alt="Tiramisu Elegance">
+            <h3>Tiramisu Elegance</h3>
+            <p>Espresso-soaked ladyfingers, mascarpone cream, cocoa dusting.</p>
+            <p>🕒 40 mins prep time</p>
+            <p>Price: $14.99</p>
+            <button class="order-button" onclick="orderItem('Tiramisu Elegance')">Order</button>
+        </div>
+    </div>
+</div>
+
+  <!-- Digestifs Category -->
+<div class="category-title" style="margin-top: 20px;">Digestifs</div>
+
+<div id="digestifs-section" class="digestifs-container">
+<div class="digestifs-container">
+    <!-- Digestif Item 1 -->
+    <div class="digestifs-item">
+        <img src="fernet_branca.jpg" alt="Fernet-Branca">
+        <h3>Fernet-Branca</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $9.99</p>
+        <button class="order-button" onclick="orderItem('Fernet-Branca')">Order</button>
+    </div>
+
+    <!-- Digestif Item 2 -->
+    <div class="digestifs-item">
+        <img src="averna.jpg" alt="Averna">
+        <p>🕒 5 mins prep time</p>
+        <h3>Averna</h3>
+        <p>Price: $11.99</p>
+        <button class="order-button" onclick="orderItem('Averna')">Order</button>
+    </div>
+
+    <!-- Digestif Item 3 -->
+    <div class="digestifs-item">
+        <img src="chartreuse.png" alt="Chartreuse">
+        <h3>Chartreuse</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $14.99</p>
+        <button class="order-button" onclick="orderItem('Chartreuse')">Order</button>
+    </div>
+
+    <!-- Digestif Item 4 -->
+    <div class="digestifs-item">
+        <img src="port_wine.jpg" alt="Port Wine">
+        <h3>Port Wine</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $16.99</p>
+        <button class="order-button" onclick="orderItem('Port Wine')">Order</button>
+    </div>
+
+    <!-- Digestif Item 5 -->
+    <div class="digestifs-item">
+        <img src="cointreau.png" alt="Cointreau">
+        <h3>Cointreau</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $13.99</p>
+        <button class="order-button" onclick="orderItem('Cointreau')">Order</button>
+    </div>
+</div>
+</div>
+
+
+<!-- Coffee & Tea Category -->
+<div class="category-title" style="margin-top: 20px;">Coffee & Tea</div>
+
+<div id="coffee-tea-section" class="coffee-tea-container">
+<!-- Coffee & Tea Item 1 -->
+    <div class="coffee-tea-item">
+        <img src="espresso.jpg" alt="Espresso">
+        <h3>Espresso</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $3.99</p>
+        <button class="order-button" onclick="orderItem('Espresso')">Order</button>
+    </div>
+
+    <!-- Coffee & Tea Item 2 -->
+    <div class="coffee-tea-item">
+        <img src="cappuccino.jpg" alt="Cappuccino">
+        <h3>Cappuccino</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $4.99</p>
+        <button class="order-button" onclick="orderItem('Cappuccino')">Order</button>
+    </div>
+
+    <!-- Coffee & Tea Item 3 -->
+    <div class="coffee-tea-item">
+        <img src="green_tea.jpg" alt="Green Tea">
+        <h3>Green Tea</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $3.49</p>
+        <button class="order-button" onclick="orderItem('Green Tea')">Order</button>
+    </div>
+
+    <!-- Coffee & Tea Item 4 -->
+    <div class="coffee-tea-item">
+        <img src="chai_latte.jpg" alt="Chai Latte">
+        <h3>Chai Latte</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $4.49</p>
+        <button class="order-button" onclick="orderItem('Chai Latte')">Order</button>
+    </div>
+</div>
+
+<!-- Non-Alcoholic Drinks Category -->
+<div class="category-title" style="margin-top: 20px;">Non-Alcoholic Drinks</div>
+
+<div id="non-alcoholic-drinks-section" class="non-alcoholic-drinks-container">
+<!-- Non-Alcoholic Item 1 -->
+    <div class="non-alcoholic-item">
+        <img src="soda.jpg" alt="Soda Water">
+        <h3>Soda</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $2.99</p>
+        <button class="order-button" onclick="orderItem('Soda Water')">Order</button>
+    </div>
+
+    <!-- Non-Alcoholic Item 2 -->
+    <div class="non-alcoholic-item">
+        <img src="fruit_juice.jpg" alt="Fruit Juice">
+        <h3>Fruit Juice</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $3.49</p>
+        <button class="order-button" onclick="orderItem('Fruit Juice')">Order</button>
+    </div>
+
+    <!-- Non-Alcoholic Item 3 -->
+    <div class="non-alcoholic-item">
+        <img src="Water.jpg" alt="Water">
+        <h3>Water</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $2.99</p>
+        <button class="order-button" onclick="orderItem('Water')">Order</button>
+    </div>
+  <!-- Mocktail Item 1 -->
+    <div class="mocktail-item">
+        <img src="virgin_mojito.jpg" alt="Virgin Mojito">
+        <h3>Virgin Mojito</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $4.99</p>
+        <button class="order-button" onclick="orderItem('Virgin Mojito')">Order</button>
+    </div>
+
+    <!-- Mocktail Item 2 -->
+    <div class="mocktail-item">
+        <img src="berry_bliss_smoothie.jpg" alt="Berry Bliss Smoothie">
+        <h3>Berry Bliss Smoothie</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $5.49</p>
+        <button class="order-button" onclick="orderItem('Berry Bliss Smoothie')">Order</button>
+    </div>
+
+    <!-- Mocktail Item 3 -->
+    <div class="mocktail-item">
+        <img src="pineapple_paradise.jpg" alt="Pineapple Paradise">
+        <h3>Pineapple Paradise</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $5.99</p>
+        <button class="order-button" onclick="orderItem('Pineapple Paradise')">Order</button>
+    </div>
+
+    <!-- Mocktail Item 4 -->
+    <div class="mocktail-item">
+        <img src="cranberry_sparkler.jpg" alt="Cranberry Sparkler">
+        <h3>Cranberry Sparkler</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $4.79</p>
+        <button class="order-button" onclick="orderItem('Cranberry Sparkler')">Order</button>
+    </div>
+</div>
+
+<!-- Cocktails Category -->
+<div class="category-title" style="margin-top: 20px;">Cocktails</div>
+
+<div id="cocktails-section" class="cocktails-container">
+    <!-- Cocktail Item 1 -->
+    <div class="cocktail-item">
+        <img src="mojito.jpg" alt="Mojito">
+        <h3>Mojito</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $8.99</p>
+        <button class="order-button" onclick="orderItem('Mojito')">Order</button>
+    </div>
+
+    <!-- Cocktail Item 2 -->
+    <div class="cocktail-item">
+        <img src="berry_bliss_cocktail.png" alt="Berry Bliss Cocktail">
+        <h3>Berry Bliss Cocktail</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $9.49</p>
+        <button class="order-button" onclick="orderItem('Berry Bliss Cocktail')">Order</button>
+    </div>
+
+    <!-- Cocktail Item 3 -->
+    <div class="cocktail-item">
+        <img src="tropical_pineapple.jpg" alt="Tropical Pineapple Cocktail">
+        <h3>Tropical Pineapple Cocktail</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $10.99</p>
+        <button class="order-button" onclick="orderItem('Tropical Pineapple Cocktail')">Order</button>
+    </div>
+
+    <!-- Cocktail Item 4 -->
+    <div class="cocktail-item">
+        <img src="cranberry_sparkle_cocktail.jpg" alt="Cranberry Sparkle Cocktail">
+        <h3>Cranberry Sparkle Cocktail</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $8.79</p>
+        <button class="order-button" onclick="orderItem('Cranberry Sparkle Cocktail')">Order</button>
+    </div>
+</div>
+
+
+<!-- Wine Category -->
+  <div class="category-title" style="margin-top: 20px;">Wine</div>
+<div id="wine-section" class="wine-container">
+
+<!-- Wine Items -->
+<div class="wine-container">
+    <div class="wine-item">
+        <img src="cabernet_sauvignon.jpg" alt="Cabernet Sauvignon">
+        <h3>Cabernet Sauvignon (Red)</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $19.99</p>
+        <button class="order-button" onclick="orderItem('Cabernet Sauvignon')">Order</button>
+    </div>
+
+    <div class="wine-item">
+        <img src="chardonnay.png" alt="Chardonnay">
+        <h3>Chardonnay (White)</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $17.99</p>
+        <button class="order-button" onclick="orderItem('Chardonnay')">Order</button>
+    </div>
+
+    <div class="wine-item">
+        <img src="merlot.jpg" alt="Merlot">
+        <h3>Merlot (Red)</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $22.99</p>
+        <button class="order-button" onclick="orderItem('Merlot')">Order</button>
+    </div>
+
+    <div class="wine-item">
+        <img src="sauvignon_blanc.jpg" alt="Sauvignon Blanc">
+        <h3>Sauvignon Blanc (White)</h3>
+        <p>🕒 5 mins prep time</p>
+        <p>Price: $18.99</p>
+        <button class="order-button" onclick="orderItem('Sauvignon Blanc')">Order</button>
+    </div>
+</div>
+</div>
+
+
+
+  <!-- Whiskey Category -->
+  <div class="category-title" style="margin-top: 20px;">Whiskey</div>
+<div id="whiskey-section" class="whiskey-container">
+<!-- Whiskey Items -->
+<div class="whiskey-container">
+    <div class="whiskey-item">
+        <img src="glenfiddich_21_year_old_reserva_rum_cask_finish.jpg" alt="Glenfidich 21-Year Old Reserva Rum Cask Finish">
+        <h3>Glenfidich 21-Year Old Reserva Rum Cask Finish</h3>
+        <p>🕒 Aged 21 years</p>
+        <p>Price: $199.99</p>
+        <button class="order-button" onclick="orderItem('Glenfidich 21-Year Old Reserva Rum Cask Finish')">Order</button>
+    </div>
+
+    <div class="whiskey-item">
+        <img src="Hibiki 21-Year-Old.jpg" alt="Hibiki 21-Year-Old">
+        <h3>Hibiki 21-Year-Old</h3>
+        <p>🕒 Aged 21 years</p>
+        <p>Price: $249.99</p>
+        <button class="order-button" onclick="orderItem('Hibiki 21-Year-Old')">Order</button>
+    </div>
+
+    <div class="whiskey-item">
+        <img src="macallan_18_year_old_sherry _oak.jpg" alt="Macallan 18 Year Old Sherry Oak">
+        <h3>Macallan 18 Year Old Sherry Oak</h3>
+        <p>🕒 Aged 18 years</p>
+        <p>Price: $229.99</p>
+        <button class="order-button" onclick="orderItem('Macallan 18 Year Old Sherry Oak')">Order</button>
+    </div>
+</div>
+</div>
+
+<!-- Placeholder content to simulate scrolling -->
+<div style="height: 1000px; background-color: #f2f2f2;"></div>
+
+  <script>
+ function toggleDropdown() {
+        const dropdownMenu = document.getElementById('myDropdown');
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-toggle')) {
+            const dropdowns = document.getElementsByClassName('dropdown-menu');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    };
+
+    function scrollToCategory(categoryId) {
+    var categoryElement = document.getElementById(categoryId);
+    if (categoryElement) {
+        categoryElement.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+
+function initiateCall() {
+    window.location.href = 'tel:+254757577605';
+     alert("Calling waiter...");
+}
+
+function searchMenu(category) {
+    scrollToCategory(category);
+}
+
+function orderItem(itemName, description, prepTime, price) {
+    // Log the order (replace with your logic)
+    var order = {
+        itemName: itemName,
+        description: description,
+        prepTime: prepTime,
+        price: price
+    };
+
+    // Store orders in an array (temporary storage)
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+    alert('Ordered ' + itemName + ' for $' + price);
+}
+
+function navigateToMenu() {
+        // Get the selected option value
+        var selectedMenu = document.getElementById("menuDropdown").value;
+
+        // Redirect to the selected menu
+        if (selectedMenu) {
+            window.location.href = selectedMenu;
+        }
+    }
+</script>
+
+
+</body>
+
+</html>

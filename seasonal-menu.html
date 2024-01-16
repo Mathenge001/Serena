@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special-Dietary-Menu</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 95%;
+            height: 10vh;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .back-icon {
+            background-color:  rgba(51, 51, 51, 9%);
+            color: #eeeeee;
+            padding: 3px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            height: 3vh;
+            text-align: center;
+            top: 0;
+        }
+
+      .menu-dropdown {
+    background-color: #000; /* Black background color */
+    color: #fff; /* White text color */
+    padding: 3px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    width: 20%;
+}
+
+
+
+        .welcome-container {
+    text-align: center;
+    padding: 50px 20px 20px; /* Adjusted padding for better visibility */
+    background-image: url('https://i.pinimg.com/564x/91/77/fc/9177fc397883e3fbe4c5a2e4a67db8d4.jpg');
+    background-size: 50% auto;
+    background-position: center bottom; /* Set background position to center bottom */
+    width: 100%;
+    height: 6vh; /* Set height to viewport height */
+    position: fixed; /* Set position to relative */
+    z-index: 999; /* Adjusted z-index */
+}
+
+
+        .welcome-container h1 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 5px;
+            margin-top: -50px; /* Adjust the top margin to move the h1 upwards */
+        }
+
+        .welcome-container p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            margin-top: 0px; /* Adjust the top margin to move the paragraph downwards */
+        }
+
+       #category-buttons {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center;
+    background-color: rgba(51, 51, 51, 0.1);
+    height: 7vh;
+    width: 100%; /* Full width */
+}
+
+.categories-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px; /* Set a maximum width if needed */
+    width: 100%; /* Full width */
+}
+
+.categories-container button {
+    background-color: #2c2c31;
+    color: #eeeeee;
+    border: none;
+    border-radius: 4px;
+    padding: 13px;
+    margin: 5px 2px;
+    cursor: pointer;
+}
+
+#call-button,
+#view-orders-button {
+    background-color: #1c1c93;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#call-button:hover,
+#view-orders-button:hover {
+    background-color: #12122f;
+}
+
+
+/* Short Rains Menu Container */
+#ShortRainsMenu {
+    background: url('https://i.pinimg.com/564x/db/4c/27/db4c27f6458048bc392bed8d9cc0a819.jpg') center/cover;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+   background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+  background-position: center top;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.short-rains-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.short-rains-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.short-rains-item img {
+    width: 100%;
+    height: 229px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.short-rains-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.short-rains-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Long Rains Menu Container */
+#LongRainsMenu {
+    background: url('https://i.pinimg.com/564x/5d/a8/7c/5da87ccb298cde34e02bb2c77b6dfbcf.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+}
+
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.long-rains-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.long-rains-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.long-rains-item img {
+    width: 100%;
+    height:  229px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.long-rains-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.long-rains-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Hot and Dry Season Menu Container */
+#HotDrySeasonMenu {
+    background: url('https://i.pinimg.com/564x/ea/1c/52/ea1c526f46561dfb5443320a22e18268.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center top; /* Set the vertical position to bottom */
+}
+
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.hot-dry-season-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.hot-dry-season-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.hot-dry-season-item img {
+    width: 100%;
+    height:  229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.hot-dry-season-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.hot-dry-season-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Cool Season Menu Container */
+#CoolSeasonMenu {
+    background: url('https://i.pinimg.com/564x/ea/1c/52/ea1c526f46561dfb5443320a22e18268.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center top; /* Set the vertical position to top */
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.cool-season-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.cool-season-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.cool-season-item img {
+    width: 100%;
+    height:  229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.cool-season-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.cool-season-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Cool Season Menu Container */
+#CoolSeasonMenu {
+    background: url('https://i.pinimg.com/564x/61/d2/86/61d28621669387d9b7e7a8ba9d428b4e.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center top; /* Set the vertical position to top */
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.cool-season-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.cool-season-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.cool-season-item img {
+    width: 100%;
+    height: 229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.cool-season-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.cool-season-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+
+    </style>
+</head>
+
+<body>
+ <div class="header">
+        <!-- Back icon to go back to the previous page -->
+        <a href="menus.html" class="back-icon">&#8592; Back</a>
+
+        <!-- Dropdown menu to navigate to other menus -->
+       <select id="menuDropdown" class="menu-dropdown" onchange="navigateToMenu()">
+    <option value="" disabled selected>Select Menu</option>
+    <option value="kids-menu.html">Kids' Menu</option>
+    <option value="adult-menu.html">Adult Menu</option>
+    <option value="special-dietary-menu.html">Special dietary Menu</option>
+</select>
+    </div>
+
+    <div class="welcome-container">
+        <h1>Welcome To Serena Hotel</h1>
+        <p>What are you looking for?</p>
+
+
+<div id="category-buttons">
+    <div class="categories-container">
+      <button id="shortRainsButton" class="tablink short-rains-tab" onclick="openTab('ShortRains')">Short Rains</button>
+
+      <button class="tablink long-rains-tab" onclick="openTab('LongRains')">Long Rains</button>
+      <button class="tablink hot-dry-season-tab" onclick="openTab('HotDrySeason')">Hot and Dry Season</button>
+      <button class="tablink cool-season-tab" onclick="openTab('CoolSeason')">Cool Season</button>
+<!-- Add more buttons as needed with corresponding tabName values -->
+ </div>
+</div>
+
+<button id="call-button" class="menu-button" onclick="initiateCall()">📳 Call Waiter</button>
+<button id="view-orders-button" class="menu-button" onclick="viewMyOrders()">View My Orders</button>
+    </div>
+
+    <!-- Placeholder content to simulate scrolling -->
+    <div style="height: 145px; background-color: #000000;"></div>
+
+<!-- Short Rains (October - December) Menu -->
+<div id="ShortRainsMenu" class="seasonal-menu-container">
+    <h2>Short Rains (October - December) Menu</h2>
+
+    <!-- Appetizer -->
+    <div class="category-title" style="margin-top: 20px;">Appetizer</div>
+    <div class="short-rains-item-container appetizer-container">
+
+        <!-- Appetizer Item 1 -->
+        <div class="short-rains-item">
+            <img src="sukumawiki_and_tomato_salad.png" alt="Sukuma Wiki and Tomato Salad">
+            <h3>Sukuma Wiki and Tomato Salad</h3>
+            <p>Fresh sukuma wiki (collard greens) tossed with tomatoes, onions, and a zesty vinaigrette.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Sukuma Wiki and Tomato Salad')">Order</button>
+        </div>
+
+        <!-- Appetizer Item 2 -->
+        <div class="short-rains-item">
+            <img src="lentil_soup_with_pumpkin.png" alt="Lentil Soup with Pumpkin">
+            <h3>Lentil Soup with Pumpkin</h3>
+            <p>Hearty lentil soup featuring chunks of locally sourced pumpkin.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Lentil Soup with Pumpkin')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Main Course -->
+    <div class="category-title" style="margin-top: 20px;">Main Course</div>
+    <div class="short-rains-item-container maincourse-container">
+
+        <!-- Main Course Item 1 -->
+        <div class="short-rains-item">
+            <img src="nyamachoma_with_roasted_sweetpotatos.jpg" alt="Nyama Choma with Roasted Sweet Potatoes">
+            <h3>Nyama Choma with Roasted Sweet Potatoes</h3>
+            <p>Succulent grilled meat served with oven-roasted sweet potatoes.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Nyama Choma with Roasted Sweet Potatoes')">Order</button>
+        </div>
+
+        <!-- Main Course Item 2 -->
+        <div class="short-rains-item">
+            <img src="vegetable_curry_with_coconut_rice.jpg" alt="Vegetable Curry with Coconut Rice">
+            <h3>Vegetable Curry with Coconut Rice</h3>
+            <p>A fragrant vegetable curry accompanied by coconut-infused rice.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Vegetable Curry with Coconut Rice')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Dessert -->
+    <div class="category-title" style="margin-top: 20px;">Dessert</div>
+    <div class="short-rains-item-container dessert-container">
+
+        <!-- Dessert Item 1 -->
+        <div class="short-rains-item">
+            <img src="mango_and_passionfruit_sorbet.jpg" alt="Mango and Passionfruit Sorbet">
+            <h3>Mango and Passionfruit Sorbet</h3>
+            <p>Refreshing sorbet made from ripe mangoes and tangy passionfruit.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Mango and Passionfruit Sorbet')">Order</button>
+        </div>
+
+        <!-- Dessert Item 2 -->
+        <div class="short-rains-item">
+            <img src="coconut_mandazi.jpg" alt="Coconut Mandazi">
+            <h3>Coconut Mandazi</h3>
+            <p>Fluffy coconut-flavored doughnuts, a delightful local treat.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Coconut Mandazi')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Drink -->
+    <div class="category-title" style="margin-top: 20px;">Drink</div>
+    <div class="short-rains-item-container drink-container">
+
+        <!-- Drink Item 1 -->
+        <div class="short-rains-item">
+            <img src="safari_sunset_cooler.jpg" alt="Safari Sunset Cooler">
+            <h3>Safari Sunset Cooler</h3>
+            <p>A vibrant blend of hibiscus tea, orange juice, and mint, topped with sparkling water.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Safari Sunset Cooler')">Order</button>
+        </div>
+
+        <!-- Drink Item 2 -->
+        <div class="short-rains-item">
+            <img src="tamarind_ginger_fiz.jpg" alt="Tamarind Ginger Fizz">
+            <h3>Tamarind Ginger Fizz</h3>
+            <p>A zesty beverage featuring tamarind concentrate, ginger beer, and a splash of lime.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Tamarind Ginger Fizz')">Order</button>
+        </div>
+
+    </div>
+</div>
+
+ <!-- Long Rains (March - May) Menu -->
+<div id="LongRainsMenu" class="seasonal-menu-container">
+    <h2>Long Rains (March - May) Menu</h2>
+
+    <!-- Appetizer -->
+    <div class="category-title" style="margin-top: 20px;">Appetizer</div>
+    <div class="long-rains-item-container appetizer-container">
+
+        <!-- Appetizer Item 1 -->
+        <div class="long-rains-item">
+            <img src="avocado_and_tomato_salsa.png" alt="Avocado and Tomato Salsa">
+            <h3>Avocado and Tomato Salsa</h3>
+            <p>Creamy avocado mixed with juicy tomatoes, onions, and a hint of lime.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Avocado and Tomato Salsa')">Order</button>
+        </div>
+
+        <!-- Appetizer Item 2 -->
+        <div class="long-rains-item">
+            <img src="spinach_and_arrowrrot_soup.png" alt="Spinach and Arrowroot Soup">
+            <h3>Spinach and Arrowroot Soup</h3>
+            <p>A nourishing soup combining fresh spinach with arrowroot for a hearty texture.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Spinach and Arrowroot Soup')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Main Course -->
+    <div class="category-title" style="margin-top: 20px;">Main Course</div>
+    <div class="long-rains-item-container main-course-container">
+
+        <!-- Main Course Item 1 -->
+        <div class="long-rains-item">
+            <img src="fish_stew_ugali.jpg" alt="Fish Stew with Ugali">
+            <h3>Fish Stew with Ugali</h3>
+            <p>Flavorful fish stew served with the staple Kenyan side, ugali (maize porridge).</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Fish Stew with Ugali')">Order</button>
+        </div>
+
+        <!-- Main Course Item 2 -->
+        <div class="long-rains-item">
+            <img src="grilled_tilapia_sukuma_wiki.jpg" alt="Grilled Tilapia with Sukuma Wiki">
+            <h3>Grilled Tilapia with Sukuma Wiki</h3>
+            <p>Grilled tilapia paired with sautéed sukuma wiki for a nutritious dish.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Grilled Tilapia with Sukuma Wiki')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Dessert -->
+    <div class="category-title" style="margin-top: 20px;">Dessert</div>
+    <div class="long-rains-item-container dessert-container">
+
+        <!-- Dessert Item 1 -->
+        <div class="long-rains-item">
+            <img src="pineapple_banana_smoothie_bowl.jpg" alt="Pineapple and Banana Smoothie Bowl">
+            <h3>Pineapple and Banana Smoothie Bowl</h3>
+            <p>A tropical smoothie bowl featuring pineapple, banana, and other fresh fruits.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Pineapple and Banana Smoothie Bowl')">Order</button>
+        </div>
+
+        <!-- Dessert Item 2 -->
+        <div class="long-rains-item">
+            <img src="chapati_honey_sesame_seeds.jpg" alt="Chapati with Honey and Sesame Seeds">
+            <h3>Chapati with Honey and Sesame Seeds</h3>
+            <p>Soft chapati drizzled with honey and sprinkled with sesame seeds.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Chapati with Honey and Sesame Seeds')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Drink -->
+    <div class="category-title" style="margin-top: 20px;">Drink</div>
+    <div class="long-rains-item-container drink-container">
+
+        <!-- Drink Item 1 -->
+        <div class="long-rains-item">
+            <img src="mango_mint_lemonade.jpg" alt="Mango Mint Lemonade">
+            <h3>Mango Mint Lemonade</h3>
+            <p>A refreshing blend of fresh mango puree, mint leaves, and a splash of lemon, topped with soda water.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Mango Mint Lemonade')">Order</button>
+        </div>
+
+        <!-- Drink Item 2 -->
+        <div class="long-rains-item">
+            <img src="coconut_pineapple_smoothie.jpg" alt="Coconut Pineapple Smoothie">
+            <h3>Coconut Pineapple Smoothie</h3>
+            <p>A creamy smoothie made with coconut milk, fresh pineapple, banana, and yogurt.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Coconut Pineapple Smoothie')">Order</button>
+        </div>
+
+    </div>
+</div>
+
+ <!-- Hot and Dry Season (January - February) Menu -->
+<div id="HotDrySeasonMenu" class="seasonal-menu-container">
+    <h2>Hot and Dry Season (January - February) Menu</h2>
+
+    <!-- Appetizer -->
+    <div class="category-title" style="margin-top: 20px;">Appetizer</div>
+    <div class="hot-dry-season-item-container appetizer-container">
+
+        <!-- Appetizer Item 1 -->
+        <div class="hot-dry-season-item">
+            <img src="kachumbari.png" alt="Kachumbari">
+            <h3>Kachumbari</h3>
+            <p>A classic tomato and onion salad with a burst of flavors.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Kachumbari')">Order</button>
+        </div>
+
+        <!-- Appetizer Item 2 -->
+        <div class="hot-dry-season-item">
+            <img src="lentil_coconut_milk_soup.jpg" alt="Lentil and Coconut Milk Soup">
+            <h3>Lentil and Coconut Milk Soup</h3>
+            <p>Lentil soup enriched with creamy coconut milk.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Lentil and Coconut Milk Soup')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Main Course -->
+    <div class="category-title" style="margin-top: 20px;">Main Course</div>
+    <div class="hot-dry-season-item-container main-course-container">
+
+        <!-- Main Course Item 1 -->
+        <div class="hot-dry-season-item">
+            <img src="swahili_chicken_biryani.jpg" alt="Swahili Chicken Biryani">
+            <h3>Swahili Chicken Biryani</h3>
+            <p>Fragrant chicken biryani cooked with Swahili spices.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Swahili Chicken Biryani')">Order</button>
+        </div>
+
+        <!-- Main Course Item 2 -->
+        <div class="hot-dry-season-item">
+            <img src="beef_pilau_raita.jpg" alt="Beef Pilau with Raita">
+            <h3>Beef Pilau with Raita</h3>
+            <p>A flavorful beef pilau served with cooling raita.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Beef Pilau with Raita')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Dessert -->
+    <div class="category-title" style="margin-top: 20px;">Dessert</div>
+    <div class="hot-dry-season-item-container dessert-container">
+
+        <!-- Dessert Item 1 -->
+        <div class="hot-dry-season-item">
+            <img src="papaya_lime_granita.jpg" alt="Papaya and Lime Granita">
+            <h3>Papaya and Lime Granita</h3>
+            <p>A light and icy treat featuring papaya and lime flavors.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Papaya and Lime Granita')">Order</button>
+        </div>
+
+        <!-- Dessert Item 2 -->
+        <div class="hot-dry-season-item">
+            <img src="coconut_rice_pudding.jpg" alt="Coconut Rice Pudding">
+            <h3>Coconut Rice Pudding</h3>
+            <p>Creamy coconut-infused rice pudding for a sweet ending.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Coconut Rice Pudding')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Drink -->
+    <div class="category-title" style="margin-top: 20px;">Drink</div>
+    <div class="hot-dry-season-item-container drink-container">
+
+        <!-- Drink Item 1 -->
+        <div class="hot-dry-season-item">
+            <img src="passionfruit_mojito.jpg" alt="Passionfruit Mojito">
+            <h3>Passionfruit Mojito</h3>
+            <p>A tropical twist on the classic mojito with passionfruit, mint, and lime.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Passionfruit Mojito')">Order</button>
+        </div>
+
+        <!-- Drink Item 2 -->
+        <div class="hot-dry-season-item">
+            <img src="ginger_hibiscus_iced_tea.jpg" alt="Ginger Hibiscus Iced Tea">
+            <h3>Ginger Hibiscus Iced Tea</h3>
+            <p>Refreshing hibiscus iced tea infused with ginger syrup and lemon slices.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Ginger Hibiscus Iced Tea')">Order</button>
+        </div>
+
+    </div>
+</div>
+
+ <!-- Cool Season (June - September) Menu -->
+<div id="CoolSeasonMenu" class="seasonal-menu-container">
+    <h2>Cool Season (June - September) Menu</h2>
+
+    <!-- Appetizer -->
+    <div class="category-title" style="margin-top: 20px;">Appetizer</div>
+    <div class="cool-season-item-container appetizer-container">
+
+        <!-- Appetizer Item 1 -->
+        <div class="cool-season-item">
+            <img src="mango_avocado_spring_rolls.jpg" alt="Mango and Avocado Spring Rolls">
+            <h3>Mango and Avocado Spring Rolls</h3>
+            <p>Fresh spring rolls filled with mango, avocado, and crisp vegetables.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Mango and Avocado Spring Rolls')">Order</button>
+        </div>
+
+        <!-- Appetizer Item 2 -->
+        <div class="cool-season-item">
+            <img src="potato_leek_soup.jpg" alt="Potato and Leek Soup">
+            <h3>Potato and Leek Soup</h3>
+            <p>Comforting soup made with potatoes, leeks, and aromatic spices.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Potato and Leek Soup')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Main Course -->
+    <div class="category-title" style="margin-top: 20px;">Main Course</div>
+    <div class="cool-season-item-container main-course-container">
+
+        <!-- Main Course Item 1 -->
+        <div class="cool-season-item">
+            <img src="grilled_chicken_mango_chutney.jpg" alt="Grilled Chicken with Mango Chutney">
+            <h3>Grilled Chicken with Mango Chutney</h3>
+            <p>Grilled chicken served with a tangy mango chutney.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Grilled Chicken with Mango Chutney')">Order</button>
+        </div>
+
+        <!-- Main Course Item 2 -->
+        <div class="cool-season-item">
+            <img src="vegetable_stir_fry_noodles.jpg" alt="Vegetable Stir-Fry with Noodles">
+            <h3>Vegetable Stir-Fry with Noodles</h3>
+            <p>Colorful vegetable stir-fry paired with noodles for a satisfying dish.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Vegetable Stir-Fry with Noodles')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Dessert -->
+    <div class="category-title" style="margin-top: 20px;">Dessert</div>
+    <div class="cool-season-item-container dessert-container">
+
+        <!-- Dessert Item 1 -->
+        <div class="cool-season-item">
+            <img src="passionfruit_panna_cotta.jpg" alt="Passionfruit Panna Cotta">
+            <h3>Passionfruit Panna Cotta</h3>
+            <p>Silky panna cotta infused with the exotic flavor of passionfruit.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Passionfruit Panna Cotta')">Order</button>
+        </div>
+
+        <!-- Dessert Item 2 -->
+        <div class="cool-season-item">
+            <img src="banana_peanut_butter_smoothie.jpg" alt="Banana and Peanut Butter Smoothie">
+            <h3>Banana and Peanut Butter Smoothie</h3>
+            <p>A creamy smoothie combining banana and peanut butter for a delightful treat.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Banana and Peanut Butter Smoothie')">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Drink -->
+    <div class="category-title" style="margin-top: 20px;">Drink</div>
+    <div class="cool-season-item-container drink-container">
+
+        <!-- Drink Item 1 -->
+        <div class="cool-season-item">
+            <img src="spiced_chai_latte.jpg" alt="Spiced Chai Latte">
+            <h3>Spiced Chai Latte</h3>
+            <p>A warming beverage with black tea and a blend of spices, served with milk.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Spiced Chai Latte')">Order</button>
+        </div>
+
+        <!-- Drink Item 2 -->
+        <div class="cool-season-item">
+            <img src="hot_chocolate_vanilla.jpg" alt="Hot Chocolate with Vanilla">
+            <h3>Hot Chocolate with Vanilla</h3>
+            <p>Rich cocoa infused with vanilla for a comforting hot chocolate experience.</p>
+            <p>🕒 20 mins prep time</p>
+            <p>Price: $15.99</p>
+            <button class="order-button" onclick="orderItem('Hot Chocolate with Vanilla')">Order</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function openTab(tabName) {
+    // Hide all menu containers
+    var menuContainers = document.getElementsByClassName('seasonal-menu-container');
+    for (var i = 0; i < menuContainers.length; i++) {
+        menuContainers[i].style.display = 'none';
+    }
+
+    // Show the selected menu container
+    var selectedTab = document.getElementById(tabName + 'Menu');
+    if (selectedTab) {
+        selectedTab.style.display = 'block';
+    }
+}
+
+function orderItem(itemName, description, prepTime, price) {
+    // Log the order (replace with your logic)
+    var order = {
+        itemName: itemName,
+        description: description,
+        prepTime: prepTime,
+        price: price
+    };
+
+    // Store orders in an array (temporary storage)
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+    alert('Ordered ' + itemName + ' for $' + price);
+}
+
+function navigateToMenu() {
+        // Get the selected option value
+        var selectedMenu = document.getElementById("menuDropdown").value;
+
+        // Redirect to the selected menu
+        if (selectedMenu) {
+            window.location.href = selectedMenu;
+        }
+    }
+    function initiateCall() {
+    window.location.href = 'tel:+254757577605';
+     alert("Calling waiter...");
+}
+
+function toggleDropdown() {
+        const dropdownMenu = document.getElementById('myDropdown');
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-toggle')) {
+            const dropdowns = document.getElementsByClassName('dropdown-menu');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    };
+
+ function viewMyOrders() {
+        // Implement logic to navigate to the "View My Orders" page
+        window.location.href = 'view-my-orders.html';
+    }
+
+
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+</head>
+<body>
+<dialog id="payment-dialog">
+  <form method="dialog">
+    <h2>Select Payment Mode</h2>
+    <label>
+      <input type="radio" name="payment-mode" value="credit-card" required> Credit Card
+    </label>
+    <label>
+      <input type="radio" name="payment-mode" value="debit-card" required> Debit Card
+    </label>
+    <label>
+      <input type="radio" name="payment-mode" value="bank-transfer" required> Bank Transfer
+    </label>
+    <label>
+      <input type="radio" name="payment-mode" value="mpesa" required> M-Pesa
+    </label>
+    <label for="email-input">Email for digital receipt (optional):</label>
+    <input type="email" id="email-input" name="email-input">
+    <button type="submit">Confirm Payment</button>
+  </form>
+</dialog>
+
+<script>
+  const payButton = document.getElementById('pay-button');
+const paymentDialog = document.getElementById('payment-dialog');
+
+payButton.addEventListener('click', () => {
+  paymentDialog.showModal();
+});
+
+paymentDialog.addEventListener('close', () => {
+  const paymentMode = document.querySelector('input[name="payment-mode"]:checked').value;
+  const emailInput = document.getElementById('email-input').value;
+
+  if (paymentMode) {
+    // Process the payment with the selected payment mode
+    processPayment(paymentMode, emailInput);
+  }
+});
+
+function processPayment(paymentMode, emailInput) {
+  // Implement payment processing logic based on the selected payment mode
+  // ...
+
+  // After successful payment processing, send the digital receipt if requested
+  if (emailInput) {
+    sendDigitalReceipt(emailInput);
+  }
+}
+
+function sendDigitalReceipt(email) {
+  // Implement email sending logic for the digital receipt
+  // ...
+}
+
+</script>
+
+
+
+</body>
+</html>
