@@ -3,77 +3,424 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View My Orders</title>
-
     <style>
         body {
-            background-color: #f0f0f0; /* Set your desired background color */
-            color: black; /* Set your desired text color */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
+            overflow: hidden;
         }
 
-        #orders-container {
+        #container {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        #header {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #eee;
         }
 
-        .order-item {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid black;
-            border-radius: 10px;
-            background-color: white; /* Set your desired background color */
-            text-align: left;
-            max-width: 300px;
+        #logo {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
         }
+
+        #table-number {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000000; /* Dark brown color */
+    margin-top: 10px;
+    display: block; /* Ensure it's a block element */
+}
+
+
+        #total-cost {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #action-buttons {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        #clear-orders-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+         #complete-order-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ef0000;
+            color: #ffffff;
+        }
+
+         #done-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ef0000;
+            color: #ffffff;
+        }
+
+         #back-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order-buttons {
+            display: flex;
+        }
+
+        .order-buttons button {
+    margin-right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #4CAF50; /* Green color for increase and decrease buttons */
+    color: #ffffff;
+}
+
+.order-buttons button.delete {
+    background-color: #28a745; /* Different shade of green for delete button */
+}
+
+        .counter {
+            margin-right: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 5px;
+        }
+
+
+
     </style>
 </head>
 
 <body>
 
-    <div id="orders-container">
-        <h1>Your Orders</h1>
-        <div id="orders-list">
-            <!-- Orders will be dynamically added here -->
-        </div>
-        <button onclick="clearOrders()">Clear Orders</button>
+<div id="header">
+    <img id="logo" src="logo.png" alt="Logo">
+    <h1> My Tray</h1>
+  <span id="table-number"></span>
+    <button id="back-button" onclick="goBack();">Back</button>
+</div>
+
+
+
+<div id="container">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="orders-table-body"></tbody>
+    </table>
+
+    <div id="total-cost"></div>
+
+    <div id="action-buttons">
+        <button id="clear-orders-button" onclick="clearOrders();">Empty Tray</button>
+   <button id="complete-order-button" onclick="completeOrder();">Complete Order</button>
+   <button id="done-button" onclick="redirectToEntertainment();">Done</button>
+
     </div>
+</div>
 
-    <script>
-        // Retrieve orders from localStorage
-        var orders = JSON.parse(localStorage.getItem('orders')) || [];
+<script>
+ function goBack() {
+  // Get the previous page's URL from the browser's history
+  const previousPage = document.referrer;
 
-        // Display orders
-        var ordersList = document.getElementById('orders-list');
-        orders.forEach(function (order) {
-            var orderItem = document.createElement('div');
-            orderItem.className = 'order-item';
-            orderItem.innerHTML = `
-                <h2>${order.itemName}</h2>
-                <p>${order.description}</p>
-                <p>${order.prepTime}</p>
-                <p>Price: ${order.price}</p>
-            `;
-            ordersList.appendChild(orderItem);
+  // Check if the previous page is "entertainment.html"
+  if (previousPage.includes("entertainment.html")) {
+    // If the previous page is "entertainment.html," redirect to a different page
+    window.location.href = 'menus.html';
+  } else {
+    // If not, go back to the previous page
+    window.history.back();
+  }
+}
+  function displayOrders() {
+    totalCost = 0;
+    const ordersTableBody = document.getElementById('orders-table-body');
+    ordersTableBody.innerHTML = '';
+
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    orders.forEach((order, index) => {
+      const row = document.createElement('tr');
+      const nameCell = document.createElement('td');
+      const priceCell = document.createElement('td');
+      const actionsCell = document.createElement('td');
+
+      nameCell.textContent = order.name || '';
+      priceCell.textContent = order.price ? `$${order.price.toFixed(2)}` : '';
+
+      const orderButtonsDiv = document.createElement('div');
+      orderButtonsDiv.className = 'order-buttons';
+
+      const increaseButton = createButton('+', () => increaseOrder(index));
+      const counterSpan = document.createElement('span');
+      counterSpan.className = 'counter';
+      counterSpan.textContent = order.count || 1;
+
+      const decreaseButton = createButton('-', () => decreaseOrder(index));
+
+      orderButtonsDiv.appendChild(increaseButton);
+      orderButtonsDiv.appendChild(counterSpan);
+      orderButtonsDiv.appendChild(decreaseButton);
+
+      actionsCell.appendChild(orderButtonsDiv);
+
+      row.appendChild(nameCell);
+      row.appendChild(priceCell);
+      row.appendChild(actionsCell);
+
+      ordersTableBody.appendChild(row);
+
+      if (order.price) {
+        totalCost += order.price * (order.count || 1);
+      }
+
+      // Add this block of code after the "ordersTableBody.appendChild(row);" line
+      const customizationRow = document.createElement('tr');
+      const customizationCell = document.createElement('td');
+      customizationCell.colSpan = 3; // Span the entire row
+      customizationCell.innerHTML = `<textarea id="customization-${index}" placeholder="Write how you'd prefer you meal prepared here..."></textarea>
+                                     <button onclick="deleteOrder(${index});">Delete</button>`;
+      customizationRow.appendChild(customizationCell);
+      ordersTableBody.appendChild(customizationRow);
+    });
+
+    document.getElementById('total-cost').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+  }
+
+  window.addEventListener('load', function () {
+    displayOrders();
+    // Other initialization code
+  });
+
+  // Declare a variable to track whether the confirmation has been shown
+  let confirmationShown = false;
+
+  // Function to show a confirmation popup
+  function showConfirmation() {
+    // Add your own logic or customization here if needed
+    // Example: You can prompt the user for confirmation using a different UI element
+    return confirm('Are you sure you want to clear your tray?');
+  }
+
+  // Change the clearOrders function to promptClearOrders without the confirm dialog
+  function promptClearOrders() {
+    // Only show the confirmation if it hasn't been shown before
+    if (!confirmationShown) {
+      confirmationShown = true;
+
+      // If the user confirms, proceed to clear the orders
+      if (showConfirmation()) {
+        clearOrders();
+      }
+
+      // Remove the event listener after the confirmation
+      document.getElementById('clear-orders-button').removeEventListener('click', promptClearOrders);
+    }
+  }
+
+  // Remove the confirm dialog from this function
+  function clearOrders() {
+    localStorage.removeItem('orders');
+    localStorage.removeItem('totalCost');
+    totalCost = 0;
+    displayOrders();
+  }
+
+  // Add an event listener to the "Clear My Orders" button
+  document.getElementById('clear-orders-button').addEventListener('click', promptClearOrders);
+
+  function createButton(text, onClick) {
+    const button = document.createElement('button');
+    button.textContent = text;
+    button.onclick = onClick;
+    return button;
+  }
+
+  function increaseOrder(index) {
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders[index].count = (orders[index].count || 1) + 1;
+    localStorage.setItem('orders', JSON.stringify(orders));
+    displayOrders();
+  }
+
+  function decreaseOrder(index) {
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    if (orders[index].count > 1) {
+      orders[index].count--;
+      localStorage.setItem('orders', JSON.stringify(orders));
+      displayOrders();
+    }
+  }
+
+  // Function to delete an order
+  function deleteOrder(index) {
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.splice(index, 1);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    displayOrders();
+
+  }
+
+
+function redirectToEntertainment() {
+    window.location.href = 'entertainment.html';
+  }
+
+
+
+src="https://cdn.emailjs.com/dist/email.min.js"
+
+  // Function to complete the order
+  function completeOrder() {
+    // Prompt the user for their email address
+    const userEmail = prompt('Please enter your email address for digital receipt:');
+
+    // If the user clicks Cancel or enters an empty email, do nothing
+    if (!userEmail) {
+      return;
+    }
+
+    // Get order details
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    const totalCost = parseFloat(localStorage.getItem('totalCost')) || 0;
+
+    // Simulate sending orders to a printer
+    printOrdersToPrinter(orders);
+
+    // Send order details to the specified email
+    sendOrderReceiptToEmail(orders, totalCost, userEmail);
+  }
+
+  // Function to simulate sending orders to a printer
+  function printOrdersToPrinter(orders) {
+    // Replace this with your actual printing logic
+    const printContent = generatePrintContent(orders);
+    console.log('Printing orders:', printContent);
+    alert('Orders sent to the kitchen!');
+  }
+
+  // Function to generate print content based on orders
+  function generatePrintContent(orders) {
+    // Replace this with your logic to generate print content
+    const tableNumber = 'Table 1'; // Get the table number
+    const logoUrl = 'logo.png'; // Get the logo URL
+    const currentTime = new Date().toLocaleString(); // Get the current time
+
+    // Create a print-friendly HTML structure
+    const printContent = `
+      <div>
+        <h2>Table: ${tableNumber}</h2>
+        <img src="${logoUrl}" alt="Logo" style="max-width: 100px;">
+        <p>Time of Order: ${currentTime}</p>
+        <h3>Orders:</h3>
+        <ul>
+          ${orders.map(order => `<li>${order.name} - $${order.price.toFixed(2)} - ${order.customization || 'No customization'}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+
+    return printContent;
+  }
+
+  // Function to send order receipt to email
+  function sendOrderReceiptToEmail(orders, totalCost, userEmail) {
+    // Replace with your Email.js configuration
+    emailjs.init("user_your_emailjs_user_id");
+
+    // Replace 'your_template_id', 'your_email_service_id' with your values
+    const templateParams = {
+      orders: orders,
+      totalCost: totalCost.toFixed(2),
+      recipient_email: userEmail
+    };
+
+    // Send email using Email.js
+    emailjs.send('your_email_service_id', 'your_template_id', templateParams)
+      .then(function(response) {
+        console.log('Email sent successfully:', response);
+        alert('Order receipt sent to your email!');
+      }, function(error) {
+        console.error('Email sending failed:', error);
+        alert('Failed to send order receipt. Please try again.');
+      });
+  }
+
+
+
+
+
+window.addEventListener('load', function () {
+            displayOrders();
+
+            // Retrieve and display the table number
+            const tableNumber = localStorage.getItem('tableNumber');
+            if (tableNumber) {
+                document.getElementById('table-number').textContent = `Table Number: ${tableNumber}`;
+            }
         });
-
-        function clearOrders() {
-            // Clear orders from localStorage
-            localStorage.removeItem('orders');
-
-            // Clear displayed orders
-            ordersList.innerHTML = '';
+  // Add this function to clear the table number if needed
+        function clearTableNumber() {
+            localStorage.removeItem('tableNumber');
         }
-    </script>
+</script>
 
 </body>
 
 </html>
+
