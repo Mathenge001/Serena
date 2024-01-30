@@ -9,30 +9,26 @@
 
     <style>
         body {
-            background-color: #f0f0f0; /* Set your desired background color */
+            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-          background-image: url('home_background.png'); /* Replace with your general background image */
-    background-size: cover;
-    background-position: center;
+            background-image: url('home_background.png');
+            background-size: cover;
+            background-position: center;
         }
 
         #menu-container {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center menu items */
+            align-items: center;
             justify-content: space-between;
             height: 100vh;
         }
 
         .menu-button {
-<<<<<<< HEAD
-            background-color: #4CAF50; /* Set your desired button background color */
-=======
-            background-color: #493220; /* Set your desired button background color */
->>>>>>> 499a8e1 (third commit)
+            background-color: #493220; /* Brown button color */
             color: white;
             padding: 15px 30px;
             margin: 10px;
@@ -44,29 +40,17 @@
         }
 
         .menu-button:hover {
-<<<<<<< HEAD
-            background-color: #45a049; /* Set your desired hover color */
+            background-color: #915a2f; /* Lighter brown for hover effect */
         }
 
         #back-button {
-            background-color: #3498db; /* Set your desired back button background color */
-=======
-            background-color: #915a2f; /* Set your desired hover color */
-        }
-
-        #back-button {
-            background-color: #915a2f; /* Set your desired back button background color */
->>>>>>> 499a8e1 (third commit)
-            align-self: flex-start; /* Align back button to the top left */
+            background-color: #915a2f; /* Darker brown for back button */
+            align-self: flex-start;
         }
 
         #call-button {
-<<<<<<< HEAD
-            background-color: #e74c3c; /* Set your desired call button background color */
-=======
-            background-color: #4b300d; /* Set your desired call button background color */
->>>>>>> 499a8e1 (third commit)
-            align-self: flex-end; /* Align call button to the bottom right */
+            background-color: #4b300d; /* Dark brown for call button */
+            align-self: flex-end;
         }
 
         #call-button::after {
@@ -77,7 +61,7 @@
         }
 
         #call-button.clicked::after {
-            transform: scale(1.5); /* Set your desired scale value */
+            transform: scale(1.5);
         }
     </style>
 </head>
@@ -85,7 +69,7 @@
 <body>
 
     <div id="menu-container">
-       <button id="back-button" class="menu-button" onclick="window.location.href='home-page.html'">Back</button>
+        <button id="back-button" class="menu-button" onclick="window.location.href='home-page.html'">Back</button>
 
         <div>
             <div class="menu-button" onclick="window.location.href='kids-menu.html'">Kids Menu</div>
@@ -103,7 +87,7 @@
             setTimeout(function () {
                 callButton.classList.remove('clicked');
                 window.location.href = 'tel:+254757577605';
-            }, 500); /* Set your desired animation duration */
+            }, 500);
         }
     </script>
 
