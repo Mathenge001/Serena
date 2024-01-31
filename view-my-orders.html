@@ -136,6 +136,29 @@
             margin-bottom: 5px;
         }
 
+        /* Add this media query at the end of your existing CSS */
+@media screen and (max-width: 600px) {
+    #action-buttons {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center; /* Center buttons horizontally on smaller screens */
+        padding: 10px;
+        background-color: #eee;
+        z-index: 1000;
+    }
+
+    #clear-orders-button,
+    #complete-order-button,
+    #done-button,
+    #back-button {
+        margin: 5px 0; /* Add some space between buttons on smaller screens */
+        width: 100%; /* Make buttons take full width on smaller screens */
+    }
+}
+
 
 
     </style>
