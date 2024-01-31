@@ -34,6 +34,18 @@
       justify-content: center;
       align-items: center;
     font-size: 20px; /* Adjust this value to change the font size */
+ max-width: 100%;
+    }
+
+    .offer-card p {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  /* Adjust styles for smaller screens */
+  .offer-card {
+    font-size: 16px; /* Adjust the font size for smaller screens */
+  }
 }
 
     .video-background {
@@ -167,8 +179,10 @@
 <div class="offer-card">
   <video class="video-background" src="private_dining_rooms_video.mp4" muted loop autoplay playsinline></video>
   <h2>Private Dining Rooms</h2>
-  <p>Private dining spaces for special occasions, meetings, or intimate gatherings.</p>
-  <p>Customized menus and dedicated service for a more personalized experience.</p>
+  <p>Private dining spaces for special occasions, meetings, <br>
+    or intimate gatherings.</br></p>
+  <p>Customized menus and dedicated service for <br>
+    a more personalized experience.</br></p>
   <p>Date: April 10, 2024</p>
   <p>Charge: $180</p>
   <button class="book-button" onclick="bookEvent('Private Dining Rooms', 'April 10, 2024', '$180')">Book</button>
@@ -178,7 +192,8 @@
 <div class="offer-card">
   <video class="video-background" src="wine_tasting_events_video.mp4" muted loop autoplay playsinline></video>
   <h2>Wine Tasting Events</h2>
-  <p>Wine-focused events with a selection of premium wines and expert guidance.</p>
+  <p>Wine-focused events with a selection of premium wines<br>
+    and expert guidance.</br></p>
   <p>Sommelier-led tastings to enhance the dining experience.</p>
   <p>Date: May 5, 2024</p>
   <p>Charge: $160</p>
@@ -189,7 +204,8 @@
 <div class="offer-card">
   <video class="video-background" src="culinary_events_and_festivals_video.mp4" muted loop autoplay playsinline></video>
   <h2>Culinary Events and Festivals</h2>
-  <p>Special culinary events, food festivals, or themed dining nights.</p>
+  <p>Special culinary events, food festivals, or<br>
+    themed dining nights.</br></p>
   <p>Opportunities to explore diverse cuisines and culinary trends.</p>
   <p>Date: June 15, 2024</p>
   <p>Charge: $190</p>
@@ -200,7 +216,8 @@
 <div class="offer-card">
   <video class="video-background" src="afternoon_tea_service_video.mp4" muted loop autoplay playsinline></video>
   <h2>Afternoon Tea Service</h2>
-  <p>Traditional or modern afternoon tea experiences with a selection of teas and pastries.</p>
+  <p>Traditional or modern afternoon tea experiences with <br>
+    a selection of teas and pastries.</br></p>
   <p>Elegant settings with a focus on presentation and service.</p>
   <p>Date: July 1, 2024</p>
   <p>Charge: $130</p>

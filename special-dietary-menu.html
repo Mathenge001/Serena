@@ -158,7 +158,7 @@
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 20px;
-  justify-content: center;
+ margin-left: 350px;
 }
 
 .starters-container {
@@ -177,12 +177,8 @@
 
 /* Style each category container */
 .gluten-free-container,
-.vegetarian-container,
 .vegan-container,
-.low-carb-keto-container,
-.low-fat-container,
-.allergen-free-container,
-.renal-diet-container {
+.low-carb-keto-container {
     display: flex;
     gap: 10px;
     flex-wrap: wrap; /* Allow items to wrap to the next line if there's not enough space */
@@ -192,12 +188,8 @@
 
 /* Style each item within the category containers */
 .gluten-free-item,
-.vegetarian-item,
 .vegan-item,
-.low-carb-keto-item,
-.low-fat-item,
-.allergen-free-item,
-.renal-diet-item {
+.low-carb-keto-item{
     background-color: #000000;
     border: 1px solid #ffffff;
     padding: 5px;
@@ -226,12 +218,8 @@
 
 /* Style the images */
 .gluten-free-item img,
-.vegetarian-item img,
 .vegan-item img,
-.low-carb-keto-item img,
-.low-fat-item img,
-.allergen-free-item img,
-.renal-diet-item img {
+.low-carb-keto-item img{
     width: 100%;
     height: 165px;
     border-radius: 8px;
@@ -239,12 +227,8 @@
 
 /* Style the item headings */
 .gluten-free-item h3,
-.vegetarian-item h3,
 .vegan-item h3,
-.low-carb-keto-item h3,
-.low-fat-item h3,
-.allergen-free-item h3,
-.renal-diet-item h3 {
+.low-carb-keto-item h3{
     font-size: 18px;
     margin: 10px 0;
   justify-content: center;
@@ -252,12 +236,8 @@
 
 /* Style the item descriptions */
 .gluten-free-item p,
-.vegetarian-item p,
 .vegan-item p,
-.low-carb-keto-item p,
-.low-fat-item p,
-.allergen-free-item p,
-.renal-diet-item p {
+.low-carb-keto-item p{
     font-size: 14px;
     margin: 5px 0;
   justify-content: center;
@@ -265,35 +245,18 @@
 
 /* Adjust the width for items in the "Main Course" category */
 .maincourse-container .gluten-free-item,
-.maincourse-container .vegetarian-item,
 .maincourse-container .vegan-item,
-.maincourse-container .low-carb-keto-item,
-.maincourse-container .low-fat-item,
-.maincourse-container .allergen-free-item,
-.maincourse-container .renal-diet-item {
+.maincourse-container .low-carb-keto-item{
     width: 2000px; /* Adjust as needed */
 }
 
 .special-dietary-container h2 {
     color: #eeeeee;  /* Set the color to your preference */
     font-size: 24px;  /* Set the font size to your preference */
-    /* Add any other styles you need */
-  justify-content: center;
+    margin-left: 300px;
+  margin-top: 50px;
 }
 
-/* Style for Low-Fat Menu */
-.low-fat-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-}
-
-.low-fat-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
 
 .order-button {
     background-color: #4CAF50;
@@ -325,6 +288,29 @@
     gap: 20px;
 }
 
+/* Sides Container */
+.special-dietary-sides-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Desserts Container */
+.special-dietary-desserts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Drinks Container */
+.special-dietary-drinks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
 
 
 
@@ -520,7 +506,7 @@
 
  <!-- Vegan Section -->
 <div id="Vegan" class="special-dietary-container">
-    <h2>Vegan Menu:</h2>
+    <h2>Vegan Menu</h2>
 
  <!-- Starters -->
 <div class="category-title" style="margin-top: 20px;">Starters</div>

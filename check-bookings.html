@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Check Bookings</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -124,6 +125,95 @@
     font-size: 16px;
   }
 
+
+
+  /* Add some styling for the buttons*/
+  .control-button, .delete-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px; /* Add a bit of right margin for spacing */
+  }
+
+  .delete-button {
+    background-color: #FF0000;
+  }
+
+    /* Include the provided styles */
+     /* Include the provided styles and modify for green and white color scheme */
+
+
+
+.custom-modal {
+    font-family: 'Poppins', sans-serif;
+    max-height: 400px;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+    color: #000000; /* Text color */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1051;
+    background: #2a6c2c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none; /* Set it to none by default */
+}
+
+.custom-modal .close-btn {
+    color: #000000;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    background: none;
+    border: none;
+}
+
+.custom-modal .container {
+    background: linear-gradient(90deg, #308633 60%, #08520a 40.1%); /* Green and white gradient */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.custom-modal form {
+    background-color: #388e3c;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.custom-modal .submit-btn {
+    background-color: #4caf50;
+    color: #eeeeee;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.custom-modal .submit-btn:hover {
+    background: #388e3c;
+}
+
+.custom-modal input:focus {
+    border: 1px solid #4caf50; /* Green focus border */
+    outline: none;
+}
+
+
   </style>
 </head>
 <body>
@@ -145,7 +235,58 @@
 
 <div id="payment-modal">
   <button onclick="showBillingModal()">Card</button>
-  <button onclick="choosePaymentMode('mpesa')">Mpesa</button>
+ <button onclick="openMpesaModal()">Mpesa</button>
+</div>
+
+
+<!-- Mpesa-friendly modal body with flexbox -->
+<div id="customMpesaModalBody" style="display: none; z-index: 1051;" class="custom-modal">
+    <div class="modal-body d-flex flex-column">
+        <button class="close-btn" onclick="closeMpesaModal()" aria-label="Close">&times;</button>
+        <div id="err"></div>
+
+        <h4 class="mb-4">Mpesa Payment Details</h4>
+
+        <!-- Table for payment details -->
+        <table role="table" class="table flex-grow-1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Total</td>
+                    <td id="cartTotal">Ksh. 0.00</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Form for Mpesa payment -->
+        <form action="" class="form m-5">
+            <div class="d-flex flex-column flex-sm-row">
+                <!-- Mpesa logo -->
+                <div class="col-sm-5">
+                    <img style="max-width: 80%" src="assets/img/mpesalogo.png" alt="mpesa logo">
+                </div>
+
+                <!-- Mpesa phone number input -->
+                <div class="form-group col-sm-7 mb-4">
+                    <label for="phone">Enter Mpesa Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="07XXXXXXXX">
+                    <div id="phoneErr"></div>
+                </div>
+            </div>
+
+            <!-- Pay with Mpesa button -->
+            <button id="paynow" onclick="payWithMpesa()" type="button" class="btn btn-lg btn-success mt-3 mt-sm-0">Pay with Mpesa</button>
+        </form>
+    </div>
 </div>
 
 <div id="billing-modal">
@@ -252,8 +393,9 @@
 </div>
 
 
+
 <script>
-   let totalCost = 0; // Declare totalCost as a global variable
+  let totalCost = 0; // Declare totalCost as a global variable
 
 
   function goBack() {
@@ -269,21 +411,21 @@
     localStorage.setItem('bookedEvents', JSON.stringify(bookedEvents));
   }
 
- function displayBookedEvents() {
+  function displayBookedEvents() {
     const bookingsContainer = document.getElementById('bookings-container');
     const totalCostContainer = document.getElementById('total-cost');
     const bookedEvents = getBookedEvents();
 
     if (bookedEvents.length === 0) {
-        bookingsContainer.innerHTML = '<p>No bookings available.</p>';
+      bookingsContainer.innerHTML = '<p>No bookings available.</p>';
     } else {
-        bookingsContainer.innerHTML = ''; // Clear previous bookings
-        let totalCost = 0;
+      bookingsContainer.innerHTML = ''; // Clear previous bookings
+      let totalCost = 0;
 
-        bookedEvents.forEach((event, index) => {
-            const bookingItem = document.createElement('div');
-            bookingItem.className = 'booking-item';
-            bookingItem.innerHTML = `
+      bookedEvents.forEach((event, index) => {
+        const bookingItem = document.createElement('div');
+        bookingItem.className = 'booking-item';
+        bookingItem.innerHTML = `
                 <p><strong>${event.name}</strong></p>
                 <p>Date: ${event.date}</p>
                 <p>Charge: ${event.charge}</p>
@@ -295,15 +437,15 @@
                     <button class="delete-button" onclick="deleteBooking(${index});">🗑</button>
                 </div>
             `;
-            bookingsContainer.appendChild(bookingItem);
+        bookingsContainer.appendChild(bookingItem);
 
-            totalCost += parseFloat(event.charge.replace('$', '')) * (event.count || 1);
-            // Use count 1 if undefined
-        });
+        totalCost += parseFloat(event.charge.replace('$', '')) * (event.count || 1);
+        // Use count 1 if undefined
+      });
 
-        totalCostContainer.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+      totalCostContainer.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
     }
-}
+  }
 
   function increaseBooking(index) {
     const bookedEvents = getBookedEvents();
@@ -332,14 +474,14 @@
 
     updateBookedEvents(bookedEvents);
     displayBookedEvents();
-}
+  }
 
   function deleteAllBookings() {
     localStorage.removeItem('bookedEvents');
     displayBookedEvents();
   }
 
- function payUp() {
+  function payUp() {
     // Display the payment modal
     const paymentModal = document.getElementById('payment-modal');
     paymentModal.style.display = 'block';
@@ -362,10 +504,30 @@
 
   window.addEventListener('load', displayBookedEvents);
 
- function closeCard() {
-        // Add logic to hide or remove the card element
-        document.querySelector('.container').style.display = 'none';
+  function closeCard() {
+    // Add logic to hide or remove the card element
+    document.querySelector('.container').style.display = 'none';
+  }
+
+  // JavaScript code
+    function openMpesaModal() {
+        const mpesaModal = document.getElementById('customMpesaModalBody');
+        mpesaModal.style.display = 'block';
     }
+
+    function closeMpesaModal() {
+        const mpesaModal = document.getElementById('customMpesaModalBody');
+        mpesaModal.style.display = 'none';
+    }
+
+    function payWithMpesa() {
+        // Add your Mpesa payment processing logic here
+        alert('Payment successful!'); // You can replace this with your actual logic
+
+        // Close the Mpesa modal
+        closeMpesaModal();
+    }
+
 
 </script>
 
