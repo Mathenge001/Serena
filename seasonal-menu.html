@@ -129,6 +129,7 @@
 }
 
 
+
 /* Short Rains Menu Container */
 #ShortRainsMenu {
     background: url('https://i.pinimg.com/564x/db/4c/27/db4c27f6458048bc392bed8d9cc0a819.jpg') center/cover;
@@ -482,6 +483,50 @@
 }
 
 
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .back-icon {
+        height: 5vh;
+    }
+
+    .menu-dropdown {
+        width: 50%;
+    }
+
+    .welcome-container {
+        padding: 30px 10px 10px;
+        height: auto;
+    }
+
+    .welcome-container h1 {
+        font-size: 24px;
+        margin-top: -30px;
+    }
+
+    .welcome-container p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    #category-buttons {
+        height: auto;
+    }
+
+    .categories-container {
+        flex-wrap: wrap;
+    }
+
+    .categories-container button {
+        padding: 10px;
+        margin: 5px 2px;
+    }
+
+    #call-button,
+    #view-orders-button {
+        padding: 8px;
+        margin-right: 5px;
+    }
+}
     </style>
 </head>
 

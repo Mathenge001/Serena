@@ -136,8 +136,9 @@
             margin-bottom: 5px;
         }
 
-        /* Add this media query at the end of your existing CSS */
-@media screen and (max-width: 600px) {
+
+/* Add this media query at the end of your existing CSS */
+@media screen and (max-width: 400px) {
     #action-buttons {
         position: fixed;
         bottom: 0;
@@ -155,11 +156,9 @@
     #done-button,
     #back-button {
         margin: 5px 0; /* Add some space between buttons on smaller screens */
-        width: 100%; /* Make buttons take full width on smaller screens */
+        width: calc(100% - 20px); /* Make buttons take full width on smaller screens */
     }
 }
-
-
 
     </style>
 </head>

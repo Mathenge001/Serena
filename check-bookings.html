@@ -213,7 +213,44 @@
     outline: none;
 }
 
+/* Add a media query for smaller screens */
+@media screen and (max-width: 400px) {
+     #bookings-wrapper {
+        max-height: calc(100vh - 180px); /* Adjust the height for smaller screens */
+    }
 
+    #bookings-container {
+        /* Adjust styling for individual bookings on smaller screens */
+    }
+
+    #action-buttons {
+        flex-direction: column;
+    }
+
+    #back-button{
+      width: 40px;
+    }
+
+
+      #delete-all-button,
+    #pay-up-button {
+        width: 48%; /* Adjust the width as needed (less than 50% to account for margin and padding) */
+        margin-top: 5px;
+        margin-right: 2%; /* Add some space between buttons */
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        display: inline-block;
+    }
+
+
+
+    #payment-modal {
+        flex-direction: column;
+    }
+}
   </style>
 </head>
 <body>
