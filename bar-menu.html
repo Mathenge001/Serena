@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar-Menu</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 95%;
+            height: 10vh;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .back-icon {
+            background-color:  rgba(51, 51, 51, 9%);
+            color: #eeeeee;
+            padding: 3px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            height: 3vh;
+            text-align: center;
+            top: 0;
+          margin-top: -20px;
+        }
+
+      .menu-dropdown {
+    background-color: #000; /* Black background color */
+    color: #fff; /* White text color */
+    padding: 3px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    width: 20%;
+        margin-top: -20px;
+        margin-right: 40px;
+}
+
+
+
+        .welcome-container {
+    text-align: center;
+    padding: 50px 20px 20px; /* Adjusted padding for better visibility */
+    background-image: url('https://i.pinimg.com/564x/91/77/fc/9177fc397883e3fbe4c5a2e4a67db8d4.jpg');
+    background-size: 500px auto;
+    background-position: center bottom; /* Set background position to center bottom */
+    width: 100%;
+    height: 6vh; /* Set height to viewport height */
+    position: fixed; /* Set position to relative */
+    z-index: 999; /* Adjusted z-index */
+}
+
+
+        .welcome-container h1 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 5px;
+            margin-top: -50px; /* Adjust the top margin to move the h1 upwards */
+  margin-right: 50px;
+        }
+
+        .welcome-container p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            margin-top: 0px; /* Adjust the top margin to move the paragraph downwards */
+      margin-right: 10px;
+        }
+
+     #category-buttons {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    background-color: rgba(51, 51, 51, 0.1);
+    height: 7vh;
+    width: 100%; /* Full width */
+        flex-wrap: wrap; /* Allow flex items to wrap */
+}
+
+.categories-container {
+    display: flex;
+    align-items: center;
+    max-width: 350px; /* Set a maximum width if needed */
+    width: 100%; /* Full width */
+    justify-content: center;
+  height: 10px;
+    margin-top: 20px;
+   flex-wrap: wrap; /* Allow flex items to wrap */
+}
+
+.categories-container button {
+    background-color: rgb(145, 90, 47);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px;
+    margin: 5px 2px;
+    cursor: pointer;
+}
+
+.categories-container button:hover {
+    background-color: rgb(239, 0, 0);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px;
+    margin: 5px 2px;
+    cursor: pointer;
+}
+
+
+           #callWaiterButton {
+            background-color: #493220;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+             margin-top: 10px;
+        }
+
+        #callWaiterButton:hover {
+            background-color: rgba(120, 77, 44, 0.62);
+        }
+
+        #flexContainer {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: rgba(120, 77, 44, 0.62);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.37);
+            padding: 10px;
+            position: absolute;
+            z-index: 1000;
+        }
+
+        #flexContainer button {
+            background-color: rgba(96, 95, 95, 0.7);
+            color: rgb(238, 238, 238);
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #flexContainer button:hover {
+            background-color: rgba(51, 51, 51, 0.92);
+        }
+
+        #textBoxContainer {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        #textBoxContainer textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #textBoxContainer button {
+            background-color: rgba(21, 21, 21, 0.7);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #textBoxContainer button:hover {
+            background-color: rgb(239, 0, 0);
+        }
+
+        .closeButton {
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 20px;
+            color: rgb(239, 0, 0);
+        }
+
+        .closeButton:hover {
+            color: #f12121;
+        }
+
+
+#view-orders-button {
+    background-color: #493220;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  margin-top: 1px;
+}
+
+#view-orders-button:hover {
+    background-color: rgba(145, 90, 47, 0.38);
+}
+
+
+/* Media query for small screens */
+@media screen and (max-width: 768px) {
+    .categories-container {
+        max-width: none; /* Remove max-width on small screens */
+        width: auto; /* Allow buttons to take full width */
+    }
+}
+
+
+
+      /*Whiskey*/
+        #WhiskeyMenu{
+            background: url('https://i.pinimg.com/564x/8b/bb/e5/8bbbe51344b63905f57eef39829e3d37.jpg') center/cover;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+   background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+  background-position: 100%;
+  justify-content: center;
+        }
+
+      .category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+      .whiskey-item-container{
+         display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+      }
+
+      .whiskey-item{
+       width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+ }
+
+      .whiskey-item img{
+    width: 100%;
+    height: 379px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+      .whiskey-item h3{
+        font-size: 24px;
+    margin-bottom: 10px;
+      }
+
+      .whiskey-item p{
+        font-size: 16px;
+    margin: 10px 0;
+      }
+
+      .order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+
+  #GinMenu{
+     background: url('https://i.pinimg.com/564x/3b/8c/11/3b8c1181cf72f3f0732e5d7bb02d10ef.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+  background-position: 100%;
+  }
+
+      .category-title{
+        font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+      }
+
+      .gin-item-container{
+         display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+      }
+
+      .gin-item{
+         width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+      }
+
+      .gin-item img{
+         width: 100%;
+    height:  379px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+      }
+
+      .gin-item h3{
+        font-size: 24px;
+    margin-bottom: 10px;
+      }
+
+      .gin-item p{
+         font-size: 16px;
+    margin: 10px 0;
+      }
+
+      .order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+#ChampagneMenu{
+   background: url('https://i.pinimg.com/564x/99/02/bc/9902bc0e675be3bad2a5c3d60a9fcc4f.jpg') center/cover no-repeat;
+    color: #eeeeee;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.champagne-item-container{
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+.champagne-item {
+   width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.champagne-item img{
+    width: 100%;
+    height:  379px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.champagne-item h3 {
+  font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.champagne-item p {
+  font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+#WineMenu{
+  background: url('https://i.pinimg.com/564x/cb/06/c4/cb06c44e013ca4856264867d8c38ff44.jpg') center/cover no-repeat;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  text-align: center;
+  background-size: 99% auto; /* Adjust the width percentage as needed */
+  width: 100%;
+  background-attachment: fixed;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.wine-item-container {
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+.wine-item{
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.wine-item img{
+   width: 100%;
+    height:  379px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.wine-item h3{
+  font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.wine-item p{
+   font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+#CocktailsMenu{
+   background: url('https://i.pinimg.com/564x/c2/f0/78/c2f078d7fea5f779041b496304b4b731.jpg') center/cover no-repeat;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  text-align: center;
+  background-size: 99% auto; /* Adjust the width percentage as needed */
+  width: 100%;
+  background-attachment: fixed;
+}
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cocktail-item-container {
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+.cocktail-item{
+  width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.cocktail-item img{
+   width: 100%;
+    height: 379px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.cocktail-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.cocktail-item p {
+   font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+
+#SignatureCocktailsMenu {
+    background: url('https://example.com/signature-cocktails.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+    background-position: 100%;
+}
+
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.signature-cocktail-item-container {
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+.signature-cocktail-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.signature-cocktail-item img{
+   width: 100%;
+    height: 229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.signature-cocktail-item h3 {
+  font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.signature-cocktail-item p {
+   font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+      </style>
+</head>
+
+<body>
+<div class="header">
+        <!-- Back icon to go back to the previous page -->
+        <a href="menus.html" class="back-icon">&#8592; Back</a>
+
+        <!-- Dropdown menu to navigate to other menus -->
+       <select id="menuDropdown" class="menu-dropdown" onchange="navigateToMenu()">
+    <option value="" disabled selected>Select Menu</option>
+    <option value="kids-menu.html">Kids' Menu</option>
+    <option value="adult-menu.html">Adult Menu</option>
+    <option value="special-dietary-menu.html">Special dietary Menu</option>
+</select>
+    </div>
+
+  <div class="welcome-container">
+        <h1>Welcome</h1>
+        <p>What are you looking for?</p>
+
+   <div id="category-buttons">
+    <div class="categories-container">
+        <button class="tablink whiskey-tab" onclick="openTab('WhiskeyMenu')">Whiskey</button>
+        <button class="tablink gin-tab" onclick="openTab('GinMenu')">Gin</button>
+        <button class="tablink champagne-tab" onclick="openTab('ChampagneMenu')">Champagne</button>
+        <button class="tablink wine-tab" onclick="openTab('WineMenu')">Wine</button>
+        <button class="tablink cocktail-tab" onclick="openTab('CocktailsMenu')">Cocktail</button>
+    </div>
+</div>
+
+     <!-- Call Waiter Button -->
+    <button id="callWaiterButton" onclick="toggleFlexbox()">
+        Call Waiter
+    </button>
+
+    <!-- Flexbox container for options -->
+    <div id="flexContainer">
+        <span class="closeButton" onclick="toggleFlexbox()">×</span>
+        <!-- Options -->
+        <button onclick="askForAssistance()">Ask for Assistance</button>
+        <button onclick="clearTable()">Clear Table</button>
+        <button onclick="billMe()">Bill Me</button>
+
+    </div>
+
+      <button id="view-orders-button" class="menu-button" onclick="viewMyOrders()">View My Orders</button>
+    </div>
+</div>
+
+
+
+    <!-- Placeholder content to simulate scrolling -->
+    <div style="height: 100px; background-color: #000000;"></div>
+
+<div id="WhiskeyMenu" class="whiskey-menu-container" style="display:none;">
+
+    <h2></h2>
+
+ <!-- whiskey Examples -->
+    <div class="category-title" style="margin-top: 20px;">Whiskey</div>
+    <div class="whiskey-item-container">
+
+        <!-- Whiskey Item 1 -->
+        <div class="whiskey-item">
+            <img src="johnnie_walker_black_label.jpg" alt="Johnnie Walker Black label">
+            <h3>Johnnie Walker Black Label</h3>
+            <p>A blended Scotch whiskey with notes of vanilla, smoke, and dried fruit.</p>
+            <p>Price: 1,500 Ksh per shot / 8,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Johnnie Walker Black Label', 1500)">Order Shot</button>
+            <button class="order-button" onclick="orderItem('Johnnie Walker Black Label', 8000)">Order Bottle</button>
+        </div>
+
+        <!-- Whiskey Item 2 -->
+        <div class="whiskey-item">
+            <img src="jack_daniel_single_barrel.jpg" alt="Jack Daniel's Single Barrel">
+            <h3>Jack Daniel's Single Barrel</h3>
+            <p>A Tennessee whiskey with rich caramel and oak flavors, bottled from a single barrel.</p>
+            <p>Price: 2,000 Ksh per shot / 15,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Jack Daniel Single Barrel', 2000)">Order Shot</button>
+            <button class="order-button" onclick="orderItem('Jack Daniel Single Barrel', 15000)">Order Bottle</button>
+        </div>
+
+        <!-- Whiskey Item 3 -->
+        <div class="whiskey-item">
+            <img src="glenfiddich_12_year_old.jpg" alt="Glenfiddich 12 Year Old">
+            <h3>Glenfiddich 12 Year Old</h3>
+            <p>A single malt Scotch whiskey with hints of pear, oak, and a touch of peat.</p>
+            <p>Price: 2,500 Ksh per shot / 20,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Glenfiddich 12 Year Old', 2500)">Order Shot</button>
+            <button class="order-button" onclick="orderItem('Glenfiddich 12 Year Old', 20000)">Order Bottle</button>
+        </div>
+
+        <!-- Whiskey Item 4 -->
+        <div class="whiskey-item">
+            <img src="jameson_irish_whiskey.jpg" alt="Jameson Irish Whiskey">
+            <h3>Jameson Irish Whiskey</h3>
+            <p>Smooth and versatile Irish whiskey with notes of honey, vanilla, and spice.</p>
+            <p>Price: 1,200 Ksh per shot / 7,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Jameson Irish Whiskey', 1200)">Order Shot</button>
+            <button class="order-button" onclick="orderItem('Jameson Irish Whiskey', 7000)">Order Bottle</button>
+        </div>
+
+        <!-- Whiskey Item 5: Glenfidich 21-Year Old Reserva Rum Cask Finish -->
+        <div class="whiskey-item">
+            <img src="glenfiddich_21_year_old_reserva_rum_cask_finish.jpg" alt="Glenfidich 21-Year Old Reserva Rum Cask Finish">
+            <h3>Glenfidich 21-Year Old Reserva Rum Cask Finish</h3>
+            <p>🕒 Aged 21 years</p>
+            <p>Price: Ksh 37,999 per bottle</p>
+            <button class="order-button" onclick="orderItem('Glenfidich 21-Year Old Reserva Rum Cask Finish', 37999)">Order Bottle</button>
+        </div>
+
+        <!-- Whiskey Item 6: Hibiki 21-Year-Old -->
+        <div class="whiskey-item">
+            <img src="Hibiki 21-Year-Old.jpg" alt="Hibiki 21-Year-Old">
+            <h3>Hibiki 21-Year-Old</h3>
+            <p>🕒 Aged 21 years</p>
+            <p>Price: Ksh 130,600 per bottle</p>
+            <button class="order-button" onclick="orderItem('Hibiki 21-Year-Old', 130000)">Order Bottle</button>
+        </div>
+
+        <!-- Whiskey Item 7: Macallan 18 Year Old Sherry Oak -->
+        <div class="whiskey-item">
+            <img src="macallan_18_year_old_sherry _oak.jpg" alt="Macallan 18 Year Old Sherry Oak">
+            <h3>Macallan 18 Year Old Sherry Oak</h3>
+            <p>🕒 Aged 18 years</p>
+            <p>Price: Ksh 49,850 per bottle</p>
+            <button class="order-button" onclick="orderItem('Macallan 18 Year Old Sherry Oak', 49850)">Order Bottle</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Gin -->
+<div id="GinMenu" class="gin-menu-container" style="display:none;">
+
+    <h2></h2>
+
+    <!-- Gin Examples -->
+    <div class="category-title" style="margin-top: 20px;">Gin</div>
+    <div class="gin-item-container">
+
+        <!-- Gin Example a -->
+        <div class="gin-item">
+            <img src="path_to_tanqueray_no_ten_image.jpg" alt="Tanqueray No. Ten">
+            <h3>Tanqueray No. Ten</h3>
+            <p>A premium London Dry gin with citrus and floral notes, perfect for classic cocktails.</p>
+            <p>Price: 1,800 Ksh per shot / 10,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Tanqueray No. Ten', 10000)">Order Bottle</button>
+            <button class="order-button" onclick="orderItem('Tanqueray No. Ten', 1800)">Order Shot</button>
+        </div>
+
+        <!-- Gin Example b -->
+        <div class="gin-item">
+            <img src="path_to_hendricks_gin_image.jpg" alt="Hendrick's Gin">
+            <h3>Hendrick's Gin</h3>
+            <p>Infused with cucumber and rose petals, this Scottish gin offers a unique and refreshing taste.</p>
+            <p>Price: 2,000 Ksh per shot / 12,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Hendrick\'s Gin', 12000)">Order Bottle</button>
+            <button class="order-button" onclick="orderItem('Hendrick\'s Gin', 2000)">Order Shot</button>
+        </div>
+
+        <!-- Gin Example c -->
+        <div class="gin-item">
+            <img src="path_to_bombay_sapphire_image.png" alt="Bombay Sapphire">
+            <h3>Bombay Sapphire</h3>
+            <p>A classic London Dry gin with juniper, citrus, and spice flavors, ideal for martinis and G&Ts.</p>
+            <p>Price: 1,500 Ksh per shot / 8,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Bombay Sapphire', 8000)">Order Bottle</button>
+            <button class="order-button" onclick="orderItem('Bombay Sapphire', 1500)">Order Shot</button>
+        </div>
+
+        <!-- Gin Example d -->
+        <div class="gin-item">
+            <img src="path_to_aviation_american_gin_image.png" alt="Aviation American Gin">
+            <h3>Aviation American Gin</h3>
+            <p>Crafted with botanicals including lavender and sarsaparilla, this gin has a smooth and nuanced profile.</p>
+            <p>Price: 1,700 Ksh per shot / 9,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Aviation American Gin', 9000)">Order Bottle</button>
+            <button class="order-button" onclick="orderItem('Aviation American Gin', 1700)">Order Shot</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- Champagne -->
+<div id="ChampagneMenu" class="champagne-menu-container" style="display:none;">
+
+    <h2></h2>
+
+    <!-- Champagne Examples -->
+    <div class="category-title" style="margin-top: 20px;">Champagne</div>
+    <div class="champagne-item-container">
+
+        <!-- Champagne Example a -->
+        <div class="champagne-item">
+            <img src="moet_and_chandon_imperial_brut.jpg" alt="Moët & Chandon Impérial Brut">
+            <h3>Moët & Chandon Impérial Brut</h3>
+            <p>A classic Champagne with bright fruitiness, elegance, and a fine mousse.</p>
+            <p>Price: 10,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Moët & Chandon Impérial Brut', 10000)">Order Bottle</button>
+        </div>
+
+        <!-- Champagne Example b -->
+        <div class="champagne-item">
+            <img src="veuve_clicquot_yellow_label_brut.jpg" alt="Veuve Clicquot Yellow Label Brut">
+            <h3>Veuve Clicquot Yellow Label Brut</h3>
+            <p>A renowned Champagne with rich, biscuity flavors and a lively acidity.</p>
+            <p>Price: 12,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Veuve Clicquot Yellow Label Brut', 12000)">Order Bottle</button>
+        </div>
+
+        <!-- Champagne Example c -->
+        <div class="champagne-item">
+            <img src="laurent_perrier_cuvee_rose_brut.jpg" alt="Laurent-Perrier Cuvée Rosé Brut">
+            <h3>Laurent-Perrier Cuvée Rosé Brut</h3>
+            <p>A delicate rosé Champagne with aromas of fresh strawberries and raspberries.</p>
+            <p>Price: 15,000 Ksh per bottle (750ml)</p>
+            <button class="order-button" onclick="orderItem('Laurent-Perrier Cuvée Rosé Brut', 15000)">Order Bottle</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Wine -->
+
+<div id="WineMenu" class="wine-menu-container" style="display:none;">
+  <h2></h2>
+
+    <!-- Wine Category -->
+    <div class="category-title" style="margin-top: 20px;">Wine</div>
+    <div class="wine-item-container">
+
+
+            <!-- Wine Item 1: Cabernet Sauvignon (Red) -->
+            <div class="wine-item">
+                <img src="cabernet_sauvignon.jpg" alt="Cabernet Sauvignon">
+                <h3>Cabernet Sauvignon (Red)</h3>
+                <p>🕒 5 mins prep time</p>
+                <p>Price: Ksh 3,049</p>
+                <button class="order-button" onclick="orderItem('Cabernet Sauvignon', 3049)">Order</button>
+            </div>
+
+            <!-- Wine Item 2: Chardonnay (White) -->
+            <div class="wine-item">
+                <img src="chardonnay.png" alt="Chardonnay">
+                <h3>Chardonnay (White)</h3>
+                <p>🕒 5 mins prep time</p>
+                <p>Price: Ksh 2,728</p>
+                <button class="order-button" onclick="orderItem('Chardonnay', 2728)">Order</button>
+            </div>
+
+            <!-- Wine Item 3: Merlot (Red) -->
+            <div class="wine-item">
+                <img src="merlot.jpg" alt="Merlot">
+                <h3>Merlot (Red)</h3>
+                <p>🕒 5 mins prep time</p>
+                <p>Price: Ksh 3,531</p>
+                <button class="order-button" onclick="orderItem('Merlot', 3531)">Order</button>
+            </div>
+
+            <!-- Wine Item 4: Sauvignon Blanc (White) -->
+            <div class="wine-item">
+                <img src="sauvignon_blanc.jpg" alt="Sauvignon Blanc">
+                <h3>Sauvignon Blanc (White)</h3>
+                <p>🕒 5 mins prep time</p>
+                <p>Price: Ksh 2,889</p>
+                <button class="order-button" onclick="orderItem('Sauvignon Blanc', 2889)">Order</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+<!-- Cocktail -->
+<div id="CocktailsMenu" class="cocktails-menu-container" style="display:none;">
+     <h2></h2>
+
+    <!-- Cocktails -->
+    <div class="category-title" style="margin-top: 20px;">Cocktails</div>
+    <div class="cocktail-item-container">
+
+        <!-- Cocktail a: Classic Martini -->
+        <div class="cocktail-item">
+            <img src="classic_martini.jpg" alt="Classic Martini">
+            <h3>Classic Martini</h3>
+            <p>A timeless combination of gin or vodka with dry vermouth, served chilled with a twist or olives.</p>
+            <p>Price: 1,500 Ksh per cocktail</p>
+            <button class="order-button" onclick="orderItem('Classic Martini', 1500)">Order</button>
+        </div>
+
+        <!-- Cocktail b: Espresso Martini -->
+        <div class="cocktail-item">
+            <img src="espresso_martini.png" alt="Espresso Martini">
+            <h3>Espresso Martini</h3>
+            <p>A sophisticated blend of vodka, coffee liqueur, and freshly brewed espresso, shaken with ice.</p>
+            <p>Price: 1,800 Ksh per cocktail</p>
+            <button class="order-button" onclick="orderItem('Espresso Martini', 1800)">Order</button>
+        </div>
+
+        <!-- Cocktail c: Mojito -->
+        <div class="cocktail-item">
+            <img src="mojito.jpg" alt="Mojito">
+            <h3>Mojito</h3>
+            <p>Refreshing mix of rum, fresh lime juice, mint leaves, sugar, and soda water, served over crushed ice.</p>
+            <p>Price: 1,300 Ksh per cocktail</p>
+            <button class="order-button" onclick="orderItem('Mojito', 1300)">Order</button>
+        </div>
+
+        <!-- Cocktail d: Whiskey Sour -->
+        <div class="cocktail-item">
+            <img src="whiskey_sour.jpg" alt="Whiskey Sour">
+            <h3>Whiskey Sour</h3>
+            <p>Bourbon or rye whiskey shaken with lemon juice, simple syrup, and a dash of bitters, served on the rocks.</p>
+            <p>Price: 1,400 Ksh per cocktail</p>
+            <button class="order-button" onclick="orderItem('Whiskey Sour', 1400)">Order</button>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+
+
+    function openTab(tabName) {
+        // Hide all menu containers
+        var menuContainers = document.querySelectorAll('.whiskey-menu-container, .gin-menu-container, .champagne-menu-container, .wine-menu-container, .cocktails-menu-container, .signature-cocktails-menu-container');
+        menuContainers.forEach(function(container) {
+            container.style.display = 'none';
+        });
+
+        // Show the selected menu container
+        document.getElementById(tabName).style.display = 'block';
+    }
+
+
+  function navigateToMenu() {
+        // Get the selected option value
+        var selectedMenu = document.getElementById("menuDropdown").value;
+
+        // Redirect to the selected menu
+        if (selectedMenu) {
+            window.location.href = selectedMenu;
+        }
+    }
+
+
+    function toggleDropdown() {
+        const dropdownMenu = document.getElementById('myDropdown');
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-toggle')) {
+            const dropdowns = document.getElementsByClassName('dropdown-menu');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    };
+
+
+  function viewMyOrders() {
+        // Implement logic to navigate to the "View My Orders" page
+        window.location.href = 'view-my-orders.html';
+    }
+
+function orderItem(name, price) {
+  // Create an object representing the ordered item
+  const orderedItem = {
+    name: name,
+    price: price,
+  };
+
+
+  // Add the ordered item to the local storage
+  let orders = JSON.parse(localStorage.getItem('orders')) || [];
+  orders.push(orderedItem);
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Show a pop-up notification
+    alert(`${name} has been added to the tray!`);
+
+  }
+
+    function toggleFlexbox() {
+            var flexContainer = document.getElementById("flexContainer");
+            flexContainer.style.display = (flexContainer.style.display === "flex") ? "none" : "flex";
+        }
+
+        function hideTextBox() {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "none";
+        }
+
+        function askForAssistance() {
+            alert("Asking for assistance. Please wait.");
+        }
+
+        function clearTable() {
+            alert("Request to clear the table submitted.");
+        }
+
+        function billMe() {
+            alert("Requesting the bill. Thank you for dining with us!");
+        }
+
+        function showTextBox(feedbackType) {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "flex";
+            document.getElementById("textBox").focus();
+            document.getElementById("textBox").setAttribute("data-feedback-type", feedbackType);
+        }
+
+        function submitFeedback() {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "none";
+            var feedbackType = document.getElementById("textBox").getAttribute("data-feedback-type");
+            var feedbackText = document.getElementById("textBox").value;
+
+            // Send feedback to email
+            var emailSubject = "Feedback - " + feedbackType;
+            var emailBody = "Feedback Type: " + feedbackType + "\n\n" + "Feedback Text: " + feedbackText;
+            window.location.href = "mailto:karemathenge8@gmail.com?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+
+            // Reflect on admin panel (You may need a server-side implementation for this)
+            saveToAdminPanel(feedbackType, feedbackText);
+        }
+
+        function saveToAdminPanel(feedbackType, feedbackText) {
+            // Simulate server-side logic by showing an alert
+            alert("Feedback Type: " + feedbackType + "\n\n" + "Feedback Text: " + feedbackText + "\n\nSaved to admin panel.");
+        }
+
+        window.onload = function() {
+    checkAge();
+}
+function checkAge() {
+    var age = prompt("Please enter your age:");
+    if (age < 18) {
+        alert("Sorry, you must be at least 18 years old to access the bar menu.");
+        window.location.href = "menus.html"; // Redirect to a different page if the user is under 18
+    } else {
+        alert("Welcome! You are now allowed to access the bar menu.");
+        // Display the bar menu or take other actions if the user is 18 or older
+    }
+}
+
+
+</script>
+</body>
+</html>

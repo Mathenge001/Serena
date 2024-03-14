@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>in-dinning-Menu</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 95%;
+            height: 10vh;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .back-icon {
+            background-color:  rgba(51, 51, 51, 9%);
+            color: #eeeeee;
+            padding: 3px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            height: 3vh;
+            text-align: center;
+            top: 0;
+          margin-top: -20px;
+        }
+
+      .menu-dropdown {
+    background-color: #000; /* Black background color */
+    color: #fff; /* White text color */
+    padding: 3px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    width: 20%;
+        margin-top: -20px;
+        margin-right: 40px;
+}
+
+
+
+        .welcome-container {
+    text-align: center;
+    padding: 50px 20px 20px; /* Adjusted padding for better visibility */
+      background-image: url('https://i.pinimg.com/236x/fb/b6/b4/fbb6b42d97d04d57219b8778be544b67.jpg');
+          background-size: 500px auto;
+    background-position: center; /* Set background position to center bottom */
+    width: 100%;
+    height: 6vh; /* Set height to viewport height */
+    position: fixed; /* Set position to relative */
+    z-index: 999; /* Adjusted z-index */
+}
+
+
+        .welcome-container h1 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 5px;
+            margin-top: -50px; /* Adjust the top margin to move the h1 upwards */
+  margin-right: 50px;
+        }
+
+        .welcome-container p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            margin-top: 0px; /* Adjust the top margin to move the paragraph downwards */
+      margin-right: 10px;
+        }
+
+     #category-buttons {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    background-color: rgba(51, 51, 51, 0.1);
+    height: 7vh;
+    width: 100%; /* Full width */
+    margin-top: 40px;
+}
+
+.categories-container {
+    display: flex;
+    align-items: center;
+    max-width: 350px; /* Set a maximum width if needed */
+    width: 100%; /* Full width */
+    justify-content: center;
+  height: 10px;
+    margin-top: 40px;
+}
+
+.categories-container button {
+    background-color: rgb(145, 90, 47);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px;
+    margin: 5px 2px;
+    cursor: pointer;
+}
+
+
+
+
+           #callWaiterButton {
+            background-color: #493220;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+             margin-top: 20px;
+        }
+
+        #callWaiterButton:hover {
+            background-color: rgba(120, 77, 44, 0.62);
+        }
+
+        #flexContainer {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: rgba(120, 77, 44, 0.62);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.37);
+            padding: 10px;
+            position: absolute;
+            z-index: 1000;
+        }
+
+        #flexContainer button {
+            background-color: rgba(96, 95, 95, 0.7);
+            color: rgb(238, 238, 238);
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #flexContainer button:hover {
+            background-color: rgba(51, 51, 51, 0.92);
+        }
+
+        #textBoxContainer {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        #textBoxContainer textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #textBoxContainer button {
+            background-color: rgba(21, 21, 21, 0.7);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #textBoxContainer button:hover {
+            background-color: rgb(239, 0, 0);
+        }
+
+        .closeButton {
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 20px;
+            color: rgb(239, 0, 0);
+        }
+
+        .closeButton:hover {
+            color: #f12121;
+        }
+
+
+#view-orders-button {
+    background-color: #493220;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  margin-top: 1px;
+}
+
+#view-orders-button:hover {
+    background-color: rgba(145, 90, 47, 0.38);
+}
+
+
+
+/* Short Rains Menu Container */
+#AssortmentMenu {
+    background: url('https://i.pinimg.com/564x/0a/be/65/0abe65b80495c063571ae42f935c973b.jpg') center/cover;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+   background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+  background-position: 100%;
+  justify-content: center;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.assortment-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.assortment-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.assortment-item img {
+    width: 100%;
+    height: 229px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.assortment-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.assortment-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Long Rains Menu Container */
+#BreakfastMenu {
+    background: url('https://i.pinimg.com/564x/fe/23/0f/fe230f725709c8bd50e7d659aad82518.jpg') center/cover no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+  background-position: 100%;
+}
+
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.breakfast-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.breakfast-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.breakfast-item img {
+    width: 100%;
+    height:  229px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.breakfast-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.breakfast-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Hot and Dry Season Menu Container */
+#LunchMenu {
+    background: url('https://i.pinimg.com/564x/b9/5f/da/b95fda29970cc7e2a4840fd9bd5432c8.jpg') center/cover no-repeat;
+    color: #eeeeee;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-size: 99% auto; /* Adjust the width percentage as needed */
+    width: 100%;
+    background-attachment: fixed;
+}
+
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* Item Container */
+.lunch-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.lunch-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.lunch-item img {
+    width: 100%;
+    height:  229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.lunch-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.lunch-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Cool Season Menu Container */
+#DinnerMenu {
+  background: url('https://i.pinimg.com/564x/40/07/f9/4007f99386ee8f832516ad1d440a838c.jpg') center/cover no-repeat;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  text-align: center;
+  background-size: 99% auto; /* Adjust the width percentage as needed */
+  width: 100%;
+  background-attachment: fixed;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.dinner-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.dinner-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.dinner-item img {
+    width: 100%;
+    height:  229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.dinner-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.dinner-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+/* Cool Season Menu Container */
+#SpecialtyMenu {
+  background: url('https://i.pinimg.com/564x/61/d2/86/61d28621669387d9b7e7a8ba9d428b4e.jpg') center/cover no-repeat;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  text-align: center;
+  background-size: 99% auto; /* Adjust the width percentage as needed */
+  width: 100%;
+  background-attachment: fixed;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Item Container */
+.cool-season-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 20px;
+}
+
+/* Individual Item */
+.specialty-item {
+    width: 275px; /* Adjust the width as needed */
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* Added box-sizing for proper width calculation */
+}
+
+.specialty-item img {
+    width: 100%;
+    height: 229px; /* Adjusted to maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.specialty-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.specialty-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.order-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #45a049;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+ <div class="header">
+        <!-- Back icon to go back to the previous page -->
+        <a href="room-service-pick-a-menu.html" class="back-icon">&#8592; Back</a>
+
+        <!-- Dropdown menu to navigate to other menus -->
+       <select id="menuDropdown" class="menu-dropdown" onchange="navigateToMenu()">
+    <option value="" disabled selected>Select Menu</option>
+    <option value="room-service-restaurant-menu.html">Restaurant Menu</option>
+
+       </select>
+    </div>
+
+    <div class="welcome-container">
+        <h1>Welcome</h1>
+        <p>What are you looking for?</p>
+
+
+<div id="category-buttons">
+  <div class="categories-container">
+  <button class="tablink assortment-tab" data-target="AssortmentMenu" onclick="openTab(this)">Assortment</button>
+  <button class="tablink breakfast-tab" data-target="BreakfastMenu" onclick="openTab(this)">Breakfast</button>
+  <button class="tablink lunch-tab" data-target="LunchMenu" onclick="openTab(this)">Lunch</button>
+  <button class="tablink dinner-tab" data-target="DinnerMenu" onclick="openTab(this)">Dinner</button>
+</div>
+</div>
+
+   <!-- Call Waiter Button -->
+    <button id="callWaiterButton" onclick="toggleFlexbox()">
+        Call Waiter
+    </button>
+
+    <!-- Flexbox container for options -->
+    <div id="flexContainer">
+        <span class="closeButton" onclick="toggleFlexbox()">×</span>
+        <!-- Options -->
+        <button onclick="askForAssistance()">Ask for Assistance</button>
+        <button onclick="clearTable()">Clear Table</button>
+        <button onclick="billMe()">Bill Me</button>
+        <button onclick="showTextBox('Complain')">Complain</button>
+        <button onclick="showTextBox('PositiveRemark')">Positive Remark</button>
+        <button onclick="showTextBox('Suggestion')">Suggestion</button>
+
+        <!-- Textbox container -->
+        <div id="textBoxContainer">
+            <span class="closeButton" onclick="hideTextBox()">×</span>
+            <textarea id="textBox" placeholder="Enter your feedback"></textarea>
+            <button onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+      <button id="view-orders-button" class="menu-button" onclick="viewMyOrders()">View My Orders</button>
+    </div>
+</div>
+    <!-- Placeholder content to simulate scrolling -->
+    <div style="height: 200px; background-color: #000000;"></div>
+
+<!-- Assortments Menu -->
+<div id="AssortmentMenu" class="assortment-menu-container seasonal-menu-container" style="display: none;">
+  <h2>Assortment Menu</h2>
+
+    <!-- Assortement -->
+    <div class="category-title" style="margin-top: 20px;">Snacks</div>
+    <div class="assortment-item-container snacks-container">
+
+        <!-- Snack Item 1: Mixed Nuts -->
+        <div class="assortment-item">
+            <img src="mixed_nuts_image.jpg" alt="Mixed Nuts">
+            <h3>Mixed Nuts</h3>
+            <p>A delightful mix of assorted nuts.</p>
+            <p>🕒 5 mins prep time</p>
+            <p>Price: 500 Ksh</p>
+            <button class="order-button" onclick="orderItem('Mixed Nuts', 500)">Order</button>
+        </div>
+
+        <!-- Snack Item 2: Chips and Salsa -->
+        <div class="assortment-item">
+            <img src="chips_salsa_image.jpg" alt="Chips and Salsa">
+            <h3>Chips and Salsa</h3>
+            <p>Crispy chips served with spicy salsa.</p>
+            <p>🕒 10 mins prep time</p>
+            <p>Price: 300 Ksh</p>
+            <button class="order-button" onclick="orderItem('Chips and Salsa', 300)">Order</button>
+        </div>
+
+        <div class="assortment-item">
+    <img src="cheese_and_crackers_image.png" alt="Cheese and Crackers">
+    <h3>Cheese and Crackers</h3>
+    <p>A delightful combination of cheese and crackers.</p>
+    <p>🕒 0 mins prep time</p>
+    <p>Price: 600 Ksh</p>
+    <button class="order-button" onclick="orderItem('Cheese and Crackers', 600)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="hummus_and_pita_bread_image.jpg" alt="Hummus and Pita Bread">
+    <h3>Hummus and Pita Bread</h3>
+    <p>Smooth hummus served with warm pita bread.</p>
+    <p>🕒 0 mins prep time</p>
+    <p>Price: 400 Ksh</p>
+    <button class="order-button" onclick="orderItem('Hummus and Pita Bread', 400)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="vegetable_crudite_image.png" alt="Vegetable Crudité">
+    <h3>Vegetable Crudité</h3>
+    <p>Assorted fresh vegetables served with dipping sauce.</p>
+    <p>🕒 0 mins prep time</p>
+    <p>Price: 450 Ksh</p>
+    <button class="order-button" onclick="orderItem('Vegetable Crudité', 450)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="chicken_wings_image.jpg" alt="Chicken Wings">
+    <h3>Chicken Wings</h3>
+    <p>Spicy chicken wings served with dipping sauce.</p>
+    <p>🕒 15 mins prep time</p>
+    <p>Price: 700 Ksh</p>
+    <button class="order-button" onclick="orderItem('Chicken Wings', 700)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="mini_sliders_image.jpg" alt="Mini Sliders">
+    <h3>Mini Sliders</h3>
+    <p>Delicious mini burgers with various toppings.</p>
+    <p>🕒 20 mins prep time</p>
+    <p>Price: 650 Ksh</p>
+    <button class="order-button" onclick="orderItem('Mini Sliders', 650)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="popcorn_image.jpg" alt="Popcorn">
+    <h3>Popcorn</h3>
+    <p>Classic buttered popcorn.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 250 Ksh</p>
+    <button class="order-button" onclick="orderItem('Popcorn', 250)">Order</button>
+</div>
+
+        <!-- Add more snack items similarly -->
+    </div>
+
+    <!-- Beverages -->
+    <div class="category-title" style="margin-top: 20px;">Beverages</div>
+    <div class="assortment-item-container beverages-container">
+
+        <!-- Beverage Item 1: Bottled Water -->
+        <div class="assortment-item">
+            <img src="bottled_water_image.jpg" alt="Bottled Water">
+            <h3>Bottled Water</h3>
+            <p>Refreshing bottled water.</p>
+            <p>🕒 0 mins prep time</p>
+            <p>Price: 150 Ksh</p>
+            <button class="order-button" onclick="orderItem('Bottled Water', 150)">Order</button>
+        </div>
+
+        <!-- Beverage Item 2: Soft Drinks -->
+        <div class="assortment-item">
+            <img src="soft_drinks_image.jpg" alt="Soft Drinks">
+            <h3>Soft Drinks</h3>
+            <p>A selection of soft drinks.</p>
+            <p>🕒 0 mins prep time</p>
+            <p>Price: 200 Ksh</p>
+            <button class="order-button" onclick="orderItem('Soft Drinks', 200)">Order</button>
+        </div>
+
+        <div class="assortment-item">
+    <img src="juice_image.jpg" alt="Juice">
+    <h3>Juice (Orange Juice, Apple Juice, Cranberry Juice)</h3>
+    <p>A refreshing blend of orange juice, apple juice, and cranberry juice.</p>
+    <p>🕒 0 mins prep time</p>
+    <p>Price: 300 Ksh</p>
+    <button class="order-button" onclick="orderItem('Juice', 300)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="coffee_image.jpg" alt="Coffee">
+    <h3>Coffee (Regular, Decaf)</h3>
+    <p>Aromatic coffee available in regular and decaf.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 250 Ksh</p>
+    <button class="order-button" onclick="orderItem('Coffee', 250)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="tea_image.jpg" alt="Tea">
+    <h3>Tea (Black Tea, Green Tea, Herbal Tea)</h3>
+    <p>A selection of black tea, green tea, and herbal tea.</p>
+    <p>🕒 2 mins prep time</p>
+    <p>Price: 200 Ksh</p>
+    <button class="order-button" onclick="orderItem('Tea', 200)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="hot_chocolate_image.jpg" alt="Hot Chocolate">
+    <h3>Hot Chocolate</h3>
+    <p>Rich and creamy hot chocolate.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 300 Ksh</p>
+    <button class="order-button" onclick="orderItem('Hot Chocolate', 300)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="milkshake_image.jpg" alt="Milkshakes">
+    <h3>Milkshakes</h3>
+    <p>Indulgent milkshakes in various flavors.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 400 Ksh</p>
+    <button class="order-button" onclick="orderItem('Milkshakes', 400)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="smoothie_image.jpg" alt="Smoothies">
+    <h3>Smoothies</h3>
+    <p>Freshly blended smoothies with a variety of fruits.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 450 Ksh</p>
+    <button class="order-button" onclick="orderItem('Smoothies', 450)">Order</button>
+</div>
+
+        <!-- Add more beverage items similarly -->
+    </div>
+
+    <!-- Specialty Items -->
+    <div class="category-title" style="margin-top: 20px;">Specialty Items</div>
+    <div class="assortment-item-container specialty-container">
+
+        <!-- Specialty Item 1: Charcuterie Board -->
+        <div class="assortment-item">
+            <img src="charcuterie_board_image.jpg" alt="Charcuterie Board">
+            <h3>Charcuterie Board</h3>
+            <p>An assorted platter of meats, cheeses, and accompaniments.</p>
+            <p>🕒 15 mins prep time</p>
+            <p>Price: 1200 Ksh</p>
+            <button class="order-button" onclick="orderItem('Charcuterie Board', 1200)">Order</button>
+        </div>
+
+        <!-- Specialty Item 2: Fruit Plate -->
+        <div class="assortment-item">
+            <img src="fruit_plate_image.jpg" alt="Fruit Plate">
+            <h3>Fruit Plate</h3>
+            <p>A selection of fresh fruits.</p>
+            <p>🕒 10 mins prep time</p>
+            <p>Price: 800 Ksh</p>
+            <button class="order-button" onclick="orderItem('Fruit Plate', 800)">Order</button>
+        </div>
+
+        <div class="assortment-item">
+    <img src="dessert_sampler_image.jpg" alt="Dessert Sampler">
+    <h3>Dessert Sampler</h3>
+    <p>A delightful selection of assorted desserts.</p>
+    <p>🕒 10 mins prep time</p>
+    <p>Price: 1000 Ksh</p>
+    <button class="order-button" onclick="orderItem('Dessert Sampler', 1000)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="cheese_platter_image.jpg" alt="Cheese Platter">
+    <h3>Cheese Platter</h3>
+    <p>An array of fine cheeses served with accompaniments.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 1100 Ksh</p>
+    <button class="order-button" onclick="orderItem('Cheese Platter', 1100)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="sushi_platter_image.jpg" alt="Sushi Platter">
+    <h3>Sushi Platter</h3>
+    <p>A selection of fresh sushi rolls and sashimi.</p>
+    <p>🕒 20 mins prep time</p>
+    <p>Price: 1500 Ksh</p>
+    <button class="order-button" onclick="orderItem('Sushi Platter', 1500)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="breakfast_pastry_basket_image.png" alt="Breakfast Pastry Basket">
+    <h3>Breakfast Pastry Basket</h3>
+    <p>A basket of freshly baked breakfast pastries.</p>
+    <p>🕒 15 mins prep time</p>
+    <p>Price: 700 Ksh</p>
+    <button class="order-button" onclick="orderItem('Breakfast Pastry Basket', 700)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="afternoon_tea_set_image.jpg" alt="Afternoon Tea Set">
+    <h3>Afternoon Tea Set</h3>
+    <p>A delightful assortment of teas and pastries.</p>
+    <p>🕒 10 mins prep time</p>
+    <p>Price: 1000 Ksh</p>
+    <button class="order-button" onclick="orderItem('Afternoon Tea Set', 1000)">Order</button>
+</div>
+
+<div class="assortment-item">
+    <img src="late_night_snack_box_image.png" alt="Late-Night Snack Box">
+    <h3>Late-Night Snack Box</h3>
+    <p>A box filled with tasty late-night snacks.</p>
+    <p>🕒 5 mins prep time</p>
+    <p>Price: 850 Ksh</p>
+    <button class="order-button" onclick="orderItem('Late-Night Snack Box', 850)">Order</button>
+</div>
+
+        <!-- Add more specialty items similarly -->
+    </div>
+</div>
+
+
+
+
+<!-- Breakfast menu -->
+
+<div id="BreakfastMenu" class="breakfast-menu-container seasonal-menu-container" style="display: none;">
+  <h2>Breakfast Menu:</h2>
+
+
+     <!-- Breakfast -->
+    <div class="category-title" style="margin-top: 20px;"></div>
+  <div class="breakfast-item-container breakfast-container">
+
+    <!-- Continental Breakfast -->
+    <div class="breakfast-item">
+        <img src="continental_breakfast.jpg" alt="Continental Breakfast">
+        <h3>Continental Breakfast</h3>
+        <p>Assorted pastries, fresh fruit, cereal, yogurt</p>
+        <p>Time to Prepare: 15 minutes</p>
+        <p>Price: 1,419 Ksh</p>
+        <button class="order-button" onclick="orderItem('Continental Breakfast', 1419)">Order</button>
+    </div>
+
+    <!-- Full Breakfast -->
+    <div class="breakfast-item">
+        <img src="full_breakfast.jpg" alt="Full Breakfast">
+        <h3>Full Breakfast</h3>
+        <p>Scrambled eggs, bacon, sausage, toast, pancakes</p>
+        <p>🕒 20 minutes prep time</p>
+        <p>Price: 1,663 Ksh</p>
+        <button class="order-button" onclick="orderItem('Full Breakfast', 1663)">Order</button>
+    </div>
+
+    <!-- Omelettes -->
+    <div class="breakfast-item">
+        <img src="omelettes.jpg" alt="Omelettes">
+        <h3>Omelettes</h3>
+        <p>Customizable omelette with choice of fillings (e.g., cheese, vegetables, ham)</p>
+        <p>🕒 15 minutes prep time</p>
+        <p>Price: 1,155 Ksh</p>
+        <button class="order-button" onclick="orderItem('Omelettes', 1155)">Order</button>
+    </div>
+
+    <!-- Breakfast Sandwiches -->
+    <div class="breakfast-item">
+        <img src="breakfast_sandwiches.jpg" alt="Breakfast Sandwiches">
+        <h3>Breakfast Sandwiches</h3>
+        <p>Choice of breakfast meats (e.g., bacon, sausage) with egg and cheese on a toasted bun</p>
+        <p>🕒15 minutes prep time</p>
+        <p>Price: 1,031 Ksh</p>
+        <button class="order-button" onclick="orderItem('Breakfast Sandwiches', 1031)">Order</button>
+    </div>
+
+    <!-- Fresh Fruit -->
+    <div class="breakfast-item">
+        <img src="fresh_fruit.jpg" alt="Fresh Fruit">
+        <h3>Fresh Fruit</h3>
+        <p>Seasonal assortment of fresh fruits</p>
+        <p>🕒 10 minutes prep time</p>
+        <p>Price: 805 Ksh</p>
+        <button class="order-button" onclick="orderItem('Fresh Fruit', 805)">Order</button>
+    </div>
+
+    <!-- Yogurt Parfait -->
+    <div class="breakfast-item">
+        <img src="yogurt_parfait.jpg" alt="Yogurt Parfait">
+        <h3>Yogurt Parfait</h3>
+        <p>Layers of yogurt, granola, and fresh berries</p>
+        <p>10 minutes prep time</p>
+        <p>Price: 705 Ksh</p>
+        <button class="order-button" onclick="orderItem('Yogurt Parfait', 705)">Order</button>
+    </div>
+    </div>
+
+    <!-- Main Course -->
+    <div class="category-title" style="margin-top: 20px;">Days specialty</div>
+    <div class="breakfast-item-container specialty-container">
+    <!-- Day's Specialty Item 1 -->
+    <div class="breakfast-item">
+        <img src="daily_fresh_juice.jpg" alt="Daily Fresh Juice">
+        <h3>Daily Fresh Juice</h3>
+        <p>Freshly squeezed juice to start your day.</p>
+        <p>🕒 Prep Time: N/A</p>
+        <p>Price: 476 Ksh</p>
+        <button class="order-button" onclick="orderItem('Daily Fresh Juice', 476)">Order</button>
+    </div>
+
+    <!-- Day's Specialty Item 2 -->
+    <div class="breakfast-item">
+        <img src="morning_blend_coffee.jpg" alt="Morning Blend Coffee">
+        <h3>Morning Blend Coffee</h3>
+        <p>A rich and flavorful blend of coffee beans.</p>
+        <p>🕒 Prep Time: N/A</p>
+        <p>Price: 357 Ksh</p>
+        <button class="order-button" onclick="orderItem('Morning Blend Coffee', 357)">Order</button>
+    </div>
+
+    <!-- Day's Specialty Item 3 -->
+    <div class="breakfast-item">
+        <img src="mimosa.jpg" alt="Mimosa">
+        <h3>Mimosa</h3>
+        <p>A classic cocktail made with champagne and orange juice.</p>
+        <p>🕒 Prep Time: N/A</p>
+        <p>Price: 894 Ksh</p>
+        <button class="order-button" onclick="orderItem('Mimosa', 894)">Order</button>
+    </div>
+
+    <!-- Day's Specialty Item 4 -->
+    <div class="breakfast-item">
+        <img src="breakfast_tea_selection.jpg" alt="Breakfast Tea Selection">
+        <h3>Breakfast Tea Selection</h3>
+        <p>An assortment of premium teas to choose from.</p>
+        <p>🕒 Prep Time: N/A</p>
+        <p>Price: 279 Ksh</p>
+        <button class="order-button" onclick="orderItem('Breakfast Tea Selection', 279)">Order</button>
+    </div>
+    </div>
+    </div>
+
+
+
+ <!-- lunch menu -->
+
+<div id="LunchMenu" class="lunch-menu-container seasonal-menu-container" style="display: none;">
+  <h2 style="color: black;">Lunch Menu:</h2>
+
+
+    <!-- lunch -->
+      <div class="category-title" style="margin-top: 20px;"></div>
+  <div class="lunch-item-container lunch-container">
+
+
+        <!-- Lunch Item 1 -->
+        <div class="lunch-item">
+            <img src="club_sandwich.jpg" alt="Club Sandwich">
+            <h3>Club Sandwich</h3>
+            <p>Turkey, bacon, lettuce, tomato, mayo on toasted bread with fries</p>
+            <p>🕒 20 minutes prep time.</p>
+            <p>Price: 1,155 Ksh</p>
+            <button class="order-button" onclick="orderItem('Club Sandwich', 1155)">Order</button>
+        </div>
+
+        <!-- Lunch Item 2 -->
+        <div class="lunch-item">
+            <img src="caesar_salad.jpg" alt="Caesar Salad">
+            <h3>Caesar Salad</h3>
+            <p>Romaine lettuce, Caesar dressing, croutons, Parmesan cheese</p>
+            <p>🕒 15 minutes prep time</p>
+            <p>Price: 805 Ksh</p>
+            <button class="order-button" onclick="orderItem('Caesar Salad', 805)">Order</button>
+        </div>
+
+        <!-- Lunch Item 3 -->
+        <div class="lunch-item">
+            <img src="cheeseburger.png" alt="Cheeseburger">
+            <h3>Cheeseburger</h3>
+            <p>Beef patty, cheese, lettuce, tomato, onion, pickles on a bun with fries</p>
+            <p>🕒 20 minutes prep time.</p>
+            <p>Price: 1,031 Ksh</p>
+            <button class="order-button" onclick="orderItem('Cheeseburger', 1031)">Order</button>
+        </div>
+    </div>
+
+ <!-- Lunch Specialty -->
+     <div class="category-title" style="margin-top: 20px;">Days specialty</div>
+    <div class="lunch-item-container specialty-container">
+
+
+        <!-- Lunch specialty 1 -->
+        <div class="lunch-item">
+            <img src="specialty_salad_of_the_day.jpg" alt="Soup of the Day">
+            <h3>Soup of the Day</h3>
+            <p>Chef's daily selection of soup</p>
+            <p>🕒 15 minutes prep time</p>
+            <p>Price: 574 Ksh</p>
+            <button class="order-button" onclick="orderItem('Soup of the Day', 574)">Order</button>
+        </div>
+
+        <!-- Lunch specialty 1 -->
+        <div class="lunch-item">
+            <img src="specialty_salad_of_the_day.jpg" alt="Specialty Salad of the Day">
+            <h3>Specialty Salad of the Day</h3>
+            <p>🕒 Time to Prepare: N/A</p>
+            <p>Price: 894 Ksh</p>
+            <button class="order-button" onclick="orderItem('Specialty Salad of the Day', 894)">Order</button>
+        </div>
+
+        <!-- Lunch specialty 1 -->
+        <div class="lunch-item">
+            <img src="hand-cut_potato_chips.jpg" alt="Hand-Cut Potato Chips">
+            <h3>Hand-Cut Potato Chips</h3>
+            <p>🕒 Time to Prepare: N/A</p>
+            <p>Price: 322 Ksh</p>
+            <button class="order-button" onclick="orderItem('Hand-Cut Potato Chips', 322)">Order</button>
+        </div>
+         </div>
+</div>
+
+
+
+
+<!-- dinner -->
+<div id="DinnerMenu" class="dinner-menu-container seasonal-menu-container" style="display: none;">
+  <h2></h2>
+
+    <!-- Dinner Items -->
+    <div class="category-title" style="margin-top: 20px;">Dinner Items</div>
+  <div class="dinner-item-container dinner-container">
+
+        <!-- Dinner Item 1 -->
+        <div class="dinner-item">
+            <img src="grilled_salmon.jpg" alt="Grilled Salmon">
+            <h3>Grilled Salmon</h3>
+            <p>Grilled salmon fillet with lemon butter sauce, steamed vegetables, and rice pilaf</p>
+            <p>🕒 25 minutes prep time</p>
+            <p>Price: 1,754 Ksh</p>
+            <button class="order-button" onclick="orderItem('Grilled Salmon', 1754)">Order</button>
+        </div>
+
+        <!-- Dinner Item 2 -->
+        <div class="dinner-item">
+            <img src="pasta_primavera.jpg" alt="Pasta Primavera">
+            <h3>Pasta Primavera</h3>
+            <p>Pasta with seasonal vegetables in a creamy Alfredo sauce</p>
+            <p>🕒 20 minutes prep time</p>
+            <p>Price: 1,496 Ksh</p>
+            <button class="order-button" onclick="orderItem('Pasta Primavera', 1496)">Order</button>
+        </div>
+
+        <!-- Dinner Item 3 -->
+        <div class="dinner-item">
+            <img src="filet_mignon.png" alt="Filet Mignon">
+            <h3>Filet Mignon</h3>
+            <p>Grilled beef tenderloin with mashed potatoes, asparagus, and red wine reduction</p>
+            <p>🕒 30 minutes prep time</p>
+            <p>Price: 2,474 Ksh</p>
+            <button class="order-button" onclick="orderItem('Filet Mignon', 2474)">Order</button>
+        </div>
+
+        <!-- Dinner Item 4 -->
+        <div class="dinner-item">
+            <img src="chocolate_lava_cake.png" alt="Chocolate Lava Cake">
+            <h3>Chocolate Lava Cake</h3>
+            <p>Warm chocolate cake with a molten chocolate center, served with vanilla ice cream</p>
+            <p>🕒 15 minutes prep time</p>
+            <p>Price: 1,079 Ksh</p>
+            <button class="order-button" onclick="orderItem('Chocolate Lava Cake', 1079)">Order</button>
+        </div>
+
+    </div>
+
+    <!-- Dinner Specialties -->
+    <div class="category-title" style="margin-top: 20px;">Dinner Specialties</div>
+    <div class="dinner-item-container specialty-container">
+
+        <!-- Dinner Specialty 1 -->
+        <div class="dinner-item">
+            <img src="seafood_platter.jpg" alt="Seafood Platter for Two">
+            <h3>Seafood Platter for Two</h3>
+            <p>🕒 Time to Prepare: N/A</p>
+            <p>Price: 3,503 Ksh</p>
+            <button class="order-button" onclick="orderItem('Seafood Platter for Two', 3503)">Order</button>
+        </div>
+
+        <!-- Dinner Specialty 2 -->
+        <div class="dinner-item">
+            <img src="garlic_breadsticks.jpg" alt="Garlic Breadsticks">
+            <h3>Garlic Breadsticks</h3>
+            <p>🕒 Time to Prepare: N/A</p>
+            <p>Price: 322 Ksh</p>
+            <button class="order-button" onclick="orderItem('Garlic Breadsticks', 322)">Order</button>
+        </div>
+
+        <!-- Dinner Specialty 3 -->
+        <div class="dinner-item">
+            <img src="chef_signature_dessert_sampler.jpg" alt="Chef's Signature Dessert Sampler">
+            <h3>Chef's Signature Dessert Sampler</h3>
+            <p>🕒 Time to Prepare: N/A</p>
+            <p>Price: 1,287 Ksh</p>
+            <button class="order-button" onclick="orderItem('Chef\'s Signature Dessert Sampler', 1287)">Order</button>
+        </div>
+
+        <!-- Dinner Specialty 4 -->
+        <div class="dinner-item">
+            <img src="artisan_cheese_plate.jpg" alt="Artisan Cheese Plate">
+            <h3>Artisan Cheese Plate</h3>
+            <p>🕒 Time to Prepare: N/A</p>
+            <p>Price: 1,925 Ksh</p>
+            <button class="order-button" onclick="orderItem('Artisan Cheese Plate', 1925)">Order</button>
+        </div>
+
+        <!-- Add more dinner specialty items following the same structure -->
+    </div>
+</div>
+
+<script>
+function openTab(button) {
+  // Get the target ID from the data-target attribute of the clicked button
+  var targetId = button.getAttribute('data-target');
+
+  // Hide all menu containers
+  var menuContainers = document.getElementsByClassName('seasonal-menu-container');
+  for (var i = 0; i < menuContainers.length; i++) {
+      menuContainers[i].style.display = 'none';
+  }
+
+  // Show the selected menu container
+  var selectedTab = document.getElementById(targetId);
+  if (selectedTab) {
+      selectedTab.style.display = 'block';
+  }
+}
+
+
+function navigateToMenu() {
+        // Get the selected option value
+        var selectedMenu = document.getElementById("menuDropdown").value;
+
+        // Redirect to the selected menu
+        if (selectedMenu) {
+            window.location.href = selectedMenu;
+        }
+    }
+
+
+function toggleDropdown() {
+        const dropdownMenu = document.getElementById('myDropdown');
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-toggle')) {
+            const dropdowns = document.getElementsByClassName('dropdown-menu');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    };
+
+ function viewMyOrders() {
+        // Implement logic to navigate to the "View My Orders" page
+        window.location.href = 'room-service-view-my-orders.html';
+    }
+
+function orderItem(name, price) {
+  // Create an object representing the ordered item
+  const orderedItem = {
+    name: name,
+    price: price,
+  };
+
+  // Add the ordered item to the local storage
+  let orders = JSON.parse(localStorage.getItem('orders')) || [];
+  orders.push(orderedItem);
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Show a pop-up notification
+    alert(`${name} has been added to the tray!`);
+
+  }
+
+
+       function toggleFlexbox() {
+            var flexContainer = document.getElementById("flexContainer");
+            flexContainer.style.display = (flexContainer.style.display === "flex") ? "none" : "flex";
+        }
+
+        function hideTextBox() {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "none";
+        }
+
+        function askForAssistance() {
+            alert("Asking for assistance. Please wait.");
+        }
+
+        function clearTable() {
+            alert("Request to clear the table submitted.");
+        }
+
+        function billMe() {
+            alert("Requesting the bill. Thank you for dining with us!");
+        }
+
+        function showTextBox(feedbackType) {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "flex";
+            document.getElementById("textBox").focus();
+            document.getElementById("textBox").setAttribute("data-feedback-type", feedbackType);
+        }
+
+        function submitFeedback() {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "none";
+            var feedbackType = document.getElementById("textBox").getAttribute("data-feedback-type");
+            var feedbackText = document.getElementById("textBox").value;
+
+            // Send feedback to email
+            var emailSubject = "Feedback - " + feedbackType;
+            var emailBody = "Feedback Type: " + feedbackType + "\n\n" + "Feedback Text: " + feedbackText;
+            window.location.href = "mailto:karemathenge8@gmail.com?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+
+            // Reflect on admin panel (You may need a server-side implementation for this)
+            saveToAdminPanel(feedbackType, feedbackText);
+        }
+
+        function saveToAdminPanel(feedbackType, feedbackText) {
+            // Simulate server-side logic by showing an alert
+            alert("Feedback Type: " + feedbackType + "\n\n" + "Feedback Text: " + feedbackText + "\n\nSaved to admin panel.");
+        }
+
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room State</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: #2c2c31;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 10px; /* Reduce bottom margin */
+        }
+
+        header h1 {
+            margin-top: -60px;
+            font-size: 24px; /* Adjust font size */
+        }
+
+        header p {
+            margin-top: 5px;
+            margin-bottom: 10px; /* Reduce bottom margin */
+            font-size: 14px; /* Adjust font size */
+            margin-top: -15px;
+        }
+
+        form {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #000;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: calc(100% - 20px);
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .back-button {
+            display: block;
+            width: 100px;
+            margin: 20px 0 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: -600px;
+        }
+
+        .back-button:hover {
+            background-color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+         <h1>Room State</h1>
+        <p>Add Room Details Here</p>
+        <form id="roomDetailsForm">
+            <label for="roomNumber">Room Number:</label>
+            <input type="text" id="roomNumber" name="roomNumber" required><br>
+
+            <label for="roomState">Room State:</label>
+            <select id="roomState" name="roomState" required>
+                <option value="">Select Room State</option>
+                <option value="clean">Clean</option>
+                <option value="dirty">Dirty</option>
+                <option value="maintenance-pending">Pending Maintenance</option>
+                <option value="maintenance-complete">Maintenance Complete</option>
+                <option value="checkout-pending">Check-out Pending</option>
+                <option value="checked-out">Checked Out</option>
+                <option value="checkin-pending">Check-in Pending</option>
+                <option value="checked-in">Checked In</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</header>
+
+<h2>Room Details</h2>
+<table id="roomDetailsTable">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Room State</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody id="roomDetailsBody"></tbody>
+</table>
+
+<script>
+    // Function to retrieve room details data from localStorage
+    function retrieveRoomDetails() {
+        return JSON.parse(localStorage.getItem('roomDetails')) || [];
+    }
+
+    // Function to save room details data to localStorage
+    function saveRoomDetails(roomDetails) {
+        localStorage.setItem('roomDetails', JSON.stringify(roomDetails));
+    }
+
+    // Function to populate room details table
+    function populateRoomDetailsTable() {
+        const roomDetails = retrieveRoomDetails();
+        const roomDetailsBody = document.getElementById('roomDetailsBody');
+        roomDetailsBody.innerHTML = ''; // Clear existing table content
+
+        roomDetails.forEach(room => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${room.roomNumber}</td>
+                <td>${room.roomState}</td>
+                <td>${room.timestamp}</td>
+            `;
+            roomDetailsBody.appendChild(row);
+        });
+    }
+
+    document.getElementById('roomDetailsForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        const formData = new FormData(event.target);
+        const roomNumber = formData.get('roomNumber');
+        const roomState = formData.get('roomState');
+        const timestamp = new Date().toLocaleString(); // Get current timestamp
+
+        // Retrieve existing room details data from localStorage
+        let roomDetails = retrieveRoomDetails();
+
+        // Check if the room already exists in the table
+        const existingRoom = roomDetails.find(room => room.roomNumber === roomNumber);
+        if (existingRoom) {
+            // Add a new row if the new state is not the opposite of the existing state based on the provided scenarios
+            if ((existingRoom.roomState === 'clean' && roomState === 'dirty') ||
+                (existingRoom.roomState === 'dirty' && roomState === 'clean') ||
+                (existingRoom.roomState === 'maintenance-pending' && roomState === 'maintenance-complete') ||
+                (existingRoom.roomState === 'maintenance-complete' && roomState === 'maintenance-pending') ||
+                (existingRoom.roomState === 'checkout-pending' && roomState === 'checked-out') ||
+                (existingRoom.roomState === 'checked-out' && roomState === 'checkout-pending') ||
+                (existingRoom.roomState === 'checkin-pending' && roomState === 'checked-in') ||
+                (existingRoom.roomState === 'checked-in' && roomState === 'checkin-pending')) {
+                existingRoom.roomState = roomState;
+                existingRoom.timestamp = timestamp;
+            } else {
+                roomDetails.push({ roomNumber, roomState, timestamp });
+            }
+        } else {
+            // Add new room details to the list
+            roomDetails.push({ roomNumber, roomState, timestamp });
+        }
+
+        // Save updated room details to localStorage
+        saveRoomDetails(roomDetails);
+
+        // Repopulate room details table
+        populateRoomDetailsTable();
+
+        // Clear form fields
+        event.target.reset();
+    });
+
+    // Populate room details table on page load
+    populateRoomDetailsTable();
+
+    // Function to initialize room details with 25 rooms
+function initializeRoomDetails() {
+    const roomDetails = [];
+    for (let i = 1; i <= 25; i++) {
+        roomDetails.push({ roomNumber: i, roomState: 'clean', timestamp: new Date().toLocaleString() });
+    }
+    saveRoomDetails(roomDetails);
+}
+
+// Check if room details exist in localStorage, if not, initialize with 25 rooms
+if (!localStorage.getItem('roomDetails')) {
+    initializeRoomDetails();
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f2f2f2; /* Added a light background color */
+        }
+
+        #container {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #eee;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+        }
+
+        #logo {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+
+        #details {
+            flex: 1;
+            margin-left: 20px; /* Adjusted margin for spacing */
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        #details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Displaying list items horizontally */
+        }
+
+        #details ul li {
+            margin-right: 20px; /* Adjusted margin for spacing */
+            cursor: pointer; /* Adding pointer cursor to indicate interactivity */
+        }
+
+        #details ul li:last-child {
+            margin-right: 0; /* No margin for the last item */
+        }
+
+        #back-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+         #content {
+        padding: 20px;
+        margin-top: 20px; /* Adjusted margin for spacing */
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+        height: 400px; /* Set a fixed height */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+          .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .styled-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .styled-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* CSS for the styled table */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.styled-table th, .styled-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.styled-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <button id="back-button" onclick="goBack();">Back</button>
+    <img id="logo" src="logo.png" alt="Logo">
+    <div id="details">
+        <h2>Administration</h2>
+        <ul>
+            <li onclick="handleClick('RoomInventory')">Room Inventory</li>
+            <li onclick="handleClick('RoomStatus')">Room Status</li>
+            <li onclick="handleClick('RoomMaintenance')">Room Maintenance</li>
+            <li onclick="handleClick('MenuManagement')">Menu Management</li>
+            <li onclick="handleClick('TableReservation')">Table Reservation</li>
+            <li onclick="handleClick('FoodInventory')">Food Inventory</li>
+            <li onclick="handleClick('SalesReport')">Sales Report</li>
+            <li onclick="handleClick('EmployeeDirectory')">Employee Directory</li>
+            <li onclick="handleClick('ShiftManagement')">Shift Management</li>
+            <li onclick="handleClick('TrainingAndCertification')">Training and Certification</li>
+            <li onclick="handleClick('PerformanceReviews')">Performance Reviews</li>
+        </ul>
+    </div>
+</div>
+
+<div id="content">
+    <h2 id="managementType">Content</h2>
+    <p id="contentText">Select a management type from the left.</p>
+</div>
+
+<script>
+   // Function to handle click event
+    function handleClick(type) {
+        document.getElementById("managementType").innerText = type.replace(/([A-Z])/g, ' $1').trim(); // Add spaces before capital letters for better readability
+
+        var contentText = "";
+        switch (type) {
+           case 'RoomInventory':
+    contentText = "<table class='styled-table'>" +
+        "<thead>" +
+        "<tr><th>Room Number</th><th>Number of Beds</th><th>Capacity</th><th>Amenities</th><th>View</th><th>Pricing</th></tr>" +
+        "</thead>" +
+        "<tbody>" +
+        "<tr><td>101</td><td>1</td><td>2</td><td>WiFi, TV</td><td>City</td><td>Ksh 10,000</td></tr>" +
+        "<tr><td>102</td><td>2</td><td>4</td><td>WiFi, TV, Mini-bar</td><td>Sea</td><td>Ksh 25,000</td></tr>" +
+        "<tr><td>103</td><td>1</td><td>3</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 12,000</td></tr>" +
+        "<tr><td>104</td><td>2</td><td>4</td><td>WiFi, TV</td><td>City</td><td>Ksh 15,000</td></tr>" +
+        "<tr><td>105</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 8,000</td></tr>" +
+        "<tr><td>106</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 11,000</td></tr>" +
+        "<tr><td>107</td><td>2</td><td>4</td><td>WiFi, TV</td><td>City</td><td>Ksh 20,000</td></tr>" +
+        "<tr><td>108</td><td>2</td><td>4</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 23,000</td></tr>" +
+        "<tr><td>109</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 10,000</td></tr>" +
+        "<tr><td>110</td><td>1</td><td>3</td><td>WiFi, TV</td><td>City</td><td>Ksh 12,000</td></tr>" +
+        "<tr><td>111</td><td>2</td><td>4</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 25,000</td></tr>" +
+        "<tr><td>112</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 11,000</td></tr>" +
+        "<tr><td>113</td><td>1</td><td>2</td><td>WiFi, TV</td><td>City</td><td>Ksh 10,000</td></tr>" +
+        "<tr><td>114</td><td>2</td><td>4</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 25,000</td></tr>" +
+        "<tr><td>115</td><td>1</td><td>3</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 12,000</td></tr>" +
+        "<tr><td>116</td><td>2</td><td>4</td><td>WiFi, TV</td><td>City</td><td>Ksh 20,000</td></tr>" +
+        "<tr><td>117</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 8,000</td></tr>" +
+        "<tr><td>118</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 11,000</td></tr>" +
+        "<tr><td>119</td><td>2</td><td>4</td><td>WiFi, TV</td><td>City</td><td>Ksh 15,000</td></tr>" +
+        "<tr><td>120</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 10,000</td></tr>" +
+        "<tr><td>121</td><td>2</td><td>4</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 23,000</td></tr>" +
+        "<tr><td>122</td><td>1</td><td>3</td><td>WiFi, TV</td><td>City</td><td>Ksh 12,000</td></tr>" +
+        "<tr><td>123</td><td>1</td><td>2</td><td>WiFi, TV</td><td>Sea</td><td>Ksh 9,000</td></tr>" +
+        "<tr><td>124</td><td>2</td><td>4</td><td>WiFi, TV</td><td>Mountain</td><td>Ksh 25,000</td></tr>" +
+        "<tr><td>125</td><td>1</td><td>2</td><td>WiFi, TV</td><td>City</td><td>Ksh 11,000</td></tr>" +
+        "</tbody>" +
+        "</table>";
+    break;
+
+
+
+case 'RoomStatus':
+    contentText = "" +
+        "<p>Room status: View and update the status of individual rooms (e.g., available, occupied, under maintenance).</p>" +
+        "<input type='text' id='searchInput' onkeyup='searchTable()' placeholder='Search...'>" + // Search bar
+        "<table class='styled-table' id='roomTable'>" +
+        "<thead>" +
+        "<tr><th>Room Number</th><th>Number of Beds</th><th>Capacity</th><th>Amenities</th><th>View</th><th>Pricing</th><th>Status</th><th>Guest Name</th><th>Guest Phone Number</th><th>Party Size</th><th>Check-in</th><th>Check-out</th><th>Meal Inclusion</th><th>Payment Status</th></tr>" +
+        "</thead>" +
+        "<tbody>";
+
+    for (let i = 101; i <= 125; i++) {
+        contentText += "<tr><td>" + i + "</td>";
+
+        // Dummy data for demonstration, replace with actual data or dynamic generation
+        contentText += "<td>" + (i % 5 + 1) + "</td>"; // Number of beds
+        contentText += "<td>" + (i % 3 + 2) + "</td>"; // Capacity
+        contentText += "<td>WiFi, TV</td>"; // Amenities
+        contentText += "<td>" + (i % 4 === 0 ? "City" : (i % 3 === 0 ? "Sea" : "Mountain")) + "</td>"; // View
+        contentText += "<td>Ksh " + (i % 5 + 7) + ",000</td>"; // Pricing
+
+        // Status select dropdown
+        contentText += "<td><select onchange='updateRoomStatus(this.value, " + i + ")' id='roomStatus_" + i + "'>" +
+            "<option value='Available'>Available</option>" +
+            "<option value='Occupied'>Occupied</option>" +
+            "<option value='Under Maintenance'>Under Maintenance</option>" +
+            "</select></td>";
+
+        // Guest Name, Guest Phone Number, Party Size columns with contenteditable
+        contentText += "<td contenteditable='true' id='guestName_" + i + "'></td>";
+        contentText += "<td contenteditable='true' id='guestPhone_" + i + "'></td>";
+        contentText += "<td contenteditable='true' id='partySize_" + i + "'></td>";
+
+        // Check-in date with time selection
+        contentText += "<td contenteditable='true'><input type='date' id='checkIn_" + i + "'></td>";
+
+        // Check-out date with time selection
+        contentText += "<td contenteditable='true'><input type='date' id='checkOut_" + i + "'></td>";
+
+        // Meal Inclusion checkboxes for multiple selection
+        contentText += "<td contenteditable='true'>" +
+            "<label><input type='checkbox' value='Breakfast' id='meal_Breakfast_" + i + "'> Breakfast</label><br>" +
+            "<label><input type='checkbox' value='Lunch' id='meal_Lunch_" + i + "'> Lunch</label><br>" +
+            "<label><input type='checkbox' value='Dinner' id='meal_Dinner_" + i + "'> Dinner</label><br>" +
+            "<label><input type='checkbox' value='Full Board' id='meal_FullBoard_" + i + "'> Full Board</label><br>" +
+            "<div id='selectedMeals_" + i + "'></div>" + // Placeholder for displaying selected meal inclusions
+            "</td>";
+
+        // Payment status select dropdown
+        contentText += "<td><select id='paymentStatus_" + i + "'>" +
+            "<option value='Paid'>Paid</option>" +
+            "<option value='Pending'>Pending</option>" +
+            "</select></td>";
+
+        contentText += "</tr>";
+    }
+
+    contentText += "</tbody></table>";
+
+    break;
+
+
+
+
+
+
+
+
+
+case 'RoomMaintenance':
+    contentText = "" +
+        "<p>Room maintenance: Schedule and track maintenance tasks for each room.</p>" +
+        "<div id='roomMaintenanceForm'>" +
+        "<label for='roomNumber'>Room Number:</label><br>" +
+        "<input type='text' id='roomNumber' name='roomNumber' required><br><br>" +
+        "<label for='maintenanceTask'>Maintenance Task:</label><br>" +
+        "<input type='text' id='maintenanceTask' name='maintenanceTask' required><br><br>" +
+        "<label for='maintenanceDate'>Maintenance Date:</label><br>" +
+        "<input type='date' id='maintenanceDate' name='maintenanceDate' required><br><br>" +
+        "<input type='button' value='Submit' onclick='submitRoomMaintenance()'>" +
+        "</div>" +
+        "<h3>Room Maintenance Table</h3>" +
+        "<div id='searchForm'>" +
+        "<label for='searchInput'>Search:</label><br>" +
+        "<input type='text' id='searchInput' name='searchInput' oninput='searchRoomMaintenance()'><br><br>" +
+        "</div>" +
+        "<table class='styled-table'>" +
+        "<thead>" +
+        "<tr>" +
+        "<th>Room Number</th>" +
+        "<th>Maintenance Task</th>" +
+        "<th>Maintenance Date</th>" +
+        "</tr>" +
+        "</thead>" +
+        "<tbody id='maintenanceTableBody'></tbody>" +
+        "</table>";
+    break;
+
+
+case 'MenuManagement':
+    contentText = "" +
+        "<h2>Menu Management: Create, Update, and Organize Menus</h2>" +
+        "<p>Create, update, and organize menus for different dining outlets such as the restaurant, bar, room service, etc.</p>" +
+        "<div id='menuManagement'>" +
+        "<div id='outletSelection'>" +
+        "<label for='outlet'>Select Outlet:</label>" +
+        "<select id='outlet'>" +
+        "<option value='restaurant'>Restaurant</option>" +
+        "<option value='bar'>Bar</option>" +
+        "<option value='roomService'>Room Service</option>" +
+        "</select>" +
+        "</div>" +
+        "<div id='menuForm'>" +
+        "<label for='menuItemName'>Menu Item Name:</label><br>" +
+        "<input type='text' id='menuItemName' required><br><br>" +
+        "<label for='menuItemDescription'>Description:</label><br>" +
+        "<textarea id='menuItemDescription'></textarea><br><br>" +
+        "<label for='menuItemPrice'>Price:</label><br>" +
+        "<input type='number' id='menuItemPrice' min='0' step='0.01' required><br><br>" +
+        "<button onclick='addMenuItem()'>Add Menu Item</button>" +
+        "</div>" +
+        "<div id='menuItems'>" +
+        "<h3>Menu Items</h3>" +
+        "<ul id='menuItemList'></ul>" +
+        "</div>" +
+        "</div>";
+    break;
+
+
+
+
+
+           case 'TableReservation':
+    contentText = "" +
+        "<h2>Table Reservations: Manage Table Reservations</h2>" +
+        "<p>Manage table reservations for restaurant guests, including availability, seating arrangements, and special requests.</p>" +
+        "<div id='tableReservation'>" +
+        "<div id='reservationForm'>" +
+        "<label for='guestName'>Guest Name:</label><br>" +
+        "<input type='text' id='guestName' required><br><br>" +
+        "<label for='partySize'>Party Size:</label><br>" +
+        "<input type='number' id='partySize' min='1' required><br><br>" +
+        "<label for='reservationDate'>Reservation Date:</label><br>" +
+        "<input type='date' id='reservationDate' required><br><br>" +
+        "<label for='reservationTime'>Reservation Time:</label><br>" +
+        "<input type='time' id='reservationTime' required><br><br>" +
+        "<label for='specialRequests'>Special Requests:</label><br>" +
+        "<textarea id='specialRequests'></textarea><br><br>" +
+        "<button onclick='submitReservation()'>Submit Reservation</button>" +
+        "</div>" +
+        "<div id='reservationList'>" +
+        "<h3>Current Reservations</h3>" +
+        "<ul id='reservationItemList'></ul>" +
+        "</div>" +
+        "</div>";
+    break;
+
+
+case 'EmployeeDirectory':
+    contentText = "" +
+        "<p>Employee Directory: Maintain a list of hotel staff members.</p>" +
+        "<div id='employeeForm'>" +
+        "<label for='employeeName'>Employee Name:</label><br>" +
+        "<input type='text' id='employeeName' name='employeeName' required><br><br>" +
+        "<label for='employeeEmail'>Employee Email:</label><br>" +
+        "<input type='email' id='employeeEmail' name='employeeEmail' required><br><br>" +
+        "<label for='employeePhone'>Employee Phone Number:</label><br>" +
+        "<input type='tel' id='employeePhone' name='employeePhone' required><br><br>" +
+        "<label for='employeeEmergencyContact'>Employee Emergency Contact:</label><br>" +
+        "<input type='tel' id='employeeEmergencyContact' name='employeeEmergencyContact' required><br><br>" +
+        "<label for='employeeRole'>Role:</label><br>" +
+        "<input type='text' id='employeeRole' name='employeeRole' required><br><br>" +
+        "<input type='button' value='Submit' onclick='submitEmployee()'>" +
+        "</div>" +
+        "<h3>Employee Directory Table</h3>" +
+        "<div id='searchForm'>" +
+        "<label for='searchInput'>Search:</label><br>" +
+        "<input type='text' id='searchInput' name='searchInput' oninput='searchEmployee()'><br><br>" +
+        "</div>" +
+        "<table class='styled-table'>" +
+        "<thead>" +
+        "<tr>" +
+        "<th>Employee ID</th>" +
+        "<th>Name</th>" +
+        "<th>Email</th>" +
+        "<th>Phone Number</th>" +
+        "<th>Emergency Contact</th>" +
+        "<th>Role</th>" +
+        "<th>Status</th>" +
+        "<th>Shift</th>" +
+        "<th>Action</th>" +
+        "</tr>" +
+        "</thead>" +
+        "<tbody id='employeeTableBody'></tbody>" +
+        "</table>";
+    break;
+
+
+         case 'TrainingAndCertification':
+    contentText = "" +
+        "<p>Training and certifications: Monitor employee training progress, certifications, and skill development.</p>" +
+        "<div id='trainingForm'>" +
+        "<label for='employeeName'>Employee Name:</label><br>" +
+        "<input type='text' id='employeeName' name='employeeName' required><br><br>" +
+        "<label for='trainingType'>Training Type:</label><br>" +
+        "<input type='text' id='trainingType' name='trainingType' required><br><br>" +
+        "<label for='completionDate'>Completion Date:</label><br>" +
+        "<input type='date' id='completionDate' name='completionDate' required><br><br>" +
+        "<input type='button' value='Submit' onclick='submitTraining()'>" +
+        "</div>" +
+        "<h3>Training and Certifications Table</h3>" +
+        "<div id='searchForm'>" +
+        "<label for='searchInput'>Search:</label><br>" +
+        "<input type='text' id='searchInput' name='searchInput' oninput='searchTraining()'><br><br>" +
+        "</div>" +
+        "<table class='styled-table'>" +
+        "<thead>" +
+        "<tr>" +
+        "<th>Employee Name</th>" +
+        "<th>Training Type</th>" +
+        "<th>Completion Date</th>" +
+        "<th>Action</th>" +
+        "</tr>" +
+        "</thead>" +
+        "<tbody id='trainingTableBody'></tbody>" +
+        "</table>";
+    break;
+
+       case 'PerformanceReviews':
+    contentText = "" +
+        "<p>Performance reviews: Conduct performance evaluations, set goals, and provide feedback to staff members.</p>" +
+        "<div id='performanceReviewForm'>" +
+        "<label for='employeeName'>Employee Name:</label><br>" +
+        "<input type='text' id='employeeName' name='employeeName' required><br><br>" +
+        "<label for='reviewDate'>Review Date:</label><br>" +
+        "<input type='date' id='reviewDate' name='reviewDate' required><br><br>" +
+        "<label for='reviewType'>Review Type:</label><br>" +
+        "<select id='reviewType' name='reviewType'>" +
+        "<option value='annual'>Annual Review</option>" +
+        "<option value='quarterly'>Quarterly Review</option>" +
+        "<option value='monthly'>Monthly Review</option>" +
+        "</select><br><br>" +
+        "<label for='reviewNotes'>Review Notes:</label><br>" +
+        "<textarea id='reviewNotes' name='reviewNotes' rows='4' cols='50'></textarea><br><br>" +
+        "<label for='goals'>Goals:</label><br>" +
+        "<textarea id='goals' name='goals' rows='4' cols='50'></textarea><br><br>" +
+        "<label for='feedback'>Feedback:</label><br>" +
+        "<textarea id='feedback' name='feedback' rows='4' cols='50'></textarea><br><br>" +
+        "<input type='button' value='Submit' onclick='submitPerformanceReview()'>" +
+        "</div>" +
+        "<h3>Performance Review Table</h3>" +
+        "<div id='searchForm'>" +
+        "<label for='searchInput'>Search:</label><br>" +
+        "<input type='text' id='searchInput' name='searchInput' oninput='searchPerformanceReviews()'><br><br>" +
+        "</div>" +
+        "<table class='styled-table'>" +
+        "<thead>" +
+        "<tr>" +
+        "<th>Employee Name</th>" +
+        "<th>Review Type</th>" +
+        "<th>Review Date</th>" +
+        "<th>Review Notes</th>" +
+        "<th>Goals</th>" +
+        "<th>Feedback</th>" +
+        "</tr>" +
+        "</thead>" +
+        "<tbody id='performanceReviewTableBody'></tbody>" +
+        "</table>";
+    break;
+
+                contentText = "Select a management type from the left.";
+        }
+
+        document.getElementById("contentText").innerHTML = contentText; // Use innerHTML here instead of innerText
+    }
+
+    // Function to go back to index.html
+    function goBack() {
+        window.location.href = "admin-index.html";
+    }
+
+    //room maintenance
+function submitRoomMaintenance() {
+    // Get form data
+    const roomNumber = document.getElementById('roomNumber').value;
+    const maintenanceTask = document.getElementById('maintenanceTask').value;
+    const maintenanceDate = document.getElementById('maintenanceDate').value;
+//room maintenance
+    // Create a new row for the table
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${roomNumber}</td>
+        <td>${maintenanceTask}</td>
+        <td>${maintenanceDate}</td>
+        <td><input type='checkbox' id='maintenanceDone_${roomNumber}' onclick='updateMaintenanceStatus("${roomNumber}")'></td>
+        <td id='timestamp_${roomNumber}'></td>
+    `;
+//room status
+    // Append the new row to the table body
+    const tableBody = document.getElementById('maintenanceTableBody');
+    tableBody.appendChild(newRow);
+}
+
+//room status
+function updateMaintenanceStatus(roomNumber) {
+    const checkbox = document.getElementById(`maintenanceDone_${roomNumber}`);
+    const timestampCell = document.getElementById(`timestamp_${roomNumber}`);
+
+    if (checkbox.checked) {
+        const timestamp = new Date().toLocaleString(); // Get current timestamp
+        timestampCell.textContent = timestamp;
+    } else {
+        timestampCell.textContent = ''; // Clear timestamp if unchecked
+    }
+}
+
+
+//room status
+function searchTable() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("roomTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those that don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            var cell = td[j];
+            if (cell) {
+                txtValue = cell.textContent || cell.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break;
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+}
+
+
+//employee directory
+function submitEmployee() {
+    // Generate random ID
+    const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generates a random 4-digit number
+    const randomLetters = String.fromCharCode(65 + Math.floor(Math.random() * 26)) +
+                          String.fromCharCode(65 + Math.floor(Math.random() * 26)) +
+                          String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Generates three random letters
+    const employeeID = randomNumber + randomLetters; // Combines number and letters
+
+
+  //employee directory
+    // Retrieve other employee data
+    const employeeName = document.getElementById('employeeName').value;
+    const employeeEmail = document.getElementById('employeeEmail').value;
+    const employeePhone = document.getElementById('employeePhone').value;
+    const employeeEmergencyContact = document.getElementById('employeeEmergencyContact').value;
+    const employeeRole = document.getElementById('employeeRole').value;
+//employee directory
+   // Default value for status dropdown
+    const statusDropdown = "<select><option value='active'>Active</option><option value='inactive'>Inactive</option></select>";
+//employee directory
+    // Create shift picker with an event listener to update the day name
+    const shiftPicker = document.createElement('input');
+    shiftPicker.type = 'datetime-local';
+    shiftPicker.addEventListener('change', function() {
+        const selectedDate = new Date(this.value);
+        const dayName = selectedDate.toLocaleDateString('en-US', { weekday: 'long' }); // Get name of the day
+        this.nextElementSibling.textContent = `(${dayName})`;
+    });
+//employee directory
+    // Create container for shift picker and day name
+    const shiftContainer = document.createElement('div');
+    shiftContainer.appendChild(shiftPicker);
+//employee directory
+    // Create new table row
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${employeeID}</td>
+        <td>${employeeName}</td>
+        <td>${employeeEmail}</td>
+        <td>${employeePhone}</td>
+        <td>${employeeEmergencyContact}</td>
+        <td>${employeeRole}</td>
+        <td>${statusDropdown}</td>
+        <td></td>
+        <td><button onclick='deleteEmployee("${employeeID}")'>Delete</button></td>
+    `;
+//employee directory
+    // Append shift container to table row
+    newRow.children[7].appendChild(shiftContainer);
+//employee directory
+    // Append row to table body
+    const tableBody = document.getElementById('employeeTableBody');
+    tableBody.appendChild(newRow);
+//employee directory
+    // Add event listener to delete row
+    newRow.addEventListener("click", function() {
+        this.remove(); // Remove the row when clicked
+    });
+}
+
+
+//perfomance reviews
+   function submitPerformanceReview() {
+    // Get form data
+    const employeeName = document.getElementById('employeeName').value;
+    const reviewType = document.getElementById('reviewType').value;
+    const reviewDate = document.getElementById('reviewDate').value;
+    const reviewNotes = document.getElementById('reviewNotes').value;
+    const goals = document.getElementById('goals').value;
+    const feedback = document.getElementById('feedback').value;
+
+    // Create a new row for the table
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${employeeName}</td>
+        <td>${reviewType}</td>
+        <td>${reviewDate}</td>
+        <td>${reviewNotes}</td>
+        <td>${goals}</td>
+        <td>${feedback}</td>
+    `;
+
+    // Append the new row to the table body
+    const tableBody = document.getElementById('performanceReviewTableBody');
+    tableBody.appendChild(newRow);
+}
+
+function searchPerformanceReviews() {
+    // Declare variables
+    let input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("performanceReviewTableBody");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those that don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        let rowVisible = false;
+        for (j = 0; j < td.length; j++) {
+            let cell = td[j];
+            if (cell) {
+                txtValue = cell.textContent || cell.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    rowVisible = true;
+                    break;
+                }
+            }
+        }
+        // Set display property based on row visibility
+        tr[i].style.display = rowVisible ? "" : "none";
+    }
+}
+
+
+</script>
+
+</body>
+</html>

@@ -182,10 +182,12 @@
 
 <div id="header">
     <img id="logo" src="logo.png" alt="Logo">
-    <h1> My Tray</h1>
-  <span id="table-number"></span>
+    <h1> My Admin Tray</h1>
+    <span id="room-number"></span>
+    <span id="table-number"></span>
     <button id="back-button" onclick="goBack();">Back</button>
 </div>
+
 
 
 
@@ -207,7 +209,8 @@
         <button id="clear-orders-button" onclick="clearOrders();">Empty Tray</button>
         <button id="complete-order-button" onclick="completeOrder();">Complete Order</button>
         <button id="done-button" onclick="redirectToEntertainment();">Done</button>
-          </div>
+        <button id="tip-button" onclick="tip();">Tip</button>
+    </div>
 </div>
 
 <script>
@@ -218,7 +221,7 @@
   // Check if the previous page is "entertainment.html"
   if (previousPage.includes("entertainment.html")) {
     // If the previous page is "entertainment.html," redirect to a different page
-    window.location.href = 'menus.html';
+    window.location.href = 'admin-restaurant-menus.html';
   } else {
     // If not, go back to the previous page
     window.history.back();
@@ -364,13 +367,13 @@ function redirectToEntertainment() {
 src="https://cdn.emailjs.com/dist/email.min.js"
 
   // Function to complete the order
- window.completeOrder = function() {
+  function completeOrder() {
     // Prompt the user for their email address
     const userEmail = prompt('Please enter your email address for digital receipt:');
 
     // If the user clicks Cancel or enters an empty email, do nothing
     if (!userEmail) {
-        return;
+      return;
     }
 
     // Get order details
@@ -382,22 +385,7 @@ src="https://cdn.emailjs.com/dist/email.min.js"
 
     // Send order details to the specified email
     sendOrderReceiptToEmail(orders, totalCost, userEmail);
-
-    // Save the order details in Local Storage
-    localStorage.setItem('completedOrder', JSON.stringify({
-        tableNumber: localStorage.getItem('tableNumber'),
-        orders: orders,
-        totalCost: totalCost,
-        description: 'Your description here'
-    }));
-
-    // Optionally, clear the table number
-    clearTableNumber();
-
-    // Optionally, clear the orders
-    clearOrders();
-};
-
+  }
 
   // Function to simulate sending orders to a printer
   function printOrdersToPrinter(orders) {
@@ -458,59 +446,20 @@ src="https://cdn.emailjs.com/dist/email.min.js"
 
 
 window.addEventListener('load', function () {
-            displayOrders();
+    displayOrders();
 
-            // Retrieve and display the table number
-            const tableNumber = localStorage.getItem('tableNumber');
-            if (tableNumber) {
-                document.getElementById('table-number').textContent = `Table Number: ${tableNumber}`;
-            }
-        });
-  // Add this function to clear the table number if needed
-        function clearTableNumber() {
-            localStorage.removeItem('tableNumber');
-        }
+    // Retrieve and display the room number
+    const roomNumber = localStorage.getItem('roomNumber');
+    if (roomNumber) {
+        document.getElementById('room-number').textContent = `Room Number: ${roomNumber}`;
+    }
 
-
-// Front end JavaScript code
-
-function completeOrder() {
-    const userEmail = prompt('Please enter your email address for digital receipt:');
-    if (!userEmail) return;
-
-    const orders = JSON.parse(localStorage.getItem('orders')) || [];
-    const totalCost = parseFloat(localStorage.getItem('totalCost')) || 0;
-
-    // Make an AJAX request to the backend server
-    fetch('/submit-order', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            userEmail,
-            orders,
-            totalCost,
-        }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to submit order');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data.message); // Display success message
-        localStorage.removeItem('orders');
-        localStorage.removeItem('totalCost');
-        displayOrders(); // Update the UI
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to submit order. Please try again.');
-    });
-}
-
+    // Retrieve and display the table number
+    const tableNumber = localStorage.getItem('tableNumber');
+    if (tableNumber) {
+        document.getElementById('table-number').textContent = `Table Number: ${tableNumber}`;
+    }
+});
 
 </script>
 

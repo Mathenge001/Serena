@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1st Floor Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Your existing styles for box containers remain the same */
+    .box-container {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(5vw, 1fr)); /* Responsive grid */
+      gap: 2vw; /* Responsive gap */
+      margin: 2vh;
+    }
+
+    /* Your existing styles for individual boxes remain the same */
+    .numbered-box {
+      position: relative;
+      width: 5vw;
+      height: 5vh;
+      border: 1px solid #333;
+      background-color: #fff;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* Add style for red background */
+    .red-background {
+      background-color: red !important;
+    }
+
+    /* Green rectangles for layout elements */
+    .green-rectangle {
+      position: absolute;
+      z-index: -1;
+      background-color: #00FF00; /* Green color */
+    }
+
+    /* Bar */
+    .green-rectangle.bar {
+      width: 15vw; /* Responsive width */
+      height: 10vh; /* Responsive height */
+      top: 40vh; /* Adjusted top position */
+      left: 2vw; /* Adjusted left position */
+    }
+
+    /* Toilet */
+    .green-rectangle.toilet {
+      width: 5vw; /* Responsive width */
+      height: 5vh; /* Responsive height */
+      top: 30vh; /* Adjusted top position */
+      left: 10vw; /* Adjusted left position */
+    }
+
+    /* Stairs */
+    .green-rectangle.stairs {
+      width: 5vw; /* Responsive width */
+      height: 20vh; /* Responsive height */
+      top: 20vh; /* Adjusted top position */
+      left: 18vw; /* Adjusted left position */
+    }
+
+    /* Tables outside */
+    .numbered-box.outside-table {
+      background-color: #c7600f; /* Orange color */
+    }
+
+    /* Tables inside */
+    .numbered-box.inside-table {
+      background-color: #c24b39; /* Red color */
+    }
+  </style>
+</head>
+<body>
+  <div class="box-container">
+    <!-- Tables outside -->
+    <div class="numbered-box outside-table">1</div>
+    <div class="numbered-box outside-table">2</div>
+    <div class="numbered-box outside-table">3</div>
+    <div class="numbered-box outside-table">4</div>
+    <div class="numbered-box outside-table">5</div>
+
+    <!-- Tables inside -->
+    <div class="numbered-box inside-table">6</div>
+    <div class="numbered-box inside-table">7</div>
+    <div class="numbered-box inside-table">8</div>
+    <div class="numbered-box inside-table">9</div>
+    <div class="numbered-box inside-table">10</div>
+    <div class="numbered-box inside-table">11</div>
+    <div class="numbered-box inside-table">12</div>
+    <div class="numbered-box inside-table">13</div>
+    <div class="numbered-box inside-table">14</div>
+    <div class="numbered-box inside-table">15</div>
+    <div class="numbered-box inside-table">16</div>
+    <div class="numbered-box inside-table">17</div>
+    <div class="numbered-box inside-table">18</div>
+    <div class="numbered-box inside-table">19</div>
+    <div class="numbered-box inside-table">20</div>
+  </div>
+
+  <!-- Layout elements -->
+  <div class="green-rectangle bar">Bar</div>
+  <div class="green-rectangle toilet">Toilet</div>
+  <div class="green-rectangle stairs">Stairs</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1st Floor Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Your existing styles for box containers remain the same */
+    .box-container {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(5vw, 1fr)); /* Responsive grid */
+      gap: 2vw; /* Responsive gap */
+      margin: 2vh;
+    }
+
+    /* Your existing styles for individual boxes remain the same */
+    .numbered-box {
+      position: relative;
+      width: 5vw;
+      height: 5vh;
+      border: 1px solid #333;
+      background-color: #fff;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* Add style for red background */
+    .red-background {
+      background-color: red !important;
+    }
+
+    /* Green rectangles for layout elements */
+    .green-rectangle {
+      position: absolute;
+      z-index: -1;
+      background-color: #00FF00; /* Green color */
+    }
+
+    /* Bar */
+    .green-rectangle.bar {
+      width: 15vw; /* Responsive width */
+      height: 10vh; /* Responsive height */
+      top: 40vh; /* Adjusted top position */
+      left: 2vw; /* Adjusted left position */
+    }
+
+    /* Toilet */
+    .green-rectangle.toilet {
+      width: 5vw; /* Responsive width */
+      height: 5vh; /* Responsive height */
+      top: 30vh; /* Adjusted top position */
+      left: 10vw; /* Adjusted left position */
+    }
+
+    /* Stairs */
+    .green-rectangle.stairs {
+      width: 5vw; /* Responsive width */
+      height: 20vh; /* Responsive height */
+      top: 20vh; /* Adjusted top position */
+      left: 18vw; /* Adjusted left position */
+    }
+
+    /* Tables outside */
+    .numbered-box.outside-table {
+      background-color: #c7600f; /* Orange color */
+    }
+
+    /* Tables inside */
+    .numbered-box.inside-table {
+      background-color: #c24b39; /* Red color */
+    }
+  </style>
+</head>
+<body>
+  <div class="box-container">
+    <!-- Tables outside -->
+    <div class="numbered-box outside-table">1</div>
+    <div class="numbered-box outside-table">2</div>
+    <div class="numbered-box outside-table">3</div>
+    <div class="numbered-box outside-table">4</div>
+    <div class="numbered-box outside-table">5</div>
+
+    <!-- Tables inside -->
+    <div class="numbered-box inside-table">6</div>
+    <div class="numbered-box inside-table">7</div>
+    <div class="numbered-box inside-table">8</div>
+    <div class="numbered-box inside-table">9</div>
+    <div class="numbered-box inside-table">10</div>
+    <div class="numbered-box inside-table">11</div>
+    <div class="numbered-box inside-table">12</div>
+    <div class="numbered-box inside-table">13</div>
+    <div class="numbered-box inside-table">14</div>
+    <div class="numbered-box inside-table">15</div>
+    <div class="numbered-box inside-table">16</div>
+    <div class="numbered-box inside-table">17</div>
+    <div class="numbered-box inside-table">18</div>
+    <div class="numbered-box inside-table">19</div>
+    <div class="numbered-box inside-table">20</div>
+  </div>
+
+  <!-- Layout elements -->
+  <div class="green-rectangle bar">Bar</div>
+  <div class="green-rectangle toilet">Toilet</div>
+  <div class="green-rectangle stairs">Stairs</div>
+</body>
+</html>

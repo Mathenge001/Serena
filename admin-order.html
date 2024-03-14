@@ -13,7 +13,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('home_background.png');
+            background-image: url('https://i.pinimg.com/564x/90/67/3d/90673d6f139d6d78e803214af42270a5.jpg');
             background-size: cover;
             background-position: center;
             color: #333;
@@ -26,7 +26,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.37);
             z-index: 0;
           height: 100%;
         }
@@ -41,60 +41,77 @@
 
 
 
-        /* Chocolate Brown Theme */
-.neon-text {
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #8b4513, 0 0 30px #8b4513, 0 0 40px #8b4513, 0 0 55px #8b4513, 0 0 75px #8b4513;
-}
+        /* Neon Text Styles */
+        .neon-text {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #2c2c31, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+        }
 
-.notification-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(139, 69, 19, 0.55); /* Chocolate Brown */
-    color: #fff;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        .notification-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #493220;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-.cta-button {
-    padding: 10px ;
-    font-size: 16px;
-    background-color: #8b4513; /* Chocolate Brown */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
 
-.cta-button:hover {
-    background-color: #654321; /* Darker shade of Chocolate Brown */
-}
+        .notification-text {
+            flex-grow: 1;
+            margin: 0;
+        }
+
+        .cta-button {
+            padding: 10px ;
+            font-size: 16px;
+            background-color: #915a2f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #654321;
+        }
+
+        .header-content {
+            max-width: 600px;
+            margin: 0 auto;
+            z-index: 2;
+        }
 
         #logo {
             max-width: 150px;
             height: auto;
+            margin-top: 100px;
         }
 
         h1 {
             font-size: 2.5em;
             margin: 10px 0 0;
             color: #915a2f;
-          margin-top: -50px;
+          margin-top: 10px;
         }
 
         .description {
             margin-top: 10px;
             font-size: 1.2em;
-            color: #444;
+            color: #000000;
         }
 
         .table-input-container {
@@ -149,7 +166,7 @@
             padding: 15px 30px;
             font-size: 1.2em;
             cursor: pointer;
-            background-color: #784111;
+            background-color: #493220;
             color: white;
             border: none;
             border-radius: 8px;
@@ -218,7 +235,7 @@
 
 
         .callWaiterButton {
-            background-color: #784111;
+            background-color: #493220;
             color: #fff;
             padding: 10px;
             border: none;
@@ -244,7 +261,7 @@
         }
 
         #flexContainer button {
-            background-color: rgba(229, 198, 26, 0.84);
+            background-color: rgb(51, 51, 51);
             color: #fff;
             padding: 10px;
             margin-top: 5px;
@@ -303,33 +320,64 @@
         .closeButton:hover {
             color: #555;
         }
+
+
+          .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #000000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="notification-bar" id="notificationBar">
-            <i class="fas fa-hand-paper icon"></i>
-            <marquee>
-        <p class="neon-text">Pssst! Do you want to get secret offers and best prices for amazing dishes?</p>
-    </marquee>
-            <button class="cta-button" onclick="openSpecialsPage()">Tap Here</button>
-        </div>
+      <button class="back-button" onclick="window.location.href = 'admin-operations.html'">Back</button>
+
 
         <div class="header-content">
-            <img id="logo" src="logo.png" alt="Serena Hotel Logo" widht="80" height="70">
+                  <img id="logo" src="logo.png" alt="Serena Hotel Logo" widht="80" height="70">
           <h1>Serena Hotel Dining</h1>
             <p class="description">Experience the finest dining with a touch of elegance. Our culinary delights await you.</p>
         </div>
 
         <!-- Table Input Container -->
         <div class="table-input-container">
-            <label for="tableNumber">Please input your table number:</label>
-            <input type="text" id="tableNumber" placeholder="Enter Table Number">
-            <div class="cta-button done-button">
-                <button class="cta-button done-button" onclick="registerTableNumber(event)">Done</button>
-            </div>
-        </div>
+    <label for="orderLocation">Where are you ordering from?</label>
+    <select id="orderLocation" onchange="toggleInputFields()">
+        <option value="restaurant">Restaurant</option>
+        <option value="room">Room</option>
+    </select>
+</div>
+
+<!-- Room Number Input -->
+<div id="roomNumberInput" class="table-input-container" style="display: none;">
+    <label for="roomNumber">Please enter your room number:</label>
+    <input type="text" id="roomNumber" placeholder="Enter Room Number">
+    <div class="cta-button done-button">
+        <button class="cta-button done-button" onclick="registerRoomNumber()">Done</button>
+    </div>
+</div>
+
+<!-- Table Number Input -->
+<div id="tableNumberInput" class="table-input-container">
+    <label for="tableNumber">Please enter your table number:</label>
+    <input type="text" id="tableNumber" placeholder="Enter Table Number">
+    <div class="cta-button done-button">
+        <button class="cta-button done-button" onclick="registerTableNumber()">Done</button>
+    </div>
+</div>
+
 
         <!-- Button Container -->
         <div class="button-container">
@@ -350,37 +398,64 @@
     </div>
             <!-- Animated icon for Proceed to Order button -->
             <button id="proceedToOrderButton" onclick="proceedToOrder()">
-                <i class="fas fa-utensils icon icon-spin"></i>
-                Proceed to Order
-            </button>
+    <i class="fas fa-utensils icon icon-spin"></i>
+    Proceed to Order
+</button>
+
         </div>
     </header>
 
     <script>
         // Function to handle "Done" button click
-        function registerTableNumber(event) {
-            event.preventDefault();
+       function toggleInputFields() {
+    var orderLocation = document.getElementById("orderLocation").value;
+    var roomNumberInput = document.getElementById("roomNumberInput");
+    var tableNumberInput = document.getElementById("tableNumberInput");
 
-            var tableNumber = document.getElementById("tableNumber").value;
+    if (orderLocation === "room") {
+        roomNumberInput.style.display = "flex";
+        tableNumberInput.style.display = "none";
+    } else {
+        roomNumberInput.style.display = "none";
+        tableNumberInput.style.display = "flex";
+    }
+}
 
-            // Perform validation if needed
+// Function to handle "Done" button click for room number input
+function registerRoomNumber() {
+    var roomNumber = document.getElementById("roomNumber").value;
 
-            localStorage.setItem("tableNumber", tableNumber);
+    // Perform validation if needed
 
-            alert("Table number registered!");
+    localStorage.setItem("roomNumber", roomNumber);
 
-            document.getElementById("tableNumber").value = "";
-        }
+    alert("Room number registered!");
+
+    document.getElementById("roomNumber").value = "";
+}
+
+// Function to handle "Done" button click for table number input
+function registerTableNumber() {
+    var tableNumber = document.getElementById("tableNumber").value;
+
+    // Perform validation if needed
+
+    localStorage.setItem("tableNumber", tableNumber);
+
+    alert("Table number registered!");
+
+    document.getElementById("tableNumber").value = "";
+}
 
 
         // Function to handle "Proceed to Order" button click
         function proceedToOrder() {
             // Redirect to the Order page or implement further functionality
-            window.location.href = "menus.html";
+            window.location.href = "admin-pick-a-menu.html";
         }
 
         function openSpecialsPage() {
-            window.location.href = 'offers.html';
+            window.location.href = 'admin-offers.html';
         }
 
 

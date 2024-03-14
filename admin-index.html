@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Admin</title>
+    <style>
+ body {
+    background-image: url('https://i.pinimg.com/564x/f6/33/17/f6331728a19094c58deb793ed01c2053.jpg');
+    background-size: 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #000000; /* Changing text color to white for better contrast */
+z-index: 2;
+ }
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    z-index: 2;
+}
+
+p {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 1em;
+    line-height: 1.4;
+  z-index: 2;
+}
+
+.menuButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-size: cover;
+    position: absolute;
+}
+
+.menuButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Add hover effect for better visibility */
+}
+
+.menuButton:focus {
+    outline: none;
+}
+
+.operationsButton {
+   top: -150px; /* Adjust top position as needed */
+    left: -250px; /* Adjust left position as needed */
+}
+
+.administrationButton {
+    top: 100px; /* Adjust top position as needed */
+    left: -380px; /* Adjust right position as needed */
+}
+
+.reportsButton {
+    bottom: -50px; /* Adjust bottom position as needed */
+    left: -50px; /* Adjust left position as needed */
+}
+
+.settingsButton {
+    bottom: -280px; /* Adjust bottom position as needed */
+    right: 30px; /* Adjust right position as needed */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome Admin</h1>
+        <p>Today is: <span id="date"></span></p>
+        <p>Let's redefine hospitality together.</p>
+    </div>
+
+    <div class="container">
+    <button type="button" id="operationsButton" class="menuButton operationsButton" onclick="openPage('admin-operations.html')">Operations</button>
+
+    <button type="button" id="administrationButton" class="menuButton administrationButton" onclick="openPage('administration.html')">Administration</button>
+    <button type="button" id="settingsButton" class="menuButton settingsButton" onclick="openPage('admin-settings.html')">Settings</button>
+</div>
+
+
+    <script>
+        // Function to get today's date
+        function getDate() {
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return today.toLocaleDateString('en-US', options);
+        }
+
+
+        // Set today's date in the page
+        document.getElementById("date").innerText = getDate();
+
+
+// Function to navigate to different pages
+function openPage(pageURL) {
+    window.location.href = pageURL;
+}
+
+
+
+    </script>
+</body>
+</html>

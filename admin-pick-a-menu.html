@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Selection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .split-screen-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .left-side {
+            position: relative;
+            flex-grow: 1;
+            background-image: url('https://i.pinimg.com/564x/70/0d/f5/700df5b522327cf57c58a26480ceafbd.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .right-side {
+            position: relative;
+            flex-grow: 1;
+            background-image: url('https://i.pinimg.com/564x/b6/aa/91/b6aa915a8af1139561f0b9ec24a2e5af.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.19);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
+            flex-grow: 1;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .icon {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ccc;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<button class="back-button" onclick="window.location.href = 'admin-order.html'">Back</button>
+
+<div class="split-screen-container">
+    <div class="left-side">
+        <div class="overlay">
+            <div class="button-container">
+                <button class="button-left" onclick="redirectToRestaurantMenu()">
+                    <i class="fas fa-utensils icon"></i>
+                    Restaurant Menu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="overlay">
+            <div class="button-container">
+                <button class="button-right" onclick="redirectToInDinningMenu()">
+                    <i class="fas fa-door-open icon"></i>
+                    In-Dinning Menu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function redirectToRestaurantMenu() {
+        window.location.href = "admin-restaurant-menus.html";
+    }
+
+    function redirectToInDinningMenu() {
+        window.location.href = "admin-in-dinning.html";
+    }
+</script>
+
+</body>
+</html>

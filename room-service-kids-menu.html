@@ -217,6 +217,37 @@
             background-color: #edde1b;
         }
 
+        #textBoxContainer {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        #textBoxContainer textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #textBoxContainer button {
+            background-color: rgba(21, 21, 21, 0.7);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #textBoxContainer button:hover {
+            background-color: rgb(239, 0, 0);
+        }
 
         .closeButton {
             cursor: pointer;
@@ -239,17 +270,17 @@
 
 
 
-     .back-icon {
-        color: #ffffff;
-        font-size: 16px; /* Adjusted font size for skinnier button */
-        cursor: pointer;
-        text-decoration: none;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        right: initial;
-        z-index: 2;
-    }
+      .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ccc;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
 
 
 
@@ -272,8 +303,8 @@
     </style>
 </head>
 
+<button class="back-button" onclick="window.location.href = 'room-service-restaurant-menu.html'">Back</button>
 
- <a href="menus.html" class="back-button">&#8592; Back</a>
 
 
     <h1>Kids' Menu</h1>
@@ -424,16 +455,16 @@
 
 
 
+
     <button class="call-waiter-button" onclick="toggleFlexbox()">Call Waiter</button>
   </div>
-    <!-- Your existing HTML content -->
-
     <div id="flexContainer">
         <span class="closeButton" onclick="toggleFlexbox()">×</span>
         <!-- Options -->
         <button onclick="askForAssistance()">Ask for Assistance</button>
         <button onclick="clearTable()">Clear Table</button>
         <button onclick="billMe()">Bill Me</button>
+
     </div>
 
   <script>
@@ -466,30 +497,54 @@
         }
     }
 
-      // Function to toggle the visibility of the flex container
-        function toggleFlexbox() {
+      function toggleFlexbox() {
             var flexContainer = document.getElementById("flexContainer");
-            flexContainer.style.display = flexContainer.style.display === "none" ? "flex" : "none";
+            flexContainer.style.display = (flexContainer.style.display === "flex") ? "none" : "flex";
         }
 
-          // Function to handle asking for assistance
+        function hideTextBox() {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "none";
+        }
+
         function askForAssistance() {
             alert("Asking for assistance. Please wait.");
-            // You can add further functionality here if needed
         }
-       // Function to handle clearing the table
+
         function clearTable() {
             alert("Request to clear the table submitted.");
-            // You can add further functionality here if needed
         }
 
-        // Function to handle requesting the bill
         function billMe() {
             alert("Requesting the bill. Thank you for dining with us!");
-            // You can add further functionality here if needed
         }
 
+        function showTextBox(feedbackType) {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "flex";
+            document.getElementById("textBox").focus();
+            document.getElementById("textBox").setAttribute("data-feedback-type", feedbackType);
+        }
 
+        function submitFeedback() {
+            var textBoxContainer = document.getElementById("textBoxContainer");
+            textBoxContainer.style.display = "none";
+            var feedbackType = document.getElementById("textBox").getAttribute("data-feedback-type");
+            var feedbackText = document.getElementById("textBox").value;
+
+            // Send feedback to email
+            var emailSubject = "Feedback - " + feedbackType;
+            var emailBody = "Feedback Type: " + feedbackType + "\n\n" + "Feedback Text: " + feedbackText;
+            window.location.href = "mailto:karemathenge8@gmail.com?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+
+            // Reflect on admin panel (You may need a server-side implementation for this)
+            saveToAdminPanel(feedbackType, feedbackText);
+        }
+
+        function saveToAdminPanel(feedbackType, feedbackText) {
+            // Simulate server-side logic by showing an alert
+            alert("Feedback Type: " + feedbackType + "\n\n" + "Feedback Text: " + feedbackText + "\n\nSaved to admin panel.");
+        }
 
     function toggleDropdown() {
         const dropdownMenu = document.getElementById('myDropdown');
@@ -515,7 +570,7 @@
         // Add click event listener to the back button
         backButton.addEventListener("click", function(event) {
             event.preventDefault(); // Prevent default behavior of anchor tag
-            window.location.href = "menus.html"; // Navigate to menus.html
+            window.location.href = "room-service-menus.html"; // Navigate to menus.html
         });
     });
 </script>

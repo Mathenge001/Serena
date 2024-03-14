@@ -227,7 +227,7 @@
 
 /* Short Rains Menu Container */
 #ShortRainsMenu {
-    background: url('https://i.pinimg.com/564x/db/4c/27/db4c27f6458048bc392bed8d9cc0a819.jpg') center/cover;
+    background: url('https://i.pinimg.com/564x/0d/5d/93/0d5d939fad1d6dbfa9e3b56ff6ca2a1b.jpg') center/cover;
     color: #fff;
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -298,7 +298,7 @@
 
 /* Long Rains Menu Container */
 #LongRainsMenu {
-    background: url('https://i.pinimg.com/564x/5d/a8/7c/5da87ccb298cde34e02bb2c77b6dfbcf.jpg') center/cover no-repeat;
+    background: url('https://i.pinimg.com/736x/66/c1/c0/66c1c0c36ce9196711255cb9e8d01bf9.jpg') center/cover no-repeat;
     color: #fff;
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -369,7 +369,7 @@
 
 /* Hot and Dry Season Menu Container */
 #HotDrySeasonMenu {
-    background: url('https://i.pinimg.com/564x/ea/1c/52/ea1c526f46561dfb5443320a22e18268.jpg') center/cover no-repeat;
+    background: url('https://i.pinimg.com/736x/91/ab/35/91ab351e0ca4bc826cde2683b1de7759.jpg') center/cover no-repeat;
     color: #eeeeee;
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -437,78 +437,10 @@
     background-color: #45a049;
 }
 
-/* Cool Season Menu Container */
-#CoolSeasonMenu {
-  background: url('https://i.pinimg.com/564x/ea/1c/52/ea1c526f46561dfb5443320a22e18268.jpg') center/cover no-repeat;
-  color: #fff;
-  font-family: 'Arial', sans-serif;
-  padding: 20px;
-  text-align: center;
-  background-size: 99% auto; /* Adjust the width percentage as needed */
-  width: 100%;
-  background-attachment: fixed;
-}
-
-/* Category Title */
-.category-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Item Container */
-.cool-season-item-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center the items horizontally */
-    margin-top: 20px;
-}
-
-/* Individual Item */
-.cool-season-item {
-    width: 275px; /* Adjust the width as needed */
-    margin: 10px;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box; /* Added box-sizing for proper width calculation */
-}
-
-.cool-season-item img {
-    width: 100%;
-    height:  229px; /* Adjusted to maintain aspect ratio */
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.cool-season-item h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.cool-season-item p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-.order-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.order-button:hover {
-    background-color: #45a049;
-}
 
 /* Cool Season Menu Container */
 #CoolSeasonMenu {
-  background: url('https://i.pinimg.com/564x/61/d2/86/61d28621669387d9b7e7a8ba9d428b4e.jpg') center/cover no-repeat;
+  background: url('https://i.pinimg.com/736x/30/63/99/306399ea90acd2ba08e5a8a8880e5929.jpg') center/cover no-repeat;
   color: #fff;
   font-family: 'Arial', sans-serif;
   padding: 20px;
@@ -583,15 +515,15 @@
 <body>
  <div class="header">
         <!-- Back icon to go back to the previous page -->
-        <a href="menus.html" class="back-icon">&#8592; Back</a>
+        <a href="room-service-restaurant-menu.html" class="back-icon">&#8592; Back</a>
 
         <!-- Dropdown menu to navigate to other menus -->
        <select id="menuDropdown" class="menu-dropdown" onchange="navigateToMenu()">
     <option value="" disabled selected>Select Menu</option>
-    <option value="kids-menu.html">Kids' Menu</option>
-    <option value="adult-menu.html">Adult Menu</option>
-    <option value="special-dietary-menu.html">Special dietary Menu</option>
-<option value="bar-menu.html">Bar</option>
+    <option value="room-service-kids-menu.html">Kids' Menu</option>
+    <option value="room-service-adult-menu.html">Adult Menu</option>
+    <option value="room-service-special-dietary-menu.html">Special dietary Menu</option>
+<option value="room-service-bar-menu.html">Bar</option>
        </select>
     </div>
 
@@ -623,6 +555,7 @@
         <button onclick="askForAssistance()">Ask for Assistance</button>
         <button onclick="clearTable()">Clear Table</button>
         <button onclick="billMe()">Bill Me</button>
+
     </div>
 
       <button id="view-orders-button" class="menu-button" onclick="viewMyOrders()">View My Orders</button>
@@ -1116,7 +1049,7 @@ function toggleDropdown() {
 
  function viewMyOrders() {
         // Implement logic to navigate to the "View My Orders" page
-        window.location.href = 'view-my-orders.html';
+        window.location.href = 'room-service-view-my-orders.html';
     }
 
 function orderItem(name, price) {

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entertainment Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif; /* Choose your preferred font */
+      background-image: url('https://i.pinimg.com/564x/ff/77/98/ff77981c0aae8bc1519bbc7f9f853fd7.jpg'); /* Replace with your texture image */
+    }
+
+    #header {
+      background-color: #333;
+      padding: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    #back-button {
+      background-color: #000000;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 500px; /* Adjusted margin for better positioning */
+    }
+
+    #menu-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      margin-top: -150px;
+    }
+
+      .entertainment-button {
+      color: white;
+      padding: 10px 20px; /* Adjusted button size */
+      margin: 5px 0; /* Reduced vertical space */
+      font-size: 14px; /* Reduced font size */
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+       transition: transform 0.3s; /* Add transition for a smooth effect */
+}
+
+.entertainment-button:hover {
+  transform: scale(1.1); /* Enlarge the button on hover */
+}
+
+
+    /* Set background images for each button */
+    .entertainment-button:nth-child(1) {
+  background-image: url('https://i.pinimg.com/564x/17/72/bb/1772bbd3eecbc2ca128a701e907837bc.jpg'); /* Replace with your image URL */
+  background-size: cover; /* Use 'cover' to fit within specified dimensions */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center 65%; /* Move the background image 50% from the top */
+  height: 6vh;
+  width: 260px;
+       color: #eeeeee; /* Set the text color to white (you can use any color value) */
+}
+
+
+    .entertainment-button:nth-child(2) {
+      background-image: url('https://i.pinimg.com/564x/24/5f/fb/245ffb182a30e411d0f9ef61c4e6370a.jpg'); /* Replace with your image URL */
+      background-size: cover;
+      background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 40%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+       color: #ffffff; /* Set the text color to white (you can use any color value) */
+
+    }
+
+    .entertainment-button:nth-child(3) {
+      background-image: url('https://i.pinimg.com/564x/1b/2f/0b/1b2f0be762f8ba3386616deaba1f651d.jpg'); /* Replace with your image URL */
+      background-size: cover;
+       background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 50%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+    }
+
+    .entertainment-button:nth-child(4) {
+  background-image: url('https://i.pinimg.com/564x/62/98/c9/6298c9062d27ae97f168d4ac61f04d4a.jpg'); /* Replace with your image URL for Movies */
+  background-size: cover;
+      background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 25%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+       color: #eeeeee; /* Set the text color to white (you can use any color value) */
+
+}
+
+.entertainment-button:nth-child(5) {
+  background-image: url('https://i.pinimg.com/564x/87/99/59/879959c9e18729568156805fbb6c912b.jpg'); /* Replace with your image URL for Music */
+  background-size: cover;
+   background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 50%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+   color: #ffffff; /* Set the text color to white (you can use any color value) */
+
+}
+
+.entertainment-button:nth-child(6) {
+  background-image: url('https://i.pinimg.com/236x/da/61/60/da61606b5c06cbac4330860b17ee6ad2.jpg'); /* Replace with your image URL for Games */
+  background-size: 100%;
+   background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 10%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+   color: #eeeeee; /* Set the text color to white (you can use any color value) */
+
+}
+
+.entertainment-button:nth-child(7) {
+  background-image: url('https://i.pinimg.com/564x/dc/5d/9c/dc5d9c1692bd3ad96f6db322ed1081a4.jpg'); /* Replace with your image URL for News Streaming */
+  background-size: cover;
+  background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 50%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+}
+
+.entertainment-button:nth-child(8) {
+  background-image: url('https://i.pinimg.com/564x/d6/d4/70/d6d470fbf2476a054e0c6cfc76203eee.jpg'); /* Replace with your image URL for Sports */
+  background-size: cover;
+  background-repeat: no-repeat; /* Prevent image from repeating */
+      background-position: center 55%; /* Move the background image 50% from the top */
+      height: 6vh;
+      width: 260px;
+   color: #ffffff; /* Set the text color to white (you can use any color value) */
+
+}
+
+
+    #call-button {
+      background-color: #e74c3c;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 20px; /* Adjusted margin for better positioning */
+      margin-top: -300px;
+    }
+
+    #call-button::after {
+      content: '📳';
+      display: inline-block;
+      margin-left: 5px;
+      transition: transform 0.2s ease-out;
+    }
+
+    #call-button.clicked::after {
+      transform: scale(1.5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header">
+    <button id="back-button" onclick="goToViewOrders()">Back </button>
+    <button id="call-button" onclick="initiateCall()">📳 Call Waiter</button>
+  </div>
+
+  <div id="menu-container">
+    <button class="entertainment-button" onclick="redirectToAkilikids()">Kids Entertainment</button>
+    <button class="entertainment-button" onclick="redirectToNewspaper()">Newspaper</button>
+    <button class="entertainment-button" onclick="redirectToDocumentary()">Documentary</button>
+    <button class="entertainment-button" onclick="redirectToMovies()">Movies</button>
+    <button class="entertainment-button" onclick="redirectToMusic()">Music</button>
+    <button class="entertainment-button" onclick="redirectToGames()">Games</button>
+    <button class="entertainment-button" onclick="redirectToNewsStreaming()">News streaming</button>
+    <button class="entertainment-button" onclick="redirectToSports()">Sports</button>
+  </div>
+
+  <script>
+
+     function redirectToAkilikids() {
+      window.location.href = 'https://akilikids.co.ke/';
+    }
+
+    function redirectToNewspaper() {
+      window.location.href = 'https://epaper.standardmedia.co.ke/';
+    }
+
+     function redirectToDocumentary() {
+      window.location.href = 'https://documentaryheaven.com/';
+    }
+
+  function redirectToMovies() {
+      window.location.href = 'https://www.plex.tv/watch-free/';
+    }
+
+    function redirectToMusic() {
+      window.location.href = 'https://soundcloud.com/';
+    }
+
+    function redirectToGames() {
+      window.location.href = 'https://poki.com/';
+    }
+
+    function redirectToNewsStreaming() {
+      window.location.href = 'https://www.kenyamoja.com/tv';
+    }
+
+     function redirectToSports() {
+      window.location.href = 'https://www.foxsports.com/live';
+    }
+
+    function initiateCall() {
+      var callButton = document.getElementById('call-button');
+      callButton.classList.add('clicked');
+      setTimeout(function () {
+        callButton.classList.remove('clicked');
+        window.location.href = 'tel:+254757577605';
+      }, 500);
+    }
+
+    function goToViewOrders() {
+      window.location.href = 'room-service-view-my-orders.html';
+    }
+  </script>
+
+</body>
+</html>
+

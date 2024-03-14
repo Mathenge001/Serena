@@ -222,7 +222,7 @@ body {
 
 
 #GlutenFreeMenu{
-  background: url('https://i.pinimg.com/564x/9e/cc/ce/9eccce24984dd5488810360073d008e9.jpg') center/cover;
+  background: url('https://i.pinimg.com/564x/db/4c/27/db4c27f6458048bc392bed8d9cc0a819.jpg') center/cover;
     color: #fff;
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -291,7 +291,7 @@ body {
 
 
 #VeganMenu{
-   background: url('https://i.pinimg.com/564x/f6/6e/07/f66e07a23bef839b80e492c986ad357f.jpg') center/cover no-repeat;
+   background: url('https://i.pinimg.com/564x/5d/a8/7c/5da87ccb298cde34e02bb2c77b6dfbcf.jpg') center/cover no-repeat;
     color: #fff;
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -359,7 +359,7 @@ body {
 
 
 #LowCarbKetoMenu{
-   background: url('https://i.pinimg.com/564x/f7/41/31/f74131c943ec54f4de7b41f94864f2f3.jpg') center/cover no-repeat;
+   background: url('https://i.pinimg.com/564x/61/d2/86/61d28621669387d9b7e7a8ba9d428b4e.jpg') center/cover no-repeat;
   color: #fff;
   font-family: 'Arial', sans-serif;
   padding: 20px;
@@ -431,14 +431,14 @@ body {
 <body>
  <div class="header">
         <!-- Back icon to go back to the previous page -->
-        <a href="menus.html" class="back-icon">&#8592; Back</a>
+        <a href="admin-restaurant-menus.html" class="back-icon">&#8592; Back</a>
 
         <!-- Dropdown menu to navigate to other menus -->
        <select id="menuDropdown" class="menu-dropdown" onchange="navigateToMenu()">
     <option value="" disabled selected>Select Menu</option>
-    <option value="kids-menu.html">Kids' Menu</option>
-    <option value="adult-menu.html">Adult Menu</option>
-    <option value="special-dietary-menu.html">Special Dietary Menu</option>
+    <option value="admin-kids-menu.html">Kids' Menu</option>
+    <option value="admin-adult-menu.html">Adult Menu</option>
+    <option value="admin-special-dietary-menu.html">Special Dietary Menu</option>
 </select>
     </div>
 
@@ -470,11 +470,12 @@ body {
         <button onclick="askForAssistance()">Ask for Assistance</button>
         <button onclick="clearTable()">Clear Table</button>
         <button onclick="billMe()">Bill Me</button>
+
     </div>
 
         <button id="view-orders-button" class="menu-button" onclick="viewMyOrders()">View My Orders</button>
     </div>
-
+    </div>
 
 
 
@@ -990,7 +991,7 @@ body {
 
     function viewMyOrders() {
         // Implement logic to navigate to the "View My Orders" page
-        window.location.href = 'view-my-orders.html';
+        window.location.href = 'admin-view-my-orders.html';
     }
 
     function navigateToMenu() {

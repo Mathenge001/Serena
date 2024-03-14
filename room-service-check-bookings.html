@@ -339,7 +339,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="room-service-style.css">
 
 </head>
 <body>
@@ -439,7 +439,7 @@
 
 
   function goBack() {
-    window.location.href = 'offers.html';
+    window.location.href = 'room-service-offers.html';
   }
 
   function getBookedEvents() {
@@ -568,55 +568,6 @@
         closeMpesaModal();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Inside the choosePaymentMode() function
-function choosePaymentMode(mode) {
-    // Your payment processing logic here
-
-    // Generate PDF ticket
-    generatePDF();
-
-    // Send email with ticket details and PDF attachment
-    sendEmail();
-
-    // Close the payment modal
-    const paymentModal = document.getElementById('payment-modal');
-    paymentModal.style.display = 'none';
-
-    // Provide feedback to the user
-    alert(`Payment successful! Payment mode: ${mode}. Your tickets have been sent to your email.`);
-}
-
-function generatePDF() {
-    // Use a PDF generation library to create the ticket PDF
-    // Include all relevant ticket details in the PDF
-}
-
-function sendEmail() {
-    // Use an email sending library to send the email to the user
-    // Include the ticket details in the email body
-    // Attach the generated PDF to the email
-}
 
 </script>
 

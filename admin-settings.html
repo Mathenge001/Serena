@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+ height: 100vh; /* Set body height to viewport height */
+           flex-direction: row;
+            background-color: #f7f7f7; /* Background color for the page */
+            display: flex;
+        }
+
+        #sidebar {
+            width: 200px;
+            background-color: rgba(96, 95, 95, 0.7); /* Sidebar background color */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sidebar shadow */
+            padding-top: 20px;
+           overflow-y: auto; /* Enable vertical scrolling for sidebar if content exceeds height */
+
+        }
+
+
+         #logo {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+
+        #content {
+            flex: 1;
+            background-color: #eeeeee; /* Content background color */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Content shadow */
+            padding: 20px;
+        overflow-y: auto; /* Enable vertical scrolling for content if content exceeds height */
+}
+
+        #settingsList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #settingsList li {
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eeeeee; /* Separator between settings */
+            transition: color 0.3s ease; /* Smooth transition */
+            cursor: pointer;
+        }
+
+        #settingsList li:hover {
+            color: #007bff; /* Hover color for settings */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Added margin to separate table from form */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styling for the search bar */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+            width: 80%;
+            background-color: #f2f2f2;
+        }
+
+        .search-container button {
+            padding: 10px;
+            margin-top: 8px;
+            margin-left: 5px;
+            background: #007bff;
+            color: white;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #0056b3;
+        }
+
+        #back-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #000000;
+            color: #ffffff;
+          height: 30px;
+        }
+
+
+         body {
+            background-color: #f0f0f0; /* Default background color */
+            color: #333; /* Default text color */
+        }
+
+        .dark-mode {
+            background-color: #333; /* Dark mode background color */
+            color: #fff; /* Dark mode text color */
+        }
+        /* Dark mode styles for content */
+.dark-mode #content {
+    background-color: #333; /* Dark mode background color for content */
+    color: #fff; /* Dark mode text color for content */
+}
+
+    </style>
+</head>
+<body>
+
+
+<div id="sidebar">
+    <ul id="settingsList"><button id="back-button" onclick="goBack();">Back</button>
+    <img id="logo" src="logo.png" alt="Logo">
+    <div id="greeting"></div>
+
+        <li onclick="handleSettingClick('User Management')">User Management</li>
+        <li onclick="handleSettingClick('System Configuration')">System Configuration</li>
+        <li onclick="handleSettingClick('Security Settings')">Security Settings</li>
+        <li onclick="handleSettingClick('Email Configuration')">Email Configuration</li>
+    <li onclick="handleSettingClick('Backup and Restore')">Backup and Restore</li>
+        <li onclick="handleSettingClick('Logging and Auditing')">Logging and Auditing</li>
+        <li onclick="handleSettingClick('Data Management')">Data Management</li>
+        <li onclick="handleSettingClick('System Update')">System Update</li>
+    </ul>
+</div>
+
+<div id="content">
+    <!-- Content area where settings will be displayed -->
+</div>
+
+<script>
+
+
+     // Function to display greeting text based on time of the day
+        function displayGreeting() {
+            var today = new Date();
+            var hour = today.getHours();
+            var greeting = "";
+
+            if (hour < 12) {
+                greeting = "Good morning!";
+            } else if (hour < 18) {
+                greeting = "Good afternoon!";
+            } else {
+                greeting = "Good evening!";
+            }
+
+            document.getElementById("greeting").innerHTML = greeting;
+        }
+
+
+         // Function to go back to index.html
+        function goBack() {
+            window.location.href = "admin-index.html";
+        }
+
+
+// Function to handle click event for each setting
+function handleSettingClick(setting) {
+    console.log('Setting clicked:', setting); // Log the setting to check if it matches 'Backup and Restore'
+
+    switch (setting) {
+        case 'User Management':
+            displayUserManagementContent();
+            break;
+        case 'System Configuration':
+            displaySystemConfigurationContent();
+            break;
+        case 'Security Settings':
+            displaySecuritySettingsContent();
+            break;
+        case 'Email Configuration':
+            displayEmailConfigurationContent();
+            break;
+        case 'Backup and Restore':
+            displayBackupAndRestoreContent(); // Added for Backup and Restore setting
+            break;
+        // Add cases for other settings as needed
+        case 'Logging and Auditing':
+            displayLoggingAndAuditingContent();
+            break;
+
+        case 'Data Management':
+            displayDataManagementContent();
+            break;
+        case 'System Update':
+            displaySystemUpdateContent();
+            break;
+        default:
+            console.log('Unknown setting clicked');
+            break;
+    }
+}
+
+
+
+
+    // Function to display user management content
+    function displayUserManagementContent() {
+        // Clear existing content
+        document.getElementById('content').innerHTML = '';
+
+        // Create user management features HTML (This part remains the same)
+        var userManagementHTML = `
+            <h2>User Management</h2>
+            <div id="addUserFormContainer">
+                <h3>Add User</h3>
+                <form id="addUserForm">
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username"><br><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchUserInput" onkeyup="searchUser()" placeholder="Search for users...">
+                <button type="button">Search</button>
+            </div>
+            <table id="userTable">
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+                <!-- User data will be dynamically populated -->
+            </table>
+        `;
+
+        // Append user management HTML to content area
+        document.getElementById('content').innerHTML = userManagementHTML;
+
+        // Populate user list (You need to implement this)
+        populateUserList();
+
+        // Add event listener for form submission
+        document.getElementById('addUserForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Call function to handle form submission
+            addUser();
+        });
+    }
+
+ // Function to display system configuration content
+function displaySystemConfigurationContent() {
+    // Clear existing content
+    document.getElementById('content').innerHTML = '';
+
+    // Create system configuration features HTML
+    var systemConfigurationHTML = `
+        <h2>System Configuration</h2>
+        <ul>
+            <li onclick="displayThemeSettings()">Theme settings</li>
+            <li onclick="displayIntegrationSettings()">Integration settings</li>
+        </ul>
+        <div id="systemSettingsContent">
+            <!-- System settings content will be displayed here -->
+        </div>
+    `;
+
+    // Append system configuration HTML to content area
+    document.getElementById('content').innerHTML = systemConfigurationHTML;
+}
+
+// Function to display theme settings content
+function displayThemeSettings() {
+    document.getElementById('systemSettingsContent').innerHTML = `
+        <h3>Theme Settings</h3>
+        <button onclick="setDarkMode()">Dark Mode</button>
+        <button onclick="setLightMode()">Light Mode</button>
+    `;
+}
+
+// Function to set dark mode
+function setDarkMode() {
+    // Add dark mode class to body
+    document.body.classList.add('dark-mode');
+    console.log('Dark mode enabled');
+    // Save dark mode state in localStorage
+    localStorage.setItem('darkModeEnabled', true);
+}
+
+// Function to set light mode
+function setLightMode() {
+    // Remove dark mode class from body
+    document.body.classList.remove('dark-mode');
+    console.log('Light mode enabled');
+    // Save light mode state in localStorage
+    localStorage.setItem('darkModeEnabled', false);
+}
+
+
+// Check if dark mode is enabled from localStorage and apply it
+if (localStorage.getItem('darkModeEnabled') === 'true') {
+    setDarkMode();
+}
+
+// Function to display integration settings content
+function displayIntegrationSettings() {
+    document.getElementById('systemSettingsContent').innerHTML = '<h3>Integration Settings Content</h3><button onclick="linkToPrinter()">Link to Printer</button>';
+}
+
+// Function to link to printer
+function linkToPrinter() {
+    // Prompt the user to connect to a printer
+    console.log('To connect to a printer, click on the print icon or press Ctrl + P.');
+    // Open the print dialog
+    window.print();
+}
+
+
+    // Function to display security settings content
+    function displaySecuritySettingsContent() {
+        // Clear existing content
+        document.getElementById('content').innerHTML = '';
+
+        // Create security settings features HTML
+        var securitySettingsHTML = `
+            <h2>Security Settings</h2>
+            <ul>
+                <li>Password policy: Defining rules for user passwords (e.g., minimum length, complexity requirements).</li>
+                <li>Access control: Configuring roles and permissions for users.</li>
+                <li>Two-factor authentication: Options to enable or configure two-factor authentication for added security.</li>
+            </ul>
+            <button onclick="configurePasswordPolicy()">Configure Password Policy</button>
+            <button onclick="configureAccessControl()">Configure Access Control</button>
+            <button onclick="configureTwoFactorAuth()">Configure Two-Factor Authentication</button>
+        `;
+
+        // Append security settings HTML to content area
+        document.getElementById('content').innerHTML = securitySettingsHTML;
+    }
+
+   // Function to configure password policy (To be implemented)
+function configurePasswordPolicy() {
+    // Add your code to handle configuring password policy
+    console.log('Configuring Password Policy...');
+    // You would typically open a form or dialog for administrators to define password policies
+    var newPasswordLength = prompt("Enter minimum length for passwords:");
+    var newPasswordComplexity = confirm("Enable password complexity requirements?");
+    // Example: Send the configuration to the server for processing
+    // Example: Update the UI to reflect the changes
+}
+
+// Function to configure access control (To be implemented)
+function configureAccessControl() {
+    // Add your code to handle configuring access control
+    console.log('Configuring Access Control...');
+    // You would typically open a form or dialog for administrators to define roles and permissions
+    var rolePermissions = prompt("Enter role permissions:");
+    // Example: Send the configuration to the server for processing
+    // Example: Update the UI to reflect the changes
+}
+
+// Function to configure two-factor authentication (To be implemented)
+function configureTwoFactorAuth() {
+    // Add your code to handle configuring two-factor authentication
+    console.log('Configuring Two-Factor Authentication...');
+    // You would typically open a form or dialog for administrators to enable and set up 2FA methods
+    var enableTwoFactor = confirm("Enable two-factor authentication?");
+    // Example: Send the configuration to the server for processing
+    // Example: Update the UI to reflect the changes
+}
+
+
+// Function to display email configuration content
+function displayEmailConfigurationContent() {
+    // Clear existing content
+    document.getElementById('content').innerHTML = '';
+
+    // Create email configuration features HTML
+    var emailConfigurationHTML = `
+        <h2>Email Configuration</h2>
+        <ul>
+            <li><button onclick="configureSMTPSettings()">SMTP settings: Configuring the SMTP server for sending system emails.</button></li>
+            <li><button onclick="editEmailTemplates()">Email templates: Editing email templates used for notifications, registration emails, etc.</button></li>
+            <li><button onclick="viewEmailLogs()">Email logs: Viewing logs of emails sent from the system.</button></li>
+        </ul>
+        <!-- Email configuration content will be displayed here -->
+    `;
+
+    // Append email configuration HTML to content area
+    document.getElementById('content').innerHTML = emailConfigurationHTML;
+}
+
+// Function to configure SMTP settings
+function configureSMTPSettings() {
+    // Prompt the user to input SMTP server details
+    var smtpServer = prompt("Enter SMTP server address:");
+    var smtpPort = prompt("Enter SMTP port:");
+
+    // Validate if SMTP server and port are provided
+    if (smtpServer && smtpPort) {
+        // Send the configuration to the server for processing (simulated with console log)
+        console.log('Configuring SMTP settings...');
+        console.log('SMTP Server:', smtpServer);
+        console.log('SMTP Port:', smtpPort);
+
+        // Optionally, update the UI to reflect the changes (simulated with console log)
+        console.log('SMTP settings configured successfully.');
+    } else {
+        // Inform the user if SMTP server and port are not provided
+        alert("SMTP server address and port are required.");
+    }
+}
+
+// Function to edit email templates
+function editEmailTemplates() {
+    // Simulate opening an email template editor dialog (replace this with your actual implementation)
+    console.log('Opening email template editor...');
+    // In a real application, you would open a form or dialog for administrators to customize email templates
+
+    // Simulate sending the edited templates to the server for processing
+    setTimeout(function() {
+        // Assume the email templates are edited and sent successfully
+        console.log('Email templates edited and sent to the server for processing...');
+        // In a real application, you would send the edited templates to the server
+        // After sending, you may update the UI to reflect the changes
+        // Here, we'll display a success message to simulate the UI feedback
+        var messageDiv = document.createElement('div');
+        messageDiv.textContent = 'Email templates edited successfully!';
+        messageDiv.style.color = 'green';
+        document.getElementById('content').appendChild(messageDiv);
+    }, 2000); // Delayed for 2 seconds to simulate server processing
+}
+
+// Function to view email logs
+function viewEmailLogs() {
+    // Simulate fetching email logs from the server
+    console.log('Fetching email logs from the server...');
+    // In a real application, you would fetch email logs via AJAX request or other means
+
+    // Simulate receiving email logs
+    setTimeout(function() {
+        // Assume email logs are fetched successfully
+        var emailLogs = [
+            { timestamp: '2024-02-13 10:00:00', recipient: 'user1@example.com', subject: 'Notification', status: 'Sent' },
+            { timestamp: '2024-02-13 11:00:00', recipient: 'user2@example.com', subject: 'Registration Confirmation', status: 'Sent' },
+            { timestamp: '2024-02-13 12:00:00', recipient: 'user3@example.com', subject: 'Password Reset', status: 'Failed' }
+        ];
+
+        // Display the fetched email logs (replace this with your actual implementation)
+        console.log('Email logs:', emailLogs);
+        // In a real application, you would populate the UI with the fetched logs
+        // Here, we'll create a table to display the logs
+        var table = document.createElement('table');
+        table.border = '1';
+        var header = table.createTHead();
+        var row = header.insertRow(0);
+        var headers = ['Timestamp', 'Recipient', 'Subject', 'Status'];
+        headers.forEach(function(headerText) {
+            var th = document.createElement('th');
+            th.textContent = headerText;
+            row.appendChild(th);
+        });
+        var body = table.createTBody();
+        emailLogs.forEach(function(log) {
+            var row = body.insertRow();
+            Object.values(log).forEach(function(value) {
+                var cell = row.insertCell();
+                cell.textContent = value;
+            });
+        });
+        document.getElementById('content').appendChild(table);
+    }, 2000); // Delayed for 2 seconds to simulate server processing
+}
+
+// Function to display backup and restore content
+function displayBackupAndRestoreContent() {
+    // Clear existing content
+    document.getElementById('content').innerHTML = '';
+
+    // Create backup and restore features HTML with buttons
+    var backupAndRestoreHTML = `
+        <h2>Backup and Restore</h2>
+        <ul>
+            <li><button onclick="configureBackupSettings()">Backup settings: Options to schedule automatic backups of system data.</button></li>
+            <li><button onclick="restoreFunctionality()">Restore functionality: Ability to restore data from previous backups.</button></li>
+            <li><button onclick="viewBackupHistory()">Backup history: Viewing logs of backup operations.</button></li>
+        </ul>
+        <!-- Backup and restore content will be displayed here -->
+    `;
+
+    // Append backup and restore HTML to content area
+    document.getElementById('content').innerHTML = backupAndRestoreHTML;
+}
+
+// Function to configure backup settings
+function configureBackupSettings() {
+    // Open a form or dialog for administrators to configure backup settings
+    // For demonstration purposes, let's log a message indicating that the settings configuration form/dialog will open
+    console.log('Opening backup settings configuration form/dialog...');
+    // You would typically implement the code to open a form or dialog here
+    // For example, you could open a modal dialog with input fields for configuring backup settings
+    // Here's a basic example using a prompt for simplicity:
+    var backupFrequency = prompt("Enter backup frequency (e.g., daily, weekly, monthly):");
+    var backupLocation = prompt("Enter backup location:");
+    // You can then use these values to configure backup settings in your application
+    console.log('Backup Frequency:', backupFrequency);
+    console.log('Backup Location:', backupLocation);
+}
+
+// Function to restore functionality
+function restoreFunctionality() {
+    // Display an alert message for demonstration
+    alert('Clicked on Restore functionality. Placeholder for data restoration.');
+    // You would typically implement the code to initiate the restoration process
+    // For example, you could prompt the user to select a backup file to restore from
+    // Once a backup file is selected, you would then proceed with restoring the data
+}
+
+// Function to view backup history
+function viewBackupHistory() {
+    // Display an alert message for demonstration
+    alert('Clicked on Backup history. Placeholder for viewing backup history.');
+    // You would typically implement the code to fetch and display the backup history
+    // For example, you could make an AJAX request to fetch backup logs from the server
+    // Once the logs are retrieved, you would then display them to the user in a suitable format
+}
+
+
+// Call the function to display backup and restore content when the page loads
+window.onload = function() {
+    displayBackupAndRestoreContent();
+};
+
+
+    // Function to display logging and auditing content
+function displayLoggingAndAuditingContent() {
+    // Clear existing content
+    document.getElementById('content').innerHTML = '';
+
+    // Create logging and auditing features HTML
+    var loggingAndAuditingHTML = `
+        <h2>Logging and Auditing</h2>
+        <ul>
+            <li><button onclick="configureLogSettings()">Log settings: Configuring log levels, log retention policies, etc.</button></li>
+            <li><button onclick="viewAuditLogs()">Audit logs: Viewing logs of system activities for security and compliance purposes.</button></li>
+            <li><button onclick="openLogAnalysisTools()">Log analysis tools: Integration with tools for analyzing system logs.</button></li>
+        </ul>
+        <!-- Logging and auditing content will be displayed here -->
+    `;
+
+    // Append logging and auditing HTML to content area
+    document.getElementById('content').innerHTML = loggingAndAuditingHTML;
+}
+
+// Function to configure log settings
+function configureLogSettings() {
+    // Open a form or dialog for administrators to configure log settings
+    // For demonstration purposes, let's log a message indicating that the log settings configuration form/dialog will open
+    console.log('Opening log settings configuration form/dialog...');
+    // You would typically implement the code to open a form or dialog here
+    // For example, you could open a modal dialog with input fields for configuring log settings
+    // Here's a basic example using a prompt for simplicity:
+    var logLevel = prompt("Enter log level (e.g., DEBUG, INFO, WARNING, ERROR):");
+    var logRetentionPeriod = prompt("Enter log retention period (e.g., 7 days, 1 month):");
+    // You can then use these values to configure log settings in your application
+    console.log('Log Level:', logLevel);
+    console.log('Log Retention Period:', logRetentionPeriod);
+}
+
+// Function to view audit logs
+function viewAuditLogs() {
+    // Display an alert message for demonstration
+    alert('Clicked on Audit logs. Placeholder for viewing audit logs.');
+    // You would typically implement the code to fetch and display audit logs
+    // For example, you could make an AJAX request to fetch audit logs from the server
+    // Once the logs are retrieved, you would then display them to the user in a suitable format
+}
+
+// Function to open log analysis tools
+function openLogAnalysisTools() {
+    // Display an alert message for demonstration
+    alert('Clicked on Log analysis tools. Placeholder for opening log analysis tools.');
+    // You would typically implement the code to integrate with log analysis tools
+    // For example, you could open a new browser tab/window with the log analysis dashboard
+}
+
+// Function to display data management content
+function displayDataManagementContent() {
+    // Clear existing content
+    document.getElementById('content').innerHTML = '';
+
+    // Create data management features HTML
+    var dataManagementHTML = `
+        <h2>Data Management</h2>
+        <ul>
+            <li>
+                <h3>Database Settings</h3>
+                <p>Configure database connections, database maintenance tasks, etc.</p>
+                <button onclick="openDatabaseSettingsModal()">Configure Database</button>
+            </li>
+            <li>
+                <h3>Data Import/Export</h3>
+                <p>Tools for importing or exporting data to/from the system.</p>
+                <button onclick="openDataImportModal()">Import Data</button>
+                <button onclick="openDataExportModal()">Export Data</button>
+            </li>
+            <li>
+                <h3>Data Cleanup</h3>
+                <p>Options for managing and cleaning up outdated or unused data.</p>
+                <button onclick="openDataCleanupModal()">Cleanup Data</button>
+            </li>
+        </ul>
+        <!-- Data management content will be displayed here -->
+    `;
+
+    // Append data management HTML to content area
+    document.getElementById('content').innerHTML = dataManagementHTML;
+}
+
+// Function to open database settings modal
+function openDatabaseSettingsModal() {
+    // Display a modal dialog for configuring database settings
+    // For simplicity, let's use a prompt dialog for demonstration
+    var databaseSettings = prompt("Enter database settings:");
+    if (databaseSettings !== null) {
+        // Process database settings (e.g., send to server, update database)
+        // For demonstration, let's log the entered database settings
+        console.log("Database settings:", databaseSettings);
+        // Optionally, you can display a success message or update the UI
+    }
+}
+
+// Function to open data import modal
+function openDataImportModal() {
+    // Display a modal dialog for data import
+    // For simplicity, let's use a prompt dialog for demonstration
+    var dataToImport = prompt("Enter data to import:");
+    if (dataToImport !== null) {
+        // Process data import (e.g., send to server, import data)
+        // For demonstration, let's log the entered data to import
+        console.log("Data to import:", dataToImport);
+        // Optionally, you can display a success message or update the UI
+    }
+}
+
+// Function to open data export modal
+function openDataExportModal() {
+    // Display a modal dialog for data export
+    // For simplicity, let's use a prompt dialog for demonstration
+    var exportOptions = prompt("Enter export options:");
+    if (exportOptions !== null) {
+        // Process data export (e.g., send to server, export data)
+        // For demonstration, let's log the entered export options
+        console.log("Export options:", exportOptions);
+        // Optionally, you can display a success message or update the UI
+    }
+}
+
+// Function to open data cleanup modal
+function openDataCleanupModal() {
+    // Display a modal dialog for data cleanup
+    // For simplicity, let's use a confirm dialog for demonstration
+    var confirmCleanup = confirm("Are you sure you want to cleanup data?");
+    if (confirmCleanup) {
+        // Process data cleanup (e.g., send request to server, clean up data)
+        // For demonstration, let's log that data cleanup is confirmed
+        console.log("Data cleanup confirmed.");
+        // Optionally, you can display a success message or update the UI
+    }
+}
+
+// Function to display system update content
+function displaySystemUpdateContent() {
+    // Clear existing content
+    document.getElementById('content').innerHTML = '';
+
+    // Create system update features HTML
+    var systemUpdateHTML = `
+        <h2>System Update</h2>
+        <ul>
+            <li>
+                <h3>Update Settings</h3>
+                <p>Configure automatic update checks, update notifications, etc.</p>
+                <button onclick="openUpdateSettingsModal()">Configure Update Settings</button>
+            </li>
+            <li>
+                <h3>Update History</h3>
+                <p>View logs of past system updates and changes.</p>
+                <button onclick="openUpdateHistoryModal()">View Update History</button>
+            </li>
+            <li>
+                <h3>Update Process</h3>
+                <p>Instructions or options for manually triggering system updates.</p>
+                <button onclick="openUpdateProcessModal()">Trigger System Update</button>
+            </li>
+        </ul>
+        <!-- System update content will be displayed here -->
+    `;
+
+    // Append system update HTML to content area
+    document.getElementById('content').innerHTML = systemUpdateHTML;
+}
+
+// Function to open update settings modal
+function openUpdateSettingsModal() {
+    // Display a modal dialog for configuring update settings
+    // For simplicity, let's use a prompt dialog for demonstration
+    var updateSettings = prompt("Enter update settings:");
+    if (updateSettings !== null) {
+        // Process update settings (e.g., send to server, update configuration)
+        // For demonstration, let's log the entered update settings
+        console.log("Update settings:", updateSettings);
+        // Optionally, you can display a success message or update the UI
+    }
+}
+
+// Function to open update history modal
+function openUpdateHistoryModal() {
+    // Display a modal dialog for viewing update history
+    // For simplicity, let's use an alert dialog for demonstration
+    alert("Displaying update history...");
+    // You would typically fetch update history from the server and display it to the user
+}
+
+// Function to open update process modal
+function openUpdateProcessModal() {
+    // Display a modal dialog for update process
+    // For simplicity, let's use a confirm dialog for demonstration
+    var confirmUpdate = confirm("Are you sure you want to trigger a system update?");
+    if (confirmUpdate) {
+        // Process system update (e.g., send request to server, trigger update)
+        // For demonstration, let's log that the system update is triggered
+        console.log("System update triggered.");
+        // Optionally, you can display a success message or update the UI
+    }
+}
+
+
+</script>
+
+</body>
+</html>

@@ -14,8 +14,8 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-image: url('home_background.png');
-            background-size: cover;
+          background-image: url('https://i.pinimg.com/564x/b6/aa/91/b6aa915a8af1139561f0b9ec24a2e5af.jpg');
+             background-size: cover;
             background-position: center;
         }
 
@@ -148,14 +148,14 @@
 <body>
 
     <div id="menu-container">
-        <button id="back-button" class="menu-button" onclick="window.location.href='home-page.html'">Back</button>
+ <button id="back-button" class="menu-button" onclick="window.location.href='room-service-pick-a-menu.html'">Back</button>
 
         <div>
-            <div class="menu-button" onclick="window.location.href='kids-menu.html'">Kids Menu</div>
-            <div class="menu-button" onclick="window.location.href='adult-menu.html'"> Menu</div>
-            <div class="menu-button" onclick="window.location.href='special-dietary-menu.html'">Special Dietary Menu</div>
-            <div class="menu-button" onclick="window.location.href='seasonal-menu.html'">Seasonal Menu</div>
-            <div class="menu-button" onclick="window.location.href='bar-menu.html'">Bar</div>
+            <div class="menu-button" onclick="window.location.href='room-service-kids-menu.html'">Kids Menu</div>
+            <div class="menu-button" onclick="window.location.href='room-service-adult-menu.html'"> Menu</div>
+            <div class="menu-button" onclick="window.location.href='room-service-special-dietary.html'">Special Dietary Menu</div>
+            <div class="menu-button" onclick="window.location.href='room-service-seasonal-menu.html'">Seasonal Menu</div>
+            <div class="menu-button" onclick="window.location.href='room-service-bar-menu.html'">Bar</div>
         </div>
 
        <!-- Call Waiter Button -->
@@ -174,7 +174,7 @@
 
     </div>
        </div>
-
+</div>
     <script>
          function toggleFlexbox() {
             var flexContainer = document.getElementById("flexContainer");
@@ -239,12 +239,16 @@
     // Check if the user is 21 or older
     if (ageDifference >= 21) {
         // Redirect to the bar menu
-        window.location.href = 'bar-menu.html';
+        window.location.href = 'room-service-bar-menu.html';
     } else {
         // Display the warning message
         document.getElementById('ageVerification').style.display = 'block';
     }
 }
+
+
+
+
 
     </script>
 

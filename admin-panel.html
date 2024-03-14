@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+</head>
+<body>
+<!-- Add this button to the admin panel -->
+<button onclick="retrieveOrders()">Retrieve Orders</button>
+
+<!-- Add this button to clear orders in the admin panel -->
+<button onclick="clearAdminOrders()">Clear Orders</button>
+
+<script>
+  // Add this function to retrieve orders from local storage
+function retrieveOrders() {
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    // Display orders in the console for demonstration purposes
+    console.log('Retrieved Orders:', orders);
+
+    // You can now use the 'orders' variable to display or process the orders in the admin panel.
+    // For a real admin panel, you would typically send this data to a server for more secure storage and processing.
+}
+// Add this function to clear orders from local storage
+function clearAdminOrders() {
+    localStorage.removeItem('orders');
+    console.log('Orders cleared.');
+}
+
+const WebSocket = require('ws');
+const server = new WebSocket.Server({ port: 3000 });
+
+server.on('connection', (socket) => {
+    console.log('Client connected');
+
+    // Listen for messages from the admin panel
+    socket.on('message', (message) => {
+        // Broadcast the received message to all connected clients (customers)
+        server.clients.forEach((client) => {
+            if (client !== socket && client.readyState === WebSocket.OPEN) {
+                client.send(message);
+            }
+        });
+    });
+});
+const adminSocket = new WebSocket('ws://localhost:3000');
+
+// Add this function to send messages to customers
+function sendMessageToCustomers(message) {
+    // Send the message to the WebSocket server
+    adminSocket.send(message);
+}
+
+function clearAdminOrders() {
+    localStorage.removeItem('orders');
+    console.log('Orders cleared.');
+
+    // Send a message to customers that the order has been cleared
+    sendMessageToCustomers('Order for your table has been cleared.');
+}
+
+function completeOrder() {
+    // ... existing code ...
+
+    // Send a message to customers that the order has been completed
+    sendMessageToCustomers('Your order is on its way!');
+
+    // ... existing code ...
+}
+
+// Update other functions as needed to send messages to customers
+
+  const customerSocket = new WebSocket('ws://localhost:3000');
+
+customerSocket.addEventListener('message', (event) => {
+    // Display the received message to the customer
+    console.log('Message from admin:', event.data);
+
+    // You can update the customer interface based on the received messages
+    // For example, display a notification to the user
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f2f2f2; /* Added a light background color */
+        }
+
+        #container {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #eee;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+        }
+
+        #logo {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+
+        #details {
+            flex: 1;
+            margin-left: 20px; /* Adjusted margin for spacing */
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        #details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Displaying list items horizontally */
+        }
+
+        #details ul li {
+            margin-right: 20px; /* Adjusted margin for spacing */
+            cursor: pointer; /* Adding pointer cursor to indicate interactivity */
+        }
+
+        #details ul li:last-child {
+            margin-right: 0; /* No margin for the last item */
+        }
+
+        #back-button {
+            margin-right: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        #content {
+            padding: 20px;
+            margin-top: 20px; /* Adjusted margin for spacing */
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+            height: 400px; /* Set a fixed height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        #restaurantMenuButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #restaurantMenuButton:hover {
+            background-color: #45a049; /* Darker green */
+        }
+
+        #roomServiceButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff; /* Blue */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #roomServiceButton:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+
+        /* Style the button */
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px; /* Border radius */
+        }
+
+        /* Change the color of the button when it is hovered */
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Change the color of the button when it is pressed */
+        .button:active {
+            background-color: #3e8e41;
+        }
+
+        /* Change the color of the button when it is disabled */
+        .button[disabled] {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* CSS for the card format */
+        .order-card {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .order-card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .order-card .order-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .order-card .order-details {
+            display: none;
+            padding-top: 20px;
+        }
+
+        .order-card .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .order-card .progress-bar .progress {
+            width: 33.3%;
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .order-card.active .order-details {
+            display: block;
+        }
+
+        .order-card.active .progress .progress {
+            width: 66.6%;
+        }
+
+        .order-card.complete .progress .progress {
+            width: 100%;
+        }
+
+        .order-card .order-details .order-status {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.order-card .order-details .order-status .status-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.order-card .order-details .order-status .status-circle:hover {
+    background-color: #aaa;
+}
+
+.order-card .order-details #status-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+}
+
+.order-card .order-details #status-labels > div {
+    text-align: center;
+}
+
+.order-card .order-details #status-labels > div:hover {
+    color: #666;
+}
+
+
+#status-labels button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #333; /* Default color */
+    color: #06e109; /* Default color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#status-labels button:hover {
+    background-color: #bbb; /* Hover color */
+}
+
+
+.selected {
+    background-color: gray;
+    color: white;
+}
+
+.progress-btn {
+    cursor: pointer;
+}
+
+
+
+button.selected {
+    background-color: gray;
+    color: white;
+}
+
+
+#status-labels .selected {
+    background-color: gray;
+    color: white;
+}
+
+
+
+    </style>
+</head>
+<body >
+
+<div id="header">
+    <button id="back-button" onclick="goBack();">Back</button>
+    <img id="logo" src="logo.png" alt="Logo">
+    <div id="greeting"></div>
+    <div id="details">
+        <h2>Operations</h2>
+        <ul>
+            <li onclick="handleClick('orders')">Orders
+                <ul>
+                    <li onclick="handleSubClick('orders', 'restaurant')">Restaurant</li>
+                    <li onclick="handleSubClick('orders', 'roomService')">Room Service</li>
+                </ul>
+            </li>
+            <li onclick="handleClick('clearTables')">Clear Tables
+                <ul>
+                    <li onclick="handleSubClick('clearTables', 'restaurant')">Restaurant</li>
+                    <li onclick="handleSubClick('clearTables', 'roomService')">Room Service</li>
+                </ul>
+            </li>
+            <li onclick="handleClick('billing')">Billing
+                <ul>
+                    <li onclick="handleSubClick('billing', 'restaurant')">Restaurant</li>
+                    <li onclick="handleSubClick('billing', 'roomService')">Room Service</li>
+                </ul>
+            </li>
+            <li onclick="handleClick('assistance')">Assistance
+                <ul>
+                    <li onclick="handleSubClick('assistance', 'restaurant')">Restaurant</li>
+                    <li onclick="handleSubClick('assistance', 'roomService')">Room Service</li>
+                </ul>
+            </li>
+
+            <!-- Updated the menu button to include submenu -->
+            <a href="admin-order.html" class="button" id="menuButton">Menu</a>
+
+
+        </ul>
+    </div>
+</div>
+
+<div id="content">
+    <h1 id="category">Category</h1>
+    <h1 id="subcategory">Subcategory</h1>
+    <p id="contentText">Select an operation type from the top.</p>
+    <div id="orders">
+        <!-- Orders will be dynamically added here -->
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<script>
+  // Function to display greeting text based on time of the day
+  function displayGreeting() {
+    var today = new Date();
+    var hour = today.getHours();
+    var greeting = "";
+
+    if (hour < 12) {
+      greeting = "Good morning!";
+    } else if (hour < 18) {
+      greeting = "Good afternoon!";
+    } else {
+      greeting = "Good evening!";
+    }
+
+    document.getElementById("greeting").innerHTML = greeting;
+  }
+
+  // Function to go back to index.html
+  function goBack() {
+    window.location.href = "admin-index.html";
+  }
+
+  // Call displayGreeting function when the page loads
+  displayGreeting();
+
+  // Function to handle sub-categories clicks
+  function handleSubClick(operation, subCategory) {
+    document.getElementById("category").innerText = "Category: " + operation;
+    document.getElementById("subcategory").innerText = "Subcategory: " + subCategory;
+
+    // Check if the clicked operation is 'orders' and display the orders accordingly
+    if (operation === 'orders') {
+      displayOrders(subCategory);
+    }
+  }
+
+  // Function to navigate to different pages based on operations and sub-categories
+  function openPage(operation, subCategory) {
+    var pageURL = "";
+
+    switch (operation) {
+      case 'orders':
+        switch (subCategory) {
+          case 'restaurant':
+            pageURL = 'view-my-orders.html';
+            break;
+          case 'roomService':
+            pageURL = 'roomservice-view-my-orders.html';
+            break;
+        }
+        break;
+
+      case 'clearTables':
+        switch (subCategory) {
+          case 'restaurant':
+            pageURL = 'clearTablesRestaurant';
+            break;
+          case 'roomService':
+            pageURL = 'clearTablesRoomService';
+            break;
+        }
+        break;
+      case 'billing':
+        switch (subCategory) {
+          case 'restaurant':
+            pageURL = 'billingRestaurant';
+            break;
+          case 'roomService':
+            pageURL = 'billingRoomService';
+            break;
+        }
+        break;
+      case 'assistance':
+        switch (subCategory) {
+          case 'restaurant':
+            pageURL = 'assistanceRestaurant';
+            break;
+          case 'roomService':
+            pageURL = 'assistanceRoomService';
+            break;
+        }
+        break;
+      case 'menus': // Adding case for menus
+        switch (subCategory) {
+          case 'restaurant':
+            pageURL = 'menusRestaurant';
+            // Create a button to open the restaurant menu
+            var button = document.createElement('button');
+            button.textContent = 'Open Restaurant Menu';
+            button.addEventListener('click', function () {
+              window.location.href = 'restaurant-menu.html';
+            });
+            // Append the button to your HTML content or a specific element
+            document.body.appendChild(button);
+            break;
+
+          case 'roomService':
+            pageURL = 'menusRoomService';
+            // Create a button to open the room service menu
+            var button = document.createElement('button');
+            button.textContent = 'Open Room Service Menu';
+            button.addEventListener('click', function () {
+              window.location.href = 'room-service.html';
+            });
+            // Append the button to your HTML content or a specific element
+            document.body.appendChild(button);
+            break;
+
+        }
+        break;
+    }
+
+    window.location.href = pageURL + ".html";
+  }
+
+  document.getElementById("restaurantMenuButton").addEventListener("click", function () {
+    window.location.href = "restaurant-menu.html";
+  });
+
+  document.getElementById("roomServiceButton").addEventListener("click", function () {
+    window.location.href = "room-service.html";
+  });
+
+  // Function to display orders for the selected subcategory
+  function displayOrders(subCategory) {
+    var orders = [];
+
+    switch (subCategory) {
+      case 'bar':
+        orders = JSON.parse(localStorage.getItem('barOrders')) || [];
+        break;
+      case 'restaurant':
+        orders = JSON.parse(localStorage.getItem('restaurantOrders')) || [];
+        break;
+      case 'roomService':
+        orders = JSON.parse(localStorage.getItem('roomServiceOrders')) || [];
+        break;
+    }
+
+    const now = new Date();
+    const timestamp = now.toLocaleString('en-GB', {
+      timeZone: 'Africa/Nairobi',
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    let message = `Order from Table 123:\n`;
+
+    orders.forEach((order, index) => {
+      const orderMessage = `${index + 1}. ${order.name} - Quantity: ${order.quantity || 1}, Price: KSH ${order.price.toFixed(2)}\n`;
+      message += orderMessage;
+
+      // Create an update button for each order
+      const updateButton = document.createElement('button');
+      updateButton.textContent = 'Update Status';
+      updateButton.addEventListener('click', function () {
+        // Handle updating the order status here
+        updateOrderStatus(order);
+      });
+      // Append the update button to your HTML content or a specific element
+      document.getElementById('content').appendChild(updateButton);
+    });
+
+    message += `\nTimestamp: ${timestamp}`;
+
+    document.getElementById('content').innerHTML = `<h1 id="category">Category: Orders</h1><h1 id="subcategory">Subcategory: ${subCategory}</h1><p id="contentText">${message}</p>`;
+  }
+
+  // Function to display orders for the selected subcategory
+  function displayOrders(subCategory) {
+    var orders = [];
+
+    switch (subCategory) {
+      case 'bar':
+        orders = JSON.parse(localStorage.getItem('barOrders')) || [];
+        break;
+      case 'restaurant':
+        orders = JSON.parse(localStorage.getItem('restaurantOrders')) || [];
+        break;
+      case 'roomService':
+        orders = JSON.parse(localStorage.getItem('roomServiceOrders')) || [];
+        break;
+    }
+
+    const now = new Date();
+    const timestamp = now.toLocaleString('en-GB', {
+      timeZone: 'Africa/Nairobi',
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    let message = `Order from Table 123:\n`;
+
+    orders.forEach((order, index) => {
+      const orderMessage = `${index + 1}. ${order.name} - Quantity: ${order.quantity || 1}, Price: KSH ${order.price.toFixed(2)}\n`;
+      message += orderMessage;
+
+      // Create an update button for each order
+      const updateButton = document.createElement('button');
+      updateButton.textContent = 'Update Status';
+      updateButton.addEventListener('click', function () {
+        // Handle updating the order status here
+        updateOrderStatus(order);
+      });
+      // Append the update button to your HTML content or a specific element
+      document.getElementById('content').appendChild(updateButton);
+    });
+
+    message += `\nTimestamp: ${timestamp}`;
+
+    document.getElementById('content').innerHTML = `<h1 id="category">Category: Orders</h1><h1 id="subcategory">Subcategory: ${subCategory}</h1><p id="contentText">${message}</p>`;
+  }
+
+  // Function to update order status and send notifications
+  const progress = {
+    received: false,
+    preparing: false,
+    ready: false,
+    delivering: false
+  };
+
+  function updateOrderStatus(stage) {
+    let stageName = '';
+    switch (stage) {
+      case 0:
+        stageName = 'received';
+        break;
+      case 1:
+        stageName = 'preparing';
+        break;
+      case 2:
+        stageName = 'ready';
+        break;
+      case 3:
+        stageName = 'delivering';
+        break;
+      default:
+        break;
+    }
+
+    if (progress[stageName]) {
+      progress[stageName] = false;
+      document.getElementById(stageName).classList.remove('selected');
+    } else {
+      for (let key in progress) {
+        if (key === stageName) {
+          progress[key] = true;
+          document.getElementById(key).classList.add('selected');
+        } else {
+          progress[key] = false;
+          document.getElementById(key).classList.remove('selected');
+        }
+      }
+    }
+
+    // Here, you can call a function to send a notification
+    sendNotification(stageName);
+  }
+
+  function sendNotification(stageName) {
+    // Implement your notification system here
+    console.log(`Stage: ${stageName}`);
+  }
+
+  // Update the order status in the local storage
+  // Assuming the order is stored as part of an array in local storage
+  let orders = JSON.parse(localStorage.getItem('restaurantOrders')) || [];
+  orders = orders.map(item => {
+    if (item.id === order.id) {
+      item.status = order.status;
+    }
+    return item;
+  });
+
+  localStorage.setItem('restaurantOrders', JSON.stringify(orders));
+
+
+  // Handle the click of the menu button
+  document.getElementById('menuButton').addEventListener('click', function () {
+    var submenu = document.getElementById('menuSubmenu');
+    if (submenu.style.display === 'none') {
+      submenu.style.display = 'block';
+    } else {
+      submenu.style.display = 'none';
+    }
+  });
+
+  // Function to display orders for the selected subcategory
+  function displayOrders(subCategory) {
+    // Dummy data for orders
+    const orders = [
+      {
+        tableNo: "12",
+        timestamp: "12.30 pm 🕒 2hrs ago",
+        imgURL: "logo.png", // Add the image URL here
+        status: "0", // Initial status index
+
+        items: [
+          {name: "Fries", amount: "2", description: "lightly fried with no salt fried with chili", price: "ksh 1500"},
+          {name: "Juice", amount: "1", description: "mango", price: "ksh 200"},
+          {name: "Whiskey", amount: "2 shots", description: "with ice and lemon", price: "ksh 359"}
+        ],
+        totalPrice: "ksh 2059"
+      },
+      {
+        roomNo: "201",
+        timestamp: "12.30 pm 🕒 2hrs ago",
+        imgURL: "logo.png", // Add the image URL here
+        status: "0", // Initial status index
+
+        items: [
+          {name: "Fries", amount: "2", description: "lightly fried with no salt fried with chili", price: "ksh 1500"},
+          {name: "Juice", amount: "1", description: "mango", price: "ksh 200"}
+        ],
+        totalPrice: "ksh 1700"
+      }
+    ];
+
+    let message = "";
+
+    // Loop through the orders and create cards
+    orders.forEach(order => {
+      message += `<div class="order-card" onclick="toggleOrderDetails(this)">
+                        <div class="order-header">
+                            <span>${order.tableNo ? "Table No. " + order.tableNo : "Room No. " + order.roomNo}</span>
+                            <span>${order.timestamp}</span>
+                        <!-- Add the arrow icon here -->
+        <button onclick="toggleOrderDetails(this)"><i class="fas fa-chevron-down"></i></button>
+
+                        </div>
+                        <div class="order-details">
+
+  <img src="${order.imgURL}" alt="Order Image" width="100" height="100">
+                            <span class="restaurant-name">Welcome to Serena Hotel</span>
+
+
+<!-- This is the HTML for the buttons -->
+<div id="status-labels">
+    <div>
+        <button id="received" class="progress-btn" onclick="updateOrderStatus(0)"><i class="fas fa-utensils"></i> Order Received</button>
+    </div>
+    <div>
+        <button id="preparing" class="progress-btn" onclick="updateOrderStatus(1)"><i class="fas fa-chef"></i> Order Being Prepared</button>
+    </div>
+    <div>
+        <button id="ready" class="progress-btn" onclick="updateOrderStatus(2)"><i class="fas fa-check"></i> Order Ready</button>
+    </div>
+    <div>
+        <button id="delivering" class="progress-btn" onclick="updateOrderStatus(3)"><i class="fas fa-shipping-fast"></i> Tray on Delivery</button>
+    </div>
+</div>
+
+
+
+
+
+
+                            <ul>
+                                ${order.items.map(item => `
+                                    <li>
+                                        <span>${item.name}</span>
+                                        <span>${item.amount}</span>
+                                        <span>${item.description}</span>
+                                        <span>${item.price}</span>
+                                    </li>`).join('')}
+                            </ul>
+                            <div>Total Price: ${order.totalPrice}</div>
+                            <p>Thanks for dinning with us</p>
+                        </div>
+                    </div>`;
+    });
+
+    // Update the content with the generated order cards
+    document.getElementById('content').innerHTML = `<h1 id="category">Category: Orders</h1><h1 id="subcategory">Subcategory: ${subCategory}</h1>${message}`;
+  }
+
+  // Function to toggle order details visibility
+  function toggleOrderDetails(card) {
+    card.classList.toggle('active');
+  }
+
+  // Function to update order status
+  // Function to update order status and change button color
+  function updateOrderStatus(stage) {
+    // Get the button corresponding to the stage
+    const button = document.querySelector(`#status-labels div:nth-child(${stage + 1}) button`);
+
+    // Toggle the 'selected' class on the button
+    button.classList.toggle('selected');
+
+    // Send a notification to the view my orders page for order tracking
+    sendNotification(stage);
+  }
+
+  // Function to send a notification to the view my orders page
+  function sendNotification(stage) {
+    const message = `Order status updated: ${getStageName(stage)}`;
+    alert(message); // Displaying an alert as an example of sending a notification
+  }
+
+  // Function to get the stage name based on the stage number
+  function getStageName(stage) {
+    switch (stage) {
+      case 0:
+        return 'Order Received';
+      case 1:
+        return 'Order Being Prepared';
+      case 2:
+        return 'Order Ready';
+      case 3:
+        return 'Tray on Delivery';
+      default:
+        return '';
+    }
+  }
+
+  // Function to update order status and change button color
+  function updateOrderStatus(stage) {
+    // Get the button corresponding to the stage
+    const button = document.querySelector(`#status-labels div:nth-child(${stage + 1}) button`);
+
+    // Toggle the 'selected' class on the button
+    button.classList.toggle('selected');
+
+    // Send a notification to the view my orders page for order tracking
+    sendNotification(stage);
+  }
+
+
+  // Add an event listener to the "Menu" button
+  document.getElementById('menuButton').addEventListener('click', function () {
+    window.location.href = 'admin-order.html';
+  });
+
+  // Function to display orders for the selected subcategory
+  function displayOrders(subCategory) {
+    // Make a request to the get_orders.php script
+    fetch('get_orders.php')
+      .then(response => response.json())
+      .then(data => {
+        // Loop through the orders and create cards
+        let message = "";
+        data.forEach(order => {
+          message += `<div class="order-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${order.items[0].name}</td>
+                            <td>${order.items[0].amount}</td>
+                            <td>${order.items[0].description}</td>
+                            <td>${order.items[0].price}</td>
+                        </tr>
+                        <tr>
+                            <td>${order.items[1].name}</td>
+                            <td>${order.items[1].amount}</td>
+                            <td>${order.items[1].description}</td>
+                            <td>${order.items[1].price}</td>
+                        </tr>
+                        <tr>
+                            <td>${order.items[2].name}</td>
+                            <td>${order.items[2].amount}</td>
+                            <td>${order.items[2].description}</td>
+                            <td>${order.items[2].price}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>Total Price: ${order.totalPrice}</div>
+                <p>Thanks for dining with us</p>
+            </div>`;
+        });
+
+        // Update the content with the generated order cards
+        document.getElementById('content').innerHTML = `<h1 id="category">Category: Orders</h1><h1 id="subcategory">Subcategory: ${subCategory}</h1>${message}`;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* Define CSS variables for theme colors */
+:root {
+  --primary-color: #3498db; /* Example primary color */
+  --secondary-color: #2ecc71; /* Example secondary color */
+  --background-color: #ffffff; /* Example background color */
+  --text-color: #333333; /* Example text color */
+}
+
+.dark-mode {
+  /* Dark mode styles */
+  --primary-color: #9b59b6; /* Dark mode primary color */
+  --secondary-color: #e74c3c; /* Dark mode secondary color */
+  --background-color: #212121; /* Dark mode background color */
+  --text-color: #ffffff; /* Dark mode text color */
+}
+
+/* Apply styles using CSS variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Other styles using theme colors */
