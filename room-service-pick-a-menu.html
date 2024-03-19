@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Selection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <style>
@@ -21,28 +22,18 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            flex-direction: column; /* Updated to column layout for mobile */
         }
 
-        .left-side {
-            position: relative;
+        .left-side, .right-side {
             flex-grow: 1;
-            background-image: url('https://i.pinimg.com/564x/70/0d/f5/700df5b522327cf57c58a26480ceafbd.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-        }
-
-        .right-side {
-            position: relative;
-            flex-grow: 1;
-            background-image: url('https://i.pinimg.com/564x/b6/aa/91/b6aa915a8af1139561f0b9ec24a2e5af.jpg');
-            background-size: cover;
+            min-height: 50vh; /* Ensures each side takes at least half the screen height */
             background-position: center;
             z-index: 1;
         }
 
         .overlay {
-            position: absolute;
+            position: relative; /* Changed to relative for proper stacking */
             width: 100%;
             height: 100%;
             background-color: rgba(255, 255, 255, 0.19);
@@ -68,7 +59,6 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             margin: 10px 0;
-            flex-grow: 1;
         }
 
         button:hover {
@@ -95,6 +85,16 @@
         .back-button:hover {
             background-color: #bbb;
         }
+
+        @media only screen and (min-width: 768px) {
+            /* Adjustments for larger screens */
+            .split-screen-container {
+                flex-direction: row;
+            }
+            .left-side, .right-side {
+                min-height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -102,7 +102,7 @@
 <button class="back-button" onclick="window.location.href = 'room-service-index.html'">Back</button>
 
 <div class="split-screen-container">
-    <div class="left-side">
+    <div class="left-side" style="background-image: url('https://i.pinimg.com/564x/70/0d/f5/700df5b522327cf57c58a26480ceafbd.jpg');">
         <div class="overlay">
             <div class="button-container">
                 <button class="button-left" onclick="redirectToRestaurantMenu()">
@@ -113,12 +113,12 @@
         </div>
     </div>
 
-    <div class="right-side">
+    <div class="right-side" style="background-image: url('https://i.pinimg.com/564x/b6/aa/91/b6aa915a8af1139561f0b9ec24a2e5af.jpg');">
         <div class="overlay">
             <div class="button-container">
                 <button class="button-right" onclick="redirectToInDinningMenu()">
                     <i class="fas fa-door-open icon"></i>
-                    In-Dinning Menu
+                    In-Dining Menu
                 </button>
             </div>
         </div>
